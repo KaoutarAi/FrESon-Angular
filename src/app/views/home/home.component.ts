@@ -7,7 +7,4 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-    constructor(
-        private srvAuth: AuthenticationService
-    ) { }
 }
