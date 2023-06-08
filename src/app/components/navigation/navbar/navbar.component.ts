@@ -6,7 +6,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-    private _srcImg: string = "../../../../assets/pictures/Title_complete_color.png";
+    private _srcImg: string = "assets/pictures/Title_complete_color.png";
 
     public get srcImg(): string {
         return this._srcImg;
@@ -18,11 +18,11 @@ export class NavbarComponent {
 
     // change the logo color on hover
     public hover_title() {
-        this._srcImg =  "../../../../assets/pictures/Title_white.png"
+        this._srcImg =  "assets/pictures/Title_white.png"
     }
 
     // change back the logo color on hover out
     public hover_out_title() {
-        this._srcImg =  "../../../../assets/pictures/Title_complete_color.png"
+        this._srcImg =  "assets/pictures/Title_complete_color.png"
 }
 }
