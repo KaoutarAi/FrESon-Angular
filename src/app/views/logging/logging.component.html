@@ -1,0 +1,72 @@
+<h1>Liste des Logs</h1>
+
+<hr>
+
+<div>
+    <h3>Recherche</h3>
+    <div>
+        <label>Par nom d'utilisateur</label>
+        <input type="checkbox" [(ngModel)]="pseudoChecked">
+        <p *ngIf="pseudoChecked">
+            <input type="text" [(ngModel)]="pseudo" (keyup)="findByPseudo(pseudo)">
+            <button (click)="pseudoReset()">Réinitialiser</button>
+            <button (click)="confirmDeletePseudo()">Supprimer tout</button>
+            <strong *ngIf="deleteAllPseudo">
+                Etes vous sûr de vouloir supprimer tous les logs concernant l'utilisateur {{pseudo}}?
+                <button (click)="deleteAllByPseudo()">Oui</button>
+                <button (click)="notDeleteAllByPseudo()">Non</button>
+            </strong>
+        </p>
+    </div>
+    <div>
+        <label>Par date</label>
+        <input type="checkbox" [(ngModel)]="dateChecked">
+        <p *ngIf="dateChecked">
+            <input type="text" placeholder="année" [(ngModel)]="year" (keyup)="findByDate(year)">
+            <input type="text" placeholder="mois" [(ngModel)]="month" (keyup)="findByDate(year, month)">
+            <input type="text" placeholder="jour" [(ngModel)]="day" (keyup)="findByDate(year, month, day)"> 
+            <button (click)="dateReset()">Réinitialiser</button>
+            <button (click)="confirmDeleteDate()">Supprimer tout</button>
+            <strong *ngIf="deleteAllDate">
+                Etes vous sûr de vouloir supprimer tous les logs de / du {{year}}-{{month}}-{{day}}?
+                <button (click)="deleteAllByDate()">Oui</button>
+                <button (click)="notDeleteAllByDate()">Non</button>
+            </strong>
+        </p>
+        
+        
+    </div>
+    <div>
+        <label>Par contenu</label>
+        <input type="checkbox" [(ngModel)]="textChecked">
+        <p *ngIf="textChecked">
+            <input type="text" [(ngModel)]="text" (keyup)="findByText(text)">
+            <button (click)="textReset()">Réinitialiser</button>
+        </p>
+        
+    </div>
+</div>
+
+<hr>
+
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Date</th>
+            <th>Log</th>
+            <th>Utilisateur</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let log of loggings$ | async">
+            <td>{{log.id}}</td>
+            <td>{{log.date}}</td>
+            <td>{{log.text}}</td>
+            <td>{{log.utilisateur.pseudo}}</td>
+            <td>
+                <button (click)="supprimer(log)" >Supprimer</button>
+            </td>
+        </tr>
+    </tbody>
+</table>
