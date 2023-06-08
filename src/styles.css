@@ -1,1 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
+:root {
+    --yellow-jaguar: hsl(39, 55%, 59%);
+    --dark-knight-blue: hsl(216, 36%, 11%);
+    --brighter-blue: hsl(216, 36%, 30%);
+    --sidebar-width: 210px;
+}
+html,
+
+body {
+    height: 100%;
+    font-family: 'Barlow', sans-serif;
+    color: #ffffff;
+    background: linear-gradient(to bottom, var(--dark-knight-blue), var(--brighter-blue)) fixed;
+}

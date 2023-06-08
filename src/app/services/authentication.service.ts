@@ -26,8 +26,6 @@ export class AuthenticationService {
   }
 
   public isLogged() {
-    console.log(`AM I? ${this.token}`);
-
     return !!(this.token && this.token != "");
   }
 

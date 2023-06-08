@@ -1,0 +1,40 @@
+/* NAVBAR STYLE */
+.navbar{
+    /* margin-left: var(--sidebar-width); */
+    font-family: 'Avenir';
+    font-weight: 700;
+    background-color: hsl(216, 36%, 15%);
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.navbar-brand {
+    display: none;
+}
+
+.navbar-nav {
+    display: flex;
+    text-align: right;
+    /* margin-top: 14%; */
+
+}
+
+.navbar-img {
+    width: 100px;
+}
+
+.body-content {
+    display: inline-block;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 5%;
+}
+
+
+/* MEDIA RULES */
+@media (max-width: 576px) {
+    /* Display logo in navbar on small screens */
+    .navbar-brand {
+        display: inline;
+    }
+}

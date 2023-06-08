@@ -9,13 +9,19 @@ import { LoginComponent } from './views/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { PlaylistHomeComponent } from './components/musique/playlist-home/playlist-home.component';
+import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    NavbarComponent,
+    PlaylistHomeComponent,
+    SidebarComponent
   ],
   imports: [
     BrowserModule,
