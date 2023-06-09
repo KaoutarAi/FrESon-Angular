@@ -1,7 +1,7 @@
 <div style="padding: 0;">
     <!-- Top navbar -->
     <nav class="navbar navbar-expand-sm navbar-dark">
-        <a class="navbar-brand">
+        <a class="navbar-brand" [routerLink]="[ '/accueil' ]" routerLinkActive="active">
             <img class="navbar-img" src="{{srcImg}}" (mouseover)="hover_title();" (mouseout)="hover_out_title()">
         </a>
         <!-- Hamburger button that toggles the navbar-->
@@ -18,8 +18,8 @@
         <div class="collapse navbar-collapse flex-row-reverse"
             id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" [routerLink]="[ '/accueil' ]" routerLinkActive="active" >S'inscrire</a>
-                <a class="nav-item nav-link" style="margin-top: -7px;"><button id="connectBtn" class="btn btn-light rounded-pill nav-button" [routerLink]="[ '/connexion' ]" routerLinkActive="active" type="button" style="color: #121a26;">Se connecter</button></a>
+                <a class="nav-item nav-link" [routerLink]="[ '/inscription' ]" routerLinkActive="active" >S'inscrire</a>
+                <a class="nav-item nav-link" style="margin-top: -7px;"><a [ngClass]="{'btn btn-light rounded-pill navbar-button' : onResize(), 'nav-item nav-link' : !onResize()}" [routerLink]="[ '/connexion' ]" routerLinkActive="active">Se connecter</a></a>
             </div>
         </div>
     </nav>

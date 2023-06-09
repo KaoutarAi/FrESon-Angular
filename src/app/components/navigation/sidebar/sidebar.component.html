@@ -1,8 +1,8 @@
 <!-- SIDEBAR -->
 <div class="sidebar">
     <div class="sidebar-header">
-        <a class="sidebar-brand" href="index.html">
-            <img src="assets/pictures/Title_complete_color.png" onmouseover="hover_title(this);" onmouseout="hover_out_title(this);">
+        <a class="sidebar-brand" [routerLink]="[ '/accueil' ]" routerLinkActive="active">
+            <img src="{{srcImg}}" (mouseover)="hover_title();" (mouseout)="hover_out_title();">
         </a>
     </div>
     <div class="sidebar-nav">

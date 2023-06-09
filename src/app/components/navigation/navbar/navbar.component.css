@@ -21,6 +21,9 @@
     width: 90px;
 }
 
+.navbar-button {
+    color: #121a26;
+}
 
 /* MEDIA RULES */
 @media (max-width: 576px) {
