@@ -3,6 +3,7 @@
     --dark-knight-blue: hsl(216, 36%, 11%);
     --brighter-blue: hsl(216, 36%, 30%);
     --sidebar-width: 210px;
+    --corner-radius: 8px;
 }
 html,
 
