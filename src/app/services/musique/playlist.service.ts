@@ -43,7 +43,7 @@ export class PlaylistService {
     if (!limit) {
         return this.httpClient.get<Playlist[]>(`${ baseUrl}`);
     }
-    return this.httpClient.get<Playlist[]>(`${ baseUrl}/top?limit=${ limit }`);
+    return this.httpClient.get<Playlist[]>(`${ baseUrl}?limit=${ limit }`);
   }
 
   // function to manage the parameters of pagination
@@ -69,6 +69,4 @@ export class PlaylistService {
   public delete(playlist: Playlist): Observable<void> {
     return this.httpClient.delete<void>(`${ environment.apiUrl}/playlist/${playlist.id}`);
   }
-
-
 }

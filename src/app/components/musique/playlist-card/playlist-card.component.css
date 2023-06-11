@@ -1,0 +1,66 @@
+.card {
+    background-color: var(--dark-knight-blue);
+    border-radius: var(--card-corner-radius);
+    border-width: 0px;
+    width: var(--card-width) !important; /* Caused occurrence of empty space after the last card*/
+    margin: 0 10px;
+    position: relative;
+    text-align: center;
+  }
+
+  .card:hover {
+      transform: scale(1.1);
+      box-shadow: 4px 4px 7px  hsl(216, 36%, 11%);
+  }
+
+  .card-image {
+      padding-top: calc(5vh / 2);
+  }
+
+  .image-box {
+      overflow: hidden;
+      width: 100%;
+      height: 100%;
+  }
+
+  .image-box img {
+      object-fit: cover;
+      border-radius: var(--image-card-corner-radius);
+      width: calc(var(--card-width) - 5vh);
+      height: 100%;
+      margin: 0 auto;
+  }
+
+  .card:hover .image-box img {
+      opacity: .5;
+  }
+
+  .playlist-details {
+      margin-top: 1vh;
+  }
+
+  .playlist-details .name {
+      margin-top: 8px;
+      height: 20%;
+      font-size: 20px;
+      font-weight: 500;
+  }
+
+  .playlist-details .label {
+      display: flex;
+      font-size: 12px;
+      background-color: white;
+      color: var(--dark-knight-blue);
+      width: 40%;
+      height: 19%;
+      margin: auto auto;
+      font-variant: small-caps;
+      border-radius: 8px;
+      justify-content: center;
+      align-items: center;
+  }
+
+  .playlist-details .creator {
+      font-size: 13px;
+      margin-top: 13px;
+  }

@@ -2,6 +2,18 @@ import { Musique } from "./musique";
 import { Tag } from "./tag";
 
 export class Playlist {
+    public get utilisateurId(): number {
+        return this._utilisateurId;
+    }
+    public set utilisateurId(value: number) {
+        this._utilisateurId = value;
+    }
+    public get utilisateurPseudo(): string {
+        return this._utilisateurPseudo;
+    }
+    public set utilisateurPseudo(value: string) {
+        this._utilisateurPseudo = value;
+    }
     public get musiques(): Musique[] {
         return this._musiques;
     }
@@ -30,6 +42,8 @@ export class Playlist {
         private _id: number,
         private _nom: string,
         private _etiquette: Tag,
+        private _utilisateurId: number,
+        private _utilisateurPseudo: string,
         private _musiques: Musique[]
     ) { }
 }

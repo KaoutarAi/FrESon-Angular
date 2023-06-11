@@ -3,7 +3,9 @@
     --dark-knight-blue: hsl(216, 36%, 11%);
     --brighter-blue: hsl(216, 36%, 30%);
     --sidebar-width: 210px;
-    --corner-radius: 8px;
+    --card-corner-radius: 6px;
+    --image-card-corner-radius: 6px;
+    --card-width: 216px;
 }
 html,
 
@@ -32,7 +34,12 @@ app-root {
     display: inline-block;
     grid-column: 2;
     grid-row: 2;
-    margin: 5%;
+    margin: 2%;
+    overflow-y: scroll;
+}
+
+.body-content::-webkit-scrollbar {
+    display: none;
 }
 
 /* MEDIA RULES */

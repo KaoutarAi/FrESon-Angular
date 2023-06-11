@@ -1,0 +1,13 @@
+/* .grid-style {
+    display: grid;
+    justify-content: center;
+} */
+
+playlist-grid {
+    display: grid;
+    justify-content: center;
+    margin-top: 5%;
+    grid-template-columns: repeat(auto-fill, var(--card-width));
+    column-gap: 18px;
+    row-gap: 22px;
+}

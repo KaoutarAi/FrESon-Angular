@@ -4,6 +4,7 @@ import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { LoginComponent } from './views/login/login.component';
 import { authenticatedGuard } from './guards/authenticated.guard';
+import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
 
 const routes: Routes = [
     {
@@ -11,6 +12,10 @@ const routes: Routes = [
         component: HomeComponent
     },
 
+    {
+        path: 'accueil/plus-vues',
+        component: PlusVuesComponent
+    },
     {
         path: 'connexion',
         component: LoginComponent

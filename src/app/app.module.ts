@@ -13,6 +13,10 @@ import { AuthenticationInterceptor } from './interceptors/authentication.interce
 import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 import { PlaylistHomeComponent } from './components/musique/playlist-home/playlist-home.component';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { PlaylistCardComponent } from './components/musique/playlist-card/playlist-card.component';
+import { PlaylistCardsComponent } from './components/musique/playlist-cards/playlist-cards.component';
+import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
+import { PlaylistGridComponent } from './components/musique/playlist-grid/playlist-grid.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,11 @@ import { SidebarComponent } from './components/navigation/sidebar/sidebar.compon
     LoginComponent,
     NavbarComponent,
     PlaylistHomeComponent,
-    SidebarComponent
+    SidebarComponent,
+    PlaylistCardComponent,
+    PlaylistCardsComponent,
+    PlusVuesComponent,
+    PlaylistGridComponent
   ],
   imports: [
     BrowserModule,
