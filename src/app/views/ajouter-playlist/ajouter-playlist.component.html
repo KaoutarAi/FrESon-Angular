@@ -1,1 +1,19 @@
-<p>ajouter-playlist works!</p>
+<form *ngIf="playlistForm" [formGroup]="playlistForm" (ngSubmit)="doOk()">
+    <div>
+        <label>Nom</label>
+        <input type="text" formControlName="nom" [formControl]="nomCtrl">
+    </div>
+    <div>
+        <label>Publique</label>
+            <input type="checkbox" formControlName="public" [formControl]="publicCtrl" checked>
+            <span class="slider round"></span>
+    </div>
+    <div class="tag-container">
+        <div class="radio-tag" (change)="onChange(tagCtrl)">
+            <div *ngFor="let tag of etiquettes" class="radio-button">
+                <input id="{{tag}}" formControlName="tag" [formControl]="tagCtrl" type="radio" value="{{tag}}">
+                <label for="{{tag}}">{{tag}}</label>
+            </div>
+        </div>
+    </div>
+</form>

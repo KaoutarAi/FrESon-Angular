@@ -1,0 +1,27 @@
+.tag-container {
+    overflow-y: scroll;
+}
+
+.radio-tag {
+    display: inline-flex;
+}
+
+.radio-button input[type="radio"] {
+    display: none;
+  }
+
+  .radio-button {
+    margin-inline: 8px;
+  }
+  .radio-button label {
+    display: inline-block;
+    background-color: #d1d1d1;
+    padding: 4px 11px;
+    font-family: Arial;
+    font-size: 18px;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  .radio-button input[type="radio"]:checked+label {
+    background-color: #76cf9f;
+  }

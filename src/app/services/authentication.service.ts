@@ -42,6 +42,7 @@ export class AuthenticationService {
     // Récupération du jeton stocké dans le navigateur
     this.token = localStorage.getItem('token') ?? "";
     this.id = parseInt(localStorage.getItem('userId') ?? "0");
+
     this.role = localStorage.getItem('userRole') ?? "";
   }
 
@@ -56,6 +57,7 @@ export class AuthenticationService {
     }).subscribe({
       next: result => {
         this.token = result.token;
+        this.id = result.id;
         this.role = result.role;
 
         if (options.next) {

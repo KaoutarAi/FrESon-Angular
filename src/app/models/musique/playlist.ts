@@ -2,18 +2,25 @@ import { Musique } from "./musique";
 import { Tag } from "./tag";
 
 export class Playlist {
+    public get public(): boolean {
+        return this._public;
+    }
+    public set public(value: boolean) {
+        this._public = value;
+    }
+    public get utilisateurPseudo(): string | null {
+        return this._utilisateurPseudo;
+    }
+    public set utilisateurPseudo(value: string | null) {
+        this._utilisateurPseudo = value;
+    }
     public get utilisateurId(): number {
         return this._utilisateurId;
     }
     public set utilisateurId(value: number) {
         this._utilisateurId = value;
     }
-    public get utilisateurPseudo(): string {
-        return this._utilisateurPseudo;
-    }
-    public set utilisateurPseudo(value: string) {
-        this._utilisateurPseudo = value;
-    }
+
     public get musiques(): Musique[] {
         return this._musiques;
     }
@@ -39,11 +46,17 @@ export class Playlist {
         this._id = value;
     }
     constructor(
-        private _id: number,
-        private _nom: string,
-        private _etiquette: Tag,
-        private _utilisateurId: number,
-        private _utilisateurPseudo: string,
-        private _musiques: Musique[]
-    ) { }
+        private _id: number = 0,
+        private _nom: string = "",
+        private _etiquette: Tag = Tag.JOIE,
+        private _utilisateurId: number = 0,
+        private _utilisateurPseudo: string | null = null,
+        private _musiques: Musique[] = [],
+        private _public: boolean = true
+    ) {
+        this.id = _id;
+        this.nom = _nom;
+        this._etiquette = _etiquette;
+        this.utilisateurId = _utilisateurId
+    }
 }
