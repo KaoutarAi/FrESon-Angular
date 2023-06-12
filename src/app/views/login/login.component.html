@@ -1,0 +1,32 @@
+<div *ngIf="erreur" class="alert alert-danger">
+    Nom d'utilisateur ou mot de passe incorrect !
+</div>
+
+  <form [formGroup]="loginForm">
+    <div class="imgcontainer">
+        <img src="assets/pictures/user_dark.JPG" alt="user_img" class="user_img">
+    </div>
+
+    <div class="container">
+        <!-- <label for="uname"><b>Nom d'utilisateur</b></label> -->
+        <input type="text" placeholder="Nom d'utilisateur" formControlName="pseudo" [formControl]="pseudoCtrl">
+
+        <!-- <label for="psw"><b>Mot de passe</b></label>-->
+        <input type="password" placeholder="Mot de passe" formControlName="mdp" [formControl]="mdpCtrl">
+        <span class="psw"><a href="#">Mot de passe oublié ?</a></span>
+           
+    </div>
+
+    <div class="container">
+        <label>
+            <input type="checkbox" checked="checked" name="remember"> Se souvenir de moi
+        </label>
+        <button type="submit" (click)="login()">Se connecter</button>
+        
+    </div>
+    <div class="container">
+        <span class="insc">Vous n'avez pas un compte FrESon ?</span>
+        <button type="button" class="inscbtn">S'inscrire</button>
+        
+    </div>
+</form>

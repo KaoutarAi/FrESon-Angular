@@ -49,13 +49,14 @@ export class AuthenticationService {
     return !!(this.token && this.token != "");
   }
 
-  public login(username: string, password: string, options: any) {
+  public login(pseudo: string, mdp: string, options: any) {
     this.httpClient.post<AuthResponse>(`${ environment.apiUrl }/utilisateur/connexion`, {
-      username,
-      password
+      pseudo,
+      mdp
     }).subscribe({
       next: result => {
         this.token = result.token;
+        this.role = result.role;
 
         if (options.next) {
           options.next(result);

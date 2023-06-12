@@ -5,15 +5,20 @@ import { authenticatedGuard } from './authenticated.guard';
 import { AuthorizationService } from '../services/authorization.service';
 
 export const authorizedAdminGuard: CanActivateFn = (route, state) => {
-  const srvAuthorization = inject(AuthorizationService);
-  const authorized = srvAuthorization.isAuthorizedAdmin();
-  const router = inject(Router);
 
-  if(!authenticatedGuard){
-    router.navigate([ '/connexion' ]);
+  const srvAuth = inject(AuthenticationService);
+  const authenticated = srvAuth.isLogged();
+  const isAdmin = srvAuth.role === 'ADMINISTRATEUR'; 
+  const router = inject(Router)
+
+  if (!authenticated) { 
+    router.navigate(['/connexion']);
   }
-  if(!authorized){
+  if(!isAdmin){
     router.navigate([ '/denied' ]);
   }
+
   return true;
 };
+
+

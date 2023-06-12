@@ -18,7 +18,7 @@ export class AuthorizationService {
 
 
   public isAuthorizedAdmin(){
-    if(this.role != 'ADMIN'){
+    if(this.role != 'ADMINISTRATEUR'){
       return false;
     }
     return true;

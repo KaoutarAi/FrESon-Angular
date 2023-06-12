@@ -2,6 +2,14 @@ export class AuthResponse {
   private _success: boolean = false;
   private _token: string = "";
   private _role: string = "";
+  private _id: number = 0;
+
+  public get id(): number {
+    return this._id;
+  }
+  public set id(value: number) {
+    this._id = value;
+  }
 
   public get role(): string {
     return this._role;
