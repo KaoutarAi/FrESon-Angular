@@ -7,6 +7,7 @@ import { authenticatedGuard } from './guards/authenticated.guard';
 import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
 import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.component';
 import { PlaylistComponent } from './views/playlist/playlist.component';
+import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playlist.component';
 
 const routes: Routes = [
     {
@@ -25,6 +26,10 @@ const routes: Routes = [
     {
         path: 'playlist/:id',
         component: PlaylistComponent
+    },
+    {
+        path: 'ajouter-playlist',
+        component: AjouterPlaylistComponent
     },
 
     {

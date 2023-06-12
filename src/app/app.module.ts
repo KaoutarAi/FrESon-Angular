@@ -19,6 +19,7 @@ import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
 import { PlaylistGridComponent } from './components/musique/playlist-grid/playlist-grid.component';
 import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.component';
 import { PlaylistComponent } from './views/playlist/playlist.component';
+import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playlist.component';
 
 @NgModule({
   declarations: [
@@ -34,7 +35,8 @@ import { PlaylistComponent } from './views/playlist/playlist.component';
     PlusVuesComponent,
     PlaylistGridComponent,
     PlusRecentesComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    AjouterPlaylistComponent
   ],
   imports: [
     BrowserModule,
