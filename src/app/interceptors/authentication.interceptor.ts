@@ -20,7 +20,6 @@ export class AuthenticationInterceptor implements HttpInterceptor {
     console.log("ROLE" + this.srvAuth.role);
 
 
-
     if (this.srvAuth.isLogged()) {
       request = request.clone({
         setHeaders: {
@@ -33,6 +32,7 @@ export class AuthenticationInterceptor implements HttpInterceptor {
       .pipe(
         catchError((error: HttpErrorResponse) => {
           if (error.status == 403) {
+            
             this.srvAuth.token = "";
             this.router.navigate([ '/connexion' ]);
           }

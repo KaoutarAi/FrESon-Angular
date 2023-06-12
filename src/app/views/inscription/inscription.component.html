@@ -1,0 +1,41 @@
+<form [formGroup]="userForm">
+	<div>
+		<label for="role">Vous êtes ?</label>
+		<select id="role" formControlName="role" [formControl]="roleCtrl">
+		  <option value="UTILISATEUR">UTILISATEUR</option>
+		  <option value="CREATEUR">CREATEUR</option>
+		</select>
+	</div>
+	<div>
+		<label>Nom</label>
+		<input type="text" formControlName="nom" [formControl]="nomCtrl"/>
+	</div>
+	<div>
+		<label>Prenom</label>
+		<input type="text" formControlName="prenom" [formControl]="prenomCtrl"/>
+	</div>
+	<div>
+		<label>Pseudo</label>
+		<input type="text" formControlName="pseudo" [formControl]="pseudoCtrl"/>
+	</div>
+	<div>
+		<label>Email</label>
+		<input type="email" formControlName="email" [formControl]="emailCtrl"/>
+	</div>
+	<div>
+		<label>Mot de passe</label>
+		<input type="password" formControlName="mdp" [formControl]="mdpCtrl"/>
+	</div>
+	<div>
+		<label>Confirmation du mot de passe</label>
+		<input type="password" formControlName="mdpVerif" [formControl]="mdpVerifCtrl"/>
+	</div>
+	<div>
+		<input type="submit" (click)="ajouter()" [disabled]="userForm.invalid" value="S'inscrire" />
+	</div>
+	<div>
+		<label>Vous avez déjà un compte ?</label>
+		<input type="submit" (click)="seConnecter()" value="Se connecter" />
+	</div>
+
+</form>

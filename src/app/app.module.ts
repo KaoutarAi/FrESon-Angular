@@ -10,6 +10,8 @@ import { LoginComponent } from './views/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
+import { LoggingComponent } from './views/logging/logging.component';
+import { AccesRefuseComponent } from './views/acces-refuse/acces-refuse.component';
 import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 import { PlaylistHomeComponent } from './components/musique/playlist-home/playlist-home.component';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
@@ -20,12 +22,17 @@ import { PlaylistGridComponent } from './components/musique/playlist-grid/playli
 import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.component';
 import { PlaylistComponent } from './views/playlist/playlist.component';
 import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playlist.component';
+import { InscriptionComponent } from './views/inscription/inscription.component';
+import { FavorisComponent } from './views/favoris/favoris.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
+    LoggingComponent,
+    AccesRefuseComponent,
     LoginComponent,
     NavbarComponent,
     PlaylistHomeComponent,
@@ -37,6 +44,8 @@ import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playl
     PlusRecentesComponent,
     PlaylistComponent,
     AjouterPlaylistComponent
+    InscriptionComponent,
+    FavorisComponent
   ],
   imports: [
     BrowserModule,
