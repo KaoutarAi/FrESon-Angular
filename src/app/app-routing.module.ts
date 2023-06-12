@@ -10,6 +10,7 @@ import { authorizedAdminGuard } from './guards/authorized-admin.guard';
 import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
 import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.component';
 import { PlaylistComponent } from './views/playlist/playlist.component';
+import { InscriptionComponent } from './views/inscription/inscription.component';
 const routes: Routes = [
     {
         path: 'accueil',
@@ -17,6 +18,7 @@ const routes: Routes = [
     },
 
     {
+
         path: 'playlist/plus-vues',
         component: PlusVuesComponent
     },
@@ -27,6 +29,11 @@ const routes: Routes = [
     {
         path: 'playlist/:id',
         component: PlaylistComponent
+    },
+    
+    {
+        path: 'inscription',
+        component: InscriptionComponent
     },
 
     {
