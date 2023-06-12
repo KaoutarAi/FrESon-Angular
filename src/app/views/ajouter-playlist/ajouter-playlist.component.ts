@@ -20,7 +20,7 @@ export class AjouterPlaylistComponent implements OnInit{
     playlistForm!: FormGroup;
     nomCtrl!: FormControl;
     publicCtrl!: FormControl;
-    musiquesSelected!: Musique[];
+    musiquesSelected: Musique[] = new Array<Musique>;
     editing: number = 0;
     tagCtrl!: FormControl;
     etiquettes: string[] = Object.values(Tag) ;
@@ -90,4 +90,32 @@ export class AjouterPlaylistComponent implements OnInit{
         console.log("CHANGE RADIO: " + a.value);
 
       }
+
+    // selectMusique(selected: number, musique: Musique) {
+    //     if (!selected) {
+    //         this.musiquesSelected.push(musique);
+    //     }
+    //     else {
+    //         const idx = this.musiquesSelected.indexOf(musique);
+    //         this.musiquesSelected.splice(idx, 1);
+    //     }
+    //     console.log(this.musiquesSelected);
+
+    // }
+
+    selectMusique(emitted: any[]) {
+        console.log("EMITTED");
+        console.log(emitted);
+
+
+        if (emitted[0]) {
+            this.musiquesSelected.push(emitted[1]);
+        }
+        else {
+            const idx = this.musiquesSelected.indexOf(emitted[1]);
+            this.musiquesSelected.splice(idx, 1);
+        }
+        console.log(this.musiquesSelected);
+
+    }
 }

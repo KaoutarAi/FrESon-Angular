@@ -1,0 +1,11 @@
+.music-card {
+    display: inline-flex;
+    width: 130px;
+    height: 130px;
+    margin-inline: 8px;
+    margin-top: 5%;
+}
+
+.music-selected {
+    box-shadow: 0 0 0 5px  var(--yellow-jaguar);
+}

@@ -25,3 +25,15 @@
   .radio-button input[type="radio"]:checked+label {
     background-color: #76cf9f;
   }
+
+
+  .musics-container {
+    display: flex;
+    /* height: 210px; */
+    overflow-x: scroll;
+    margin-inline: 5%;
+  }
+
+  .musics-container::-webkit-scrollbar {
+    display: none;
+  }

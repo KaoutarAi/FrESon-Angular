@@ -16,4 +16,8 @@
             </div>
         </div>
     </div>
+
+    <div class="musics-container">
+        <music-card *ngFor="let musique of musiques$ | async" [musique]="musique" (selection)="selectMusique($event)"></music-card>
+    </div>
 </form>
