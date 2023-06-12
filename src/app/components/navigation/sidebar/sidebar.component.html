@@ -7,35 +7,35 @@
     </div>
     <div class="sidebar-nav">
         <div class="sidenav">
-            <a class="sidebar-item" href="#">
+            <a class="sidebar-item" [routerLink]="[ '/accueil' ]" routerLinkActive="active">
                 <div class="sidebar-item-content">
                     <i class="bi bi-house-fill sidebar-icon"></i>
                     Accueil
                 </div>
             </a>
 
-            <a class="sidebar-item" href="#">
+            <a class="sidebar-item" [routerLink]="[ '/rechercher' ]" routerLinkActive="active">
                 <div class="sidebar-item-content">
                     <i class="bi bi-search sidebar-icon"></i>
                     <span >Rechercher</span>
                 </div>
             </a>
 
-            <a class="sidebar-item" href="#">
+            <a class="sidebar-item" [routerLink]="[ '/favoris' ]" routerLinkActive="active">
                 <div class="sidebar-item-content">
                     <i class="bi bi-star-fill sidebar-icon"></i>
                     <span >Favoris</span>
                 </div>
             </a>
 
-            <a class="sidebar-item" href="#">
+            <a class="sidebar-item" [routerLink]="[ '/mes-playlists' ]" routerLinkActive="active">
                 <div class="sidebar-item-content">
                     <i class="bi bi-music-note-list sidebar-icon"></i>
                     <span >Mes playlists</span>
                 </div>
             </a>
 
-            <a class="sidebar-item" href="#">
+            <a class="sidebar-item" [routerLink]="[ '/ajouter-playlist' ]" routerLinkActive="active">
                 <div class="sidebar-item-content">
                     <i class="bi bi-plus-square sidebar-icon"></i>
                     <span >Ajouter une playlist</span>

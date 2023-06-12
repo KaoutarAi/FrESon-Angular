@@ -15,6 +15,10 @@ export class AuthenticationInterceptor implements HttpInterceptor {
   constructor(private srvAuth: AuthenticationService, private router: Router) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {
+    console.log("TOKEN:" + this.srvAuth.token);
+    console.log("USERID" + this.srvAuth.id);
+    console.log("ROLE" + this.srvAuth.role);
+
 
     if (this.srvAuth.isLogged()) {
       request = request.clone({

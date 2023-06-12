@@ -43,6 +43,11 @@
     align-items: center;
 }
 
+.sidebar-item-content i {
+    position: relative;
+    top: .2px;
+}
+
 .sidebar-item:hover {
     color: var(--yellow-jaguar);
 }
