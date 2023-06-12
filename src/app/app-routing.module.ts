@@ -36,7 +36,8 @@ const routes: Routes = [
     {
         path: 'ajouter-playlist',
         component: AjouterPlaylistComponent
-    
+    },
+
     {
         path: 'inscription',
         component: InscriptionComponent
