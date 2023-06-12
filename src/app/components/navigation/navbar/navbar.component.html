@@ -1,0 +1,26 @@
+<div style="padding: 0;">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark">
+        <a class="navbar-brand" [routerLink]="[ '/accueil' ]" routerLinkActive="active">
+            <img class="navbar-img" src="{{srcImg}}" (mouseover)="hover_title();" (mouseout)="hover_out_title()">
+        </a>
+        <!-- Hamburger button that toggles the navbar-->
+        <button class="navbar-toggler ml-auto" type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- navbar links -->
+        <div class="collapse navbar-collapse flex-row-reverse"
+            id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" [routerLink]="[ '/inscription' ]" routerLinkActive="active" >S'inscrire</a>
+                <a class="nav-item nav-link" style="margin-top: -7px;"><a [ngClass]="{'btn btn-light rounded-pill navbar-button' : onResize(), 'nav-item nav-link' : !onResize()}" [routerLink]="[ '/connexion' ]" routerLinkActive="active">Se connecter</a></a>
+            </div>
+        </div>
+    </nav>
+</div>

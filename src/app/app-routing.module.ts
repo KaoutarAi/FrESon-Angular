@@ -4,11 +4,27 @@ import { HomeComponent } from './views/home/home.component';
 import { PageNotFoundComponent } from './views/page-not-found/page-not-found.component';
 import { LoginComponent } from './views/login/login.component';
 import { authenticatedGuard } from './guards/authenticated.guard';
+import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
+import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.component';
+import { PlaylistComponent } from './views/playlist/playlist.component';
 
 const routes: Routes = [
     {
         path: 'accueil',
         component: HomeComponent
+    },
+
+    {
+        path: 'playlist/plus-vues',
+        component: PlusVuesComponent
+    },
+    {
+        path: 'playlist/plus-recentes',
+        component: PlusRecentesComponent
+    },
+    {
+        path: 'playlist/:id',
+        component: PlaylistComponent
     },
 
     {
