@@ -1,18 +1,19 @@
 import { inject } from '@angular/core';
 import { CanActivateFn, Router } from '@angular/router';
-import { AuthorizationService } from '../services/authorization.service';
-import { authenticatedGuard } from './authenticated.guard';
+import { AuthenticationService } from '../services/authentication.service';
 
 export const authorizedModerateurGuard: CanActivateFn = (route, state) => {
-  const srvAuthorization = inject(AuthorizationService);
-  const authorized = srvAuthorization.isAuthorizedModerateur();
+  const srvAuth = inject(AuthenticationService);
+  const authenticated = srvAuth.isLogged();
+  const isModerateur = srvAuth.role === 'MODERATEUR'; 
   const router = inject(Router)
 
-  if(!authenticatedGuard){
-    router.navigate([ '/connexion' ]);
+  if (!authenticated) { 
+    router.navigate(['/connexion']);
   }
-  if(!authorized){
+  if(!isModerateur){
     router.navigate([ '/denied' ]);
   }
+
   return true;
 };
