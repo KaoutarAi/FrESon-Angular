@@ -10,6 +10,8 @@ import { LoginComponent } from './views/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
+import { LoggingComponent } from './views/logging/logging.component';
+import { AccesRefuseComponent } from './views/acces-refuse/acces-refuse.component';
 import { NavbarComponent } from './components/navigation/navbar/navbar.component';
 import { PlaylistHomeComponent } from './components/musique/playlist-home/playlist-home.component';
 import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
@@ -25,6 +27,8 @@ import { PlaylistComponent } from './views/playlist/playlist.component';
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
+    LoggingComponent,
+    AccesRefuseComponent,
     LoginComponent,
     NavbarComponent,
     PlaylistHomeComponent,
