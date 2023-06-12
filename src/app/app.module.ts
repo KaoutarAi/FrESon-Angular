@@ -9,13 +9,18 @@ import { LoginComponent } from './views/login/login.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
+import { InscriptionComponent } from './views/inscription/inscription.component';
+import { FavorisComponent } from './views/favoris/favoris.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     PageNotFoundComponent,
-    LoginComponent
+    LoginComponent,
+    InscriptionComponent,
+    FavorisComponent
   ],
   imports: [
     BrowserModule,
