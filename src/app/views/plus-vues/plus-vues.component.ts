@@ -4,7 +4,7 @@ import { Playlist } from 'src/app/models/musique/playlist';
 import { PlaylistService } from 'src/app/services/musique/playlist.service';
 
 @Component({
-  selector: 'app-plus-vues',
+  selector: 'plus-vues',
   templateUrl: './plus-vues.component.html',
   styleUrls: ['./plus-vues.component.css']
 })

@@ -1,4 +1,5 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Playlist } from 'src/app/models/musique/playlist';
 
@@ -10,4 +11,7 @@ import { Playlist } from 'src/app/models/musique/playlist';
 export class PlaylistCardComponent {
     @Input() playlist!: Playlist;
 
+    constructor(
+        public router: Router
+      ) { }
 }
