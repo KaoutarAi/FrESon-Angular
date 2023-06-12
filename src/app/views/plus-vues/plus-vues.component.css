@@ -1,0 +1,18 @@
+/* .grid-style {
+    display: grid;
+    justify-content: center;
+} */
+
+playlist-grid {
+    display: grid;
+    justify-content: center;
+    margin-top: 5%;
+    grid-template-columns: repeat(auto-fill, var(--card-width));
+    column-gap: 20px;
+    row-gap: 22px;
+    overflow-y: scroll;
+}
+
+playlist-grid::-webkit-scrollbar {
+    display: none;
+}
