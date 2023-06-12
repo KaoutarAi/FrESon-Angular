@@ -21,6 +21,9 @@ import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
 import { PlaylistGridComponent } from './components/musique/playlist-grid/playlist-grid.component';
 import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.component';
 import { PlaylistComponent } from './views/playlist/playlist.component';
+import { InscriptionComponent } from './views/inscription/inscription.component';
+import { FavorisComponent } from './views/favoris/favoris.component';
+
 
 @NgModule({
   declarations: [
@@ -38,7 +41,9 @@ import { PlaylistComponent } from './views/playlist/playlist.component';
     PlusVuesComponent,
     PlaylistGridComponent,
     PlusRecentesComponent,
-    PlaylistComponent
+    PlaylistComponent,
+    InscriptionComponent,
+    FavorisComponent
   ],
   imports: [
     BrowserModule,
