@@ -15,7 +15,6 @@ export class MusicCardComponent implements OnInit{
 
     ngOnInit(): void {
         this.imageUrl = this.musique.image.replace(/width=(\d+)/, "width=130");
-        console.log(this.imageUrl);
     }
 
     onClick() {

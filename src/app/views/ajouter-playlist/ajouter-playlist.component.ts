@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
 import { Tag } from 'src/app/models/musique/tag';
@@ -14,7 +14,7 @@ import { PlaylistService } from 'src/app/services/musique/playlist.service';
   templateUrl: './ajouter-playlist.component.html',
   styleUrls: ['./ajouter-playlist.component.css']
 })
-export class AjouterPlaylistComponent implements OnInit{
+export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDestroy{
     playlist!: Playlist; // when editing
     musiques$!: Observable<Musique[]>;
     playlistForm!: FormGroup;
@@ -24,6 +24,7 @@ export class AjouterPlaylistComponent implements OnInit{
     editing: number = 0;
     tagCtrl!: FormControl;
     etiquettes: string[] = Object.values(Tag) ;
+    subscriptionPlaylist!: Subscription;
 
     @Output() ok: EventEmitter<void> = new EventEmitter<void>();
     @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
@@ -37,6 +38,16 @@ export class AjouterPlaylistComponent implements OnInit{
         private srvMusic: MusiqueService,
         private formBuilder: FormBuilder,
         ) { }
+    ngOnDestroy(): void {
+        this.subscriptionPlaylist.unsubscribe();
+    }
+
+    ngAfterViewChecked(): void { // Used to fetch the paramters subscribed in onInit
+        console.log("ONCHANGES: ")
+        console.log(this.musiquesSelected);
+    }
+
+
 
     ngOnInit(): void {
         // We first need to determine if the user wants to edit or add a playlist
@@ -49,8 +60,11 @@ export class AjouterPlaylistComponent implements OnInit{
             }
         });
         if (this.editing) { // editing playlist
-            this.srvPlaylist.findById(this.editing).subscribe(p => {
+            this.subscriptionPlaylist = this.srvPlaylist.findById(this.editing).subscribe(p => {
                 this.playlist = p;
+                this.musiquesSelected = this.playlist.musiques;
+
+                // this.selectMusique = ;
                 this.ajouterOuModiferForm();
                 console.log("PRINT VALUE:" + this.tagCtrl.value);
 
@@ -66,6 +80,8 @@ export class AjouterPlaylistComponent implements OnInit{
 
         // on Init load all musics for selection
         this.musiques$ = this.srvMusic.findAll();
+        console.log( "FINAL INIT: " + this.musiquesSelected);
+
         // console.log("USER ID: " + this.userId);
     }
 
@@ -102,6 +118,16 @@ export class AjouterPlaylistComponent implements OnInit{
     //     console.log(this.musiquesSelected);
 
     // }
+
+    fetchMusique(obsMusiques: Observable<Musique[]>): Musique[] {
+        let musiques: Musique[] = new Array<Musique>();
+        obsMusiques.subscribe((ms) => {
+            ms.forEach(m => {
+                musiques.push(m);
+            })
+        })
+        return musiques;
+    }
 
     selectMusique(emitted: any[]) {
         console.log("EMITTED");
