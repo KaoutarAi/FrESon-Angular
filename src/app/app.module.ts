@@ -43,7 +43,7 @@ import { FavorisComponent } from './views/favoris/favoris.component';
     PlaylistGridComponent,
     PlusRecentesComponent,
     PlaylistComponent,
-    AjouterPlaylistComponent
+    AjouterPlaylistComponent,
     InscriptionComponent,
     FavorisComponent
   ],
