@@ -1,0 +1,13 @@
+<div class="container ">
+    <div class="section-container">
+        <div class="slide-section">
+            <h2>{{slideTitle}}</h2>
+            <a routerLink={{displayMore}}>Tout afficher</a>
+        </div>
+    </div>
+    <div class="slide-container">
+        <div class="slide-wrapper">
+            <playlist-card *ngFor="let playlist of playlists | async" [playlist]="playlist"></playlist-card>
+        </div>
+    </div>
+<div>

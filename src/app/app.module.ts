@@ -1,4 +1,5 @@
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppRoutingModule } from './app-routing.module';
@@ -11,6 +12,15 @@ import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
 import { AuthenticationInterceptor } from './interceptors/authentication.interceptor';
 import { LoggingComponent } from './views/logging/logging.component';
 import { AccesRefuseComponent } from './views/acces-refuse/acces-refuse.component';
+import { NavbarComponent } from './components/navigation/navbar/navbar.component';
+import { PlaylistHomeComponent } from './components/musique/playlist-home/playlist-home.component';
+import { SidebarComponent } from './components/navigation/sidebar/sidebar.component';
+import { PlaylistCardComponent } from './components/musique/playlist-card/playlist-card.component';
+import { PlaylistCardsComponent } from './components/musique/playlist-cards/playlist-cards.component';
+import { PlusVuesComponent } from './views/plus-vues/plus-vues.component';
+import { PlaylistGridComponent } from './components/musique/playlist-grid/playlist-grid.component';
+import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.component';
+import { PlaylistComponent } from './views/playlist/playlist.component';
 
 @NgModule({
   declarations: [
@@ -18,13 +28,24 @@ import { AccesRefuseComponent } from './views/acces-refuse/acces-refuse.componen
     HomeComponent,
     PageNotFoundComponent,
     LoggingComponent,
-    AccesRefuseComponent
+    AccesRefuseComponent,
+    LoginComponent,
+    NavbarComponent,
+    PlaylistHomeComponent,
+    SidebarComponent,
+    PlaylistCardComponent,
+    PlaylistCardsComponent,
+    PlusVuesComponent,
+    PlaylistGridComponent,
+    PlusRecentesComponent,
+    PlaylistComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    NgbModule
   ],
   providers: [
         {

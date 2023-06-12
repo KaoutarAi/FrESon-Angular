@@ -1,1 +1,60 @@
-/* You can add global styles to this file, and also import other style files */
+:root {
+    --yellow-jaguar: hsl(39, 55%, 59%);
+    --dark-knight-blue: hsl(216, 36%, 11%);
+    --brighter-blue: hsl(216, 36%, 30%);
+    --sidebar-width: 210px;
+    --card-corner-radius: 6px;
+    --image-card-corner-radius: 6px;
+    --card-width: 216px;
+}
+html,
+
+app-root {
+    height: 100vh;
+    width: 100vw;
+    font-family: 'Barlow', sans-serif;
+    color: #ffffff;
+    background: linear-gradient(to bottom, var(--dark-knight-blue), var(--brighter-blue)) fixed;
+    display: grid;
+    grid-template-columns: var(--sidebar-width) calc(100vw - var(--sidebar-width))  ;
+    grid-template-rows: 50px auto;
+}
+
+.sidebar {
+    grid-column: 1;
+    grid-row: 2;
+}
+
+.navbar {
+    grid-column: 2;
+    grid-row: 1;
+}
+
+.body-content {
+    display: inline-block;
+    grid-column: 2;
+    grid-row: 2;
+    margin: 2%;
+    overflow-y: scroll;
+}
+
+.body-content::-webkit-scrollbar {
+    display: none;
+}
+
+/* MEDIA RULES */
+@media (max-width: 576px) {
+    /* Redefine sidebar width to 0 to hide it on small screens */
+    :root {
+        --sidebar-width: 0px;
+    }
+    /* Hide sidebar on small screens */
+    .sidebar {
+        display: none;
+    }
+
+    /* Display logo in navbar on small screens */
+    .navbar-brand {
+        display: inline;
+    }
+}

@@ -26,7 +26,6 @@ export class AuthenticationService {
   }
 
   public isLogged() {
-
     return !!(this.token && this.token != "");
   }
 
