@@ -8,7 +8,24 @@ import { environment } from '../environments/environment';
 })
 export class AuthenticationService {
   private _token: string = "";
+  private _id: number = 0;
   private _role: string = "";
+
+    public get role(): string {
+        return this._role;
+    }
+    public set role(value: string) {
+        localStorage.setItem('userRole', value);
+        this._role = value;
+    }
+
+  public get id(): number {
+        return this._id;
+  }
+  public set id(value: number) {
+        localStorage.setItem('userId', value.toString());
+        this._id = value;
+  }
 
   public get token(): string {
     return this._token;
@@ -21,17 +38,11 @@ export class AuthenticationService {
     this._token = value;
   }
 
-  public get role(): string {
-    return this._role;
-  }
-  
-  public set role(value: string) {
-    this._role = value;
-  }
-
   constructor(private httpClient: HttpClient) {
     // Récupération du jeton stocké dans le navigateur
     this.token = localStorage.getItem('token') ?? "";
+    this.id = parseInt(localStorage.getItem('userId') ?? "0");
+    this.role = localStorage.getItem('userRole') ?? "";
   }
 
   public isLogged() {
