@@ -8,6 +8,7 @@ import { environment } from '../environments/environment';
 })
 export class AuthenticationService {
   private _token: string = "";
+  private _role: string = "";
 
   public get token(): string {
     return this._token;
@@ -20,6 +21,14 @@ export class AuthenticationService {
     this._token = value;
   }
 
+  public get role(): string {
+    return this._role;
+  }
+  
+  public set role(value: string) {
+    this._role = value;
+  }
+
   constructor(private httpClient: HttpClient) {
     // Récupération du jeton stocké dans le navigateur
     this.token = localStorage.getItem('token') ?? "";
@@ -29,13 +38,14 @@ export class AuthenticationService {
     return !!(this.token && this.token != "");
   }
 
-  public login(username: string, password: string, options: any) {
+  public login(pseudo: string, mdp: string, options: any) {
     this.httpClient.post<AuthResponse>(`${ environment.apiUrl }/utilisateur/connexion`, {
-      username,
-      password
+      pseudo,
+      mdp
     }).subscribe({
       next: result => {
         this.token = result.token;
+        this.role = result.role;
 
         if (options.next) {
           options.next(result);
