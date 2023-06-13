@@ -20,7 +20,11 @@ export class UtilisateurService {
   }
 
   public edit(utilisateur: any): Observable<Utilisateur> {
-    return this.httpClient.put<Utilisateur>(`${ environment.apiUrl }/utilisateur/pseudo/${ utilisateur.pseudo }`, utilisateur);
+    return this.httpClient.put<Utilisateur>(`${ environment.apiUrl }/utilisateur/${ utilisateur.id }`, utilisateur);
+  }
+
+  public resetMdp(utilisateur: any): Observable<Utilisateur> {
+    return this.httpClient.put<Utilisateur>(`${ environment.apiUrl }/utilisateur/reset-mdp/${ utilisateur.pseudo }`, utilisateur);
   }
 
   public delete(utilisateur: Utilisateur): Observable<void> {

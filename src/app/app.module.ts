@@ -24,6 +24,7 @@ import { PlaylistComponent } from './views/playlist/playlist.component';
 import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playlist.component';
 import { InscriptionComponent } from './views/inscription/inscription.component';
 import { FavorisComponent } from './views/favoris/favoris.component';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 
 
 @NgModule({
@@ -45,7 +46,8 @@ import { FavorisComponent } from './views/favoris/favoris.component';
     PlaylistComponent,
     AjouterPlaylistComponent,
     InscriptionComponent,
-    FavorisComponent
+    FavorisComponent,
+    ResetPasswordComponent
   ],
   imports: [
     BrowserModule,
