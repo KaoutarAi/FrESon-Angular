@@ -1,41 +1,28 @@
 <form [formGroup]="userForm">
-	<div>
-		<label for="role">Vous êtes ?</label>
-		<select id="role" formControlName="role" [formControl]="roleCtrl">
+    <div>
+		<!-- <label for="role">Vous êtes ?</label> -->
+		<select formControlName="role" [formControl]="roleCtrl">
+			<option value="">-- Vous êtes ? --</option>
 		  <option value="UTILISATEUR">UTILISATEUR</option>
 		  <option value="CREATEUR">CREATEUR</option>
 		</select>
 	</div>
-	<div>
-		<label>Nom</label>
-		<input type="text" formControlName="nom" [formControl]="nomCtrl"/>
-	</div>
-	<div>
-		<label>Prenom</label>
-		<input type="text" formControlName="prenom" [formControl]="prenomCtrl"/>
-	</div>
-	<div>
-		<label>Pseudo</label>
-		<input type="text" formControlName="pseudo" [formControl]="pseudoCtrl"/>
-	</div>
-	<div>
-		<label>Email</label>
-		<input type="email" formControlName="email" [formControl]="emailCtrl"/>
-	</div>
-	<div>
-		<label>Mot de passe</label>
-		<input type="password" formControlName="mdp" [formControl]="mdpCtrl"/>
-	</div>
-	<div>
-		<label>Confirmation du mot de passe</label>
-		<input type="password" formControlName="mdpVerif" [formControl]="mdpVerifCtrl"/>
-	</div>
-	<div>
-		<input type="submit" (click)="ajouter()" [disabled]="userForm.invalid" value="S'inscrire" />
-	</div>
-	<div>
-		<label>Vous avez déjà un compte ?</label>
-		<input type="submit" (click)="seConnecter()" value="Se connecter" />
+	<div class="insc-container">
+		<input type="text" placeholder="Nom" formControlName="nom" [formControl]="nomCtrl" class="insc-input" required>
+		<input type="text" placeholder="Prenom" formControlName="prenom" [formControl]="prenomCtrl" class="insc-input" required>
+		<input type="text" placeholder="Pseudo" formControlName="pseudo" [formControl]="pseudoCtrl" class="insc-input" required>
+		<input type="email" placeholder="Email" formControlName="email" [formControl]="emailCtrl" class="insc-input" required>
+		<input type="password" placeholder="Mot de passe" formControlName="mdp" [formControl]="mdpCtrl" class="insc-input" required>
+		<input type="password" placeholder="Confirmer le mot de passe" formControlName="mdpVerif" [formControl]="mdpVerifCtrl" class="insc-input" required>   
 	</div>
 
+	<div class="btn-container">
+		<button type="submit" (click)="ajouter()" [disabled]="userForm.invalid">S'inscrire</button>
+		
+	</div>
+	<div class="btn-container">
+		<span class="insc">Vous avez déjà un compte FrESon ?</span>
+		<button type="submit" (click)="seConnecter()" class="inscbtn">Se connecter</button>
+		
+	</div>
 </form>

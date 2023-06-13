@@ -34,13 +34,14 @@ export class LoginComponent {
 
     this.srvAuth.login(this.pseudoCtrl.value, this.mdpCtrl.value, {
       next: () => {
-        this.router.navigate([ '/logging' ]);
+        this.router.navigate([ '/accueil' ]);
       },
 
       error: () => {
         this.erreur = true;
       }
     });
+
   }
 
 }
