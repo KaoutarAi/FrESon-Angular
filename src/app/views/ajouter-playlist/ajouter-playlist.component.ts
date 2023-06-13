@@ -80,7 +80,7 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
 
         // on Init load all musics for selection
         this.musiques$ = this.srvMusic.findAll();
-        console.log( "FINAL INIT: " + this.musiquesSelected);
+        // console.log( "FINAL INIT: " + this.musiquesSelected);
 
         // console.log("USER ID: " + this.userId);
     }
@@ -105,6 +105,10 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
       onChange(a: any) {
         console.log("CHANGE RADIO: " + a.value);
 
+      }
+
+      reloadMusiques(evt: any) {
+            this.musiques$ = this.srvMusic.findByFieldContaining(evt.target.value)
       }
 
 
