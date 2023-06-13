@@ -69,7 +69,7 @@ import { MusiqueCardsComponent } from './components/musique/musique-cards/musiqu
     FavorisMusiquesComponent,
     MusiqueCardComponent,
     MusiqueCardsComponent,
-    MusiqueGridComponent   
+    MusiqueGridComponent
   ],
   imports: [
     BrowserModule,
