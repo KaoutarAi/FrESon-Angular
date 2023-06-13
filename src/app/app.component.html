@@ -1,6 +1,7 @@
 <app-sidebar></app-sidebar>
 
-<app-navbar></app-navbar>
+<app-navbar *ngIf="!srvAuth.isLogged()"></app-navbar>
+<logged-navbar *ngIf="srvAuth.isLogged()"></logged-navbar>
 
 <div class="body-content">
     <router-outlet></router-outlet>

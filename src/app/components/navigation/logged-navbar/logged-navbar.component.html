@@ -1,0 +1,30 @@
+<div style="padding: 0;">
+    <!-- Top navbar -->
+    <nav class="navbar navbar-expand-sm navbar-dark sticky-top">
+        <a class="navbar-brand" [routerLink]="[ '/accueil' ]" routerLinkActive="active">
+            <img class="navbar-img" src="{{srcImg}}" (mouseover)="hover_title();" (mouseout)="hover_out_title()">
+        </a>
+        <h2 class="navbar-display-title">{{srvTitle.getTitle()}}</h2>
+       <!-- Hamburger button that toggles the navbar-->
+        <button *ngIf="isSmallScreen" class="navbar-toggler ml-auto" type="button"
+            data-toggle="collapse"
+            data-target="#navbarNavAltMarkup"
+            aria-controls="navbarNavAltMarkup"
+            aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <!-- navbar links -->
+        <div *ngIf="isSmallScreen" class="collapse navbar-collapse flex-row-reverse"
+            id="navbarNavAltMarkup">
+            <div class="navbar-nav">
+                <a class="nav-item nav-link" [routerLink]="[ '/mes-playlists' ]" routerLinkActive="active" >Mes playlists</a>
+                <a class="nav-item nav-link" [routerLink]="[ '/ajouter-playlist' ]" routerLinkActive="active" >Ajouter une playlist</a>
+                <a class="nav-item nav-link" [routerLink]="[ '/favoris' ]" routerLinkActive="active" >Favoris</a>
+                <a class="nav-item nav-link" [routerLink]="[ '/rechercher' ]" routerLinkActive="active" >Rechercher</a>
+                <!-- <a class="nav-item nav-link" style="margin-top: -7px;"><a [ngClass]="{'btn btn-light rounded-pill navbar-button' : onResize(), 'nav-item nav-link' : !onResize()}" [routerLink]="[ '/connexion' ]" routerLinkActive="active">Se connecter</a></a> -->
+            </div>
+        </div>
+    </nav>
+</div>

@@ -14,30 +14,42 @@ import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playl
 import { InscriptionComponent } from './views/inscription/inscription.component';
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 import { FavorisComponent } from './views/favoris/favoris.component';
+import { RechercherComponent } from './views/rechercher/rechercher.component';
 
 const routes: Routes = [
     {
         path: 'accueil',
-        component: HomeComponent
+        component: HomeComponent,
+        title: "Bienvenur sur FrEson"
     },
 
     {
 
         path: 'playlist/plus-vues',
-        component: PlusVuesComponent
+        component: PlusVuesComponent,
+        title: "Playlists populaires"
     },
     {
         path: 'playlist/plus-recentes',
-        component: PlusRecentesComponent
+        component: PlusRecentesComponent,
+        title: "Playlists récentes"
     },
     {
         path: 'playlist/:id',
-        component: PlaylistComponent
+        component: PlaylistComponent,
+        title: "Lecture"
     },
 
     {
         path: 'ajouter-playlist',
-        component: AjouterPlaylistComponent
+        component: AjouterPlaylistComponent,
+        title: "Editeur de playlist"
+    },
+
+    {
+        path: 'rechercher',
+        component: RechercherComponent,
+        title: "Rechercher"
     },
 
     {
@@ -57,7 +69,8 @@ const routes: Routes = [
 
     {
         path: 'favoris',
-        component: FavorisComponent
+        component: FavorisComponent,
+        title: "Favoris"
     },
 
     {

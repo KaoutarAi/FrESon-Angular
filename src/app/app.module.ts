@@ -1,7 +1,6 @@
 import { NgModule } from '@angular/core';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
-import { BrowserModule } from '@angular/platform-browser';
-
+import { BrowserModule, Title } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './views/home/home.component';
@@ -29,6 +28,8 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
 import { PlaylistButtonsComponent } from './components/musique/playlist-buttons/playlist-buttons.component';
 import { PlaylistHeaderComponent } from './components/musique/playlist-header/playlist-header.component';
 import { PlaylistMusicListComponent } from './components/musique/playlist-music-list/playlist-music-list.component';
+import { LoggedNavbarComponent } from './components/navigation/logged-navbar/logged-navbar.component';
+import { RechercherComponent } from './views/rechercher/rechercher.component';
 
 
 
@@ -56,7 +57,9 @@ import { PlaylistMusicListComponent } from './components/musique/playlist-music-
     ResetPasswordComponent,
     PlaylistButtonsComponent,
     PlaylistHeaderComponent,
-    PlaylistMusicListComponent
+    PlaylistMusicListComponent,
+    LoggedNavbarComponent,
+    RechercherComponent
   ],
   imports: [
     BrowserModule,
@@ -70,7 +73,8 @@ import { PlaylistMusicListComponent } from './components/musique/playlist-music-
         provide: HTTP_INTERCEPTORS,
         useClass: AuthenticationInterceptor,
         multi: true
-      }
+      },
+      Title
   ],
   bootstrap: [AppComponent]
 })
