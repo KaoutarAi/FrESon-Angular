@@ -25,6 +25,11 @@ import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playl
 import { InscriptionComponent } from './views/inscription/inscription.component';
 import { FavorisComponent } from './views/favoris/favoris.component';
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
+import { FavorisPlaylistsComponent } from './views/favoris-playlists/favoris-playlists.component';
+import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiques.component';
+import { MusiqueGridComponent } from './components/musique/musique-grid/musique-grid.component';
+import { MusiqueCardComponent } from './components/musique/musique-card/musique-card.component';
+import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
 
 
 @NgModule({
@@ -47,7 +52,12 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
     AjouterPlaylistComponent,
     InscriptionComponent,
     FavorisComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    FavorisPlaylistsComponent,
+    FavorisMusiquesComponent,
+    MusiqueCardComponent,
+    MusiqueCardsComponent,
+    MusiqueGridComponent   
   ],
   imports: [
     BrowserModule,
