@@ -69,4 +69,14 @@ export class PlaylistService {
   public delete(playlist: Playlist): Observable<void> {
     return this.httpClient.delete<void>(`${ environment.apiUrl}/playlist/${playlist.id}`);
   }
+
+
+  public convertElapsedTime(inputSeconds: number){
+    var seconds: any = Math.floor(inputSeconds % 60);
+    if(seconds < 10){
+      seconds = "0" + String(seconds);
+    }
+    var minutes: any = Math.floor(inputSeconds / 60);
+    return minutes + " : " + seconds;
+  }
 }

@@ -1,0 +1,11 @@
+div.playlist-buttons {
+    height: 8%;
+}
+
+button {
+    width: 6%;
+}
+
+#time-progress {
+    width: 70%;
+}

@@ -24,6 +24,9 @@ import { PlaylistComponent } from './views/playlist/playlist.component';
 import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playlist.component';
 import { InscriptionComponent } from './views/inscription/inscription.component';
 import { FavorisComponent } from './views/favoris/favoris.component';
+import { PlaylistButtonsComponent } from './components/musique/playlist-buttons/playlist-buttons.component';
+import { PlaylistHeaderComponent } from './components/musique/playlist-header/playlist-header.component';
+import { PlaylistMusicListComponent } from './components/musique/playlist-music-list/playlist-music-list.component';
 
 
 @NgModule({
@@ -45,7 +48,10 @@ import { FavorisComponent } from './views/favoris/favoris.component';
     PlaylistComponent,
     AjouterPlaylistComponent,
     InscriptionComponent,
-    FavorisComponent
+    FavorisComponent,
+    PlaylistButtonsComponent,
+    PlaylistHeaderComponent,
+    PlaylistMusicListComponent
   ],
   imports: [
     BrowserModule,

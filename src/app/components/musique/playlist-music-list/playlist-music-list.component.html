@@ -1,0 +1,23 @@
+<div >
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Titre</th>
+                <th id="tab-album">Album</th>
+                <th>Durée</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr *ngFor="let musique of musiques" >
+                <td>{{musique.id}}</td>
+                <td>
+                    <img src="{{musique.image}}" alt="">                    
+                    {{musique.titre}}
+                </td>
+                <td id="tab-album">{{musique.albumNom}}</td>
+                <td>{{setTime(musique.duree)}}</td>
+            </tr>                        
+        </tbody>
+    </table>
+</div>
