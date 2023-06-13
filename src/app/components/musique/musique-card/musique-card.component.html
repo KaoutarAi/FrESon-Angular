@@ -1,0 +1,15 @@
+<div class="card" (click)="router.navigate(['musique', musique.id]);">
+    <div class="card-image">
+        <div class="image-box">
+        <img src={{musique.image}} />
+        <audio controls>
+            <source src="{{musique.linkAudio}}" type="audio/mpeg">
+        </audio>
+        </div>
+    </div>
+    <div class="musique-details">
+        <p class="titre">{{musique.titre}}</p>
+        <p class="artiste">{{musique.artiste}}</p>
+        <p class="album">{{musique.albumNom}}</p>
+    </div>
+</div>

@@ -1,0 +1,13 @@
+<div class="container ">
+    <div class="section-container">
+        <div class="slide-section">
+            <h2>{{slideTitle}}</h2>
+            <a routerLink={{displayMore}}>Tout afficher</a>
+        </div>
+    </div>
+    <div class="slide-container">
+        <div class="slide-wrapper">
+            <app-musique-card *ngFor="let musique of musiques | async" [musique]="musique"></app-musique-card>
+        </div>
+    </div>
+<div>

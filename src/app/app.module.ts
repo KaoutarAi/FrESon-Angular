@@ -29,7 +29,11 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
 import { PlaylistButtonsComponent } from './components/musique/playlist-buttons/playlist-buttons.component';
 import { PlaylistHeaderComponent } from './components/musique/playlist-header/playlist-header.component';
 import { PlaylistMusicListComponent } from './components/musique/playlist-music-list/playlist-music-list.component';
-
+import { FavorisPlaylistsComponent } from './views/favoris-playlists/favoris-playlists.component';
+import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiques.component';
+import { MusiqueGridComponent } from './components/musique/musique-grid/musique-grid.component';
+import { MusiqueCardComponent } from './components/musique/musique-card/musique-card.component';
+import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
 
 
 @NgModule({
@@ -56,7 +60,12 @@ import { PlaylistMusicListComponent } from './components/musique/playlist-music-
     ResetPasswordComponent,
     PlaylistButtonsComponent,
     PlaylistHeaderComponent,
-    PlaylistMusicListComponent
+    PlaylistMusicListComponent,
+    FavorisPlaylistsComponent,
+    FavorisMusiquesComponent,
+    MusiqueCardComponent,
+    MusiqueCardsComponent,
+    MusiqueGridComponent   
   ],
   imports: [
     BrowserModule,
