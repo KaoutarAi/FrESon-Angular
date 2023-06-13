@@ -25,6 +25,8 @@ export class PlaylistComponent implements OnInit{
         this.srvPlaylist.findById(this.id).subscribe(p => {
             this.playlist = p;
         });
+        
+        
     }
 
 

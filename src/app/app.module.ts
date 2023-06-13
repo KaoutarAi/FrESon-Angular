@@ -25,6 +25,9 @@ import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playl
 import { InscriptionComponent } from './views/inscription/inscription.component';
 import { FavorisComponent } from './views/favoris/favoris.component';
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
+import { PlaylistButtonsComponent } from './components/musique/playlist-buttons/playlist-buttons.component';
+import { PlaylistHeaderComponent } from './components/musique/playlist-header/playlist-header.component';
+import { PlaylistMusicListComponent } from './components/musique/playlist-music-list/playlist-music-list.component';
 
 
 @NgModule({
@@ -47,7 +50,10 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
     AjouterPlaylistComponent,
     InscriptionComponent,
     FavorisComponent,
-    ResetPasswordComponent
+    ResetPasswordComponent,
+    PlaylistButtonsComponent,
+    PlaylistHeaderComponent,
+    PlaylistMusicListComponent
   ],
   imports: [
     BrowserModule,
