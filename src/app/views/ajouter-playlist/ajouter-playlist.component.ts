@@ -1,7 +1,7 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
-import { Observable } from 'rxjs';
+import { Observable, Subscription } from 'rxjs';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
 import { Tag } from 'src/app/models/musique/tag';
@@ -14,16 +14,17 @@ import { PlaylistService } from 'src/app/services/musique/playlist.service';
   templateUrl: './ajouter-playlist.component.html',
   styleUrls: ['./ajouter-playlist.component.css']
 })
-export class AjouterPlaylistComponent implements OnInit{
+export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDestroy{
     playlist!: Playlist; // when editing
     musiques$!: Observable<Musique[]>;
     playlistForm!: FormGroup;
     nomCtrl!: FormControl;
     publicCtrl!: FormControl;
-    musiquesSelected!: Musique[];
+    musiquesSelected: Musique[] = new Array<Musique>;
     editing: number = 0;
     tagCtrl!: FormControl;
     etiquettes: string[] = Object.values(Tag) ;
+    subscriptionPlaylist!: Subscription;
 
     @Output() ok: EventEmitter<void> = new EventEmitter<void>();
     @Output() cancel: EventEmitter<void> = new EventEmitter<void>();
@@ -37,6 +38,16 @@ export class AjouterPlaylistComponent implements OnInit{
         private srvMusic: MusiqueService,
         private formBuilder: FormBuilder,
         ) { }
+    ngOnDestroy(): void {
+        // this.subscriptionPlaylist.unsubscribe();
+    }
+
+    ngAfterViewChecked(): void { // Used to fetch the paramters subscribed in onInit
+        // console.log("ONCHANGES: ")
+        // console.log(this.musiquesSelected);
+    }
+
+
 
     ngOnInit(): void {
         // We first need to determine if the user wants to edit or add a playlist
@@ -49,8 +60,11 @@ export class AjouterPlaylistComponent implements OnInit{
             }
         });
         if (this.editing) { // editing playlist
-            this.srvPlaylist.findById(this.editing).subscribe(p => {
+            this.subscriptionPlaylist = this.srvPlaylist.findById(this.editing).subscribe(p => {
                 this.playlist = p;
+                this.musiquesSelected = this.playlist.musiques;
+
+                // this.selectMusique = ;
                 this.ajouterOuModiferForm();
                 console.log("PRINT VALUE:" + this.tagCtrl.value);
 
@@ -66,6 +80,8 @@ export class AjouterPlaylistComponent implements OnInit{
 
         // on Init load all musics for selection
         this.musiques$ = this.srvMusic.findAll();
+        console.log( "FINAL INIT: " + this.musiquesSelected);
+
         // console.log("USER ID: " + this.userId);
     }
 
@@ -78,7 +94,7 @@ export class AjouterPlaylistComponent implements OnInit{
         this.playlistForm = this.formBuilder.group({
           nom: this.nomCtrl.value,
           public: this.publicCtrl,
-          tag: this.tagCtrl.value
+          tag: this.tagCtrl.value.toUpperCase()
         });
       }
 
@@ -90,4 +106,44 @@ export class AjouterPlaylistComponent implements OnInit{
         console.log("CHANGE RADIO: " + a.value);
 
       }
+
+
+    selectMusique(emitted: any[]) {//fetch music (index 1) and its selection state (index 0)
+        if (emitted[0]) {// if selected (emitted[0] = 1) via click -> add to musiqueSelected
+            this.musiquesSelected.push(emitted[1]);
+        }
+        else { //if deselected -> remove from musiqueSelected
+            const idx = this.musiquesSelected.indexOf(emitted[1]);
+            this.musiquesSelected.splice(idx, 1);
+        }
+        console.log(this.musiquesSelected);
+
+    }
+
+    onClickRemove(emitted: any[]) { // When musics are reloaded, no way to remember the selected ones with the current code.
+                                    // this function allowed to remove directly from the list of selected musics displayed to the user.
+        const idx = this.musiquesSelected.indexOf(emitted[1]);
+        this.musiquesSelected.splice(idx, 1);
+    }
+
+    submit() {
+        let addOrEditObs: Observable<Playlist>;
+        const playlist = {
+            id: this.editing,
+            nom: this.nomCtrl.value,
+            etiquette: this.tagCtrl.value,
+            utilisateurId: this.playlist.utilisateurId,
+            musiques: this.musiquesSelected,
+            public: this.publicCtrl.value
+        }
+        console.log(playlist);
+        if (this.editing) {
+            addOrEditObs = this.srvPlaylist.edit(playlist);
+        }
+        else {
+            addOrEditObs = this.srvPlaylist.add(playlist);
+        }
+        addOrEditObs.subscribe(() => console.log("IT SHOULD BE SAVED"));
+
+    }
 }

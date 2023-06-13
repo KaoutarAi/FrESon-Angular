@@ -1,6 +1,6 @@
 export enum Tag {
-    JOIE = "Joie",
-    DEPRIME = "Deprime",
-    ENTHOUSIASME = "Enthousiasme",
-    TRISTESSE = "Tristesse"
+    JOIE = "JOIE",
+    DEPRIME = "DEPRIME",
+    ENTHOUSIASME = "ENTHOUSIASME",
+    TRISTESSE = "TRISTESSE"
 }

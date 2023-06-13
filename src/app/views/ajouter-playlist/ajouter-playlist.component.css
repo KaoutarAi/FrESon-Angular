@@ -1,6 +1,137 @@
-.tag-container {
-    overflow-y: scroll;
+:root {
+    --slider-diameter: 20px
 }
+
+
+.form-container {
+    margin: 3%;
+}
+
+.top-form-container {
+    display: inline-block;
+    width: 100%;
+}
+
+.name-container {
+    float: left;
+}
+
+.public-container {
+    float: right;
+    padding-top: 5%;
+    padding-left: 10%;
+    /* padding-right: 6%; */
+    width: 50%;
+}
+
+
+/* PUBLIC STYLE AND TOGGLE BUTTON (from w3schools) */
+
+.public-label {
+    display: inline-flex;
+    /* margin-inline-end: 2%; */
+    /* width: 95%; */
+    margin-right: 4%;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 45px;
+    height: 25px;
+  }
+
+
+  /* Hide default HTML checkbox */
+  .switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 3.6px;
+    background-color: var(--dark-knight-blue);
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+
+  input:checked + .slider {
+    background-color: var(--yellow-jaguar);
+  }
+
+  input:focus + .slider {
+    box-shadow: 0 0 1px var(--dark-knight-blue);
+  }
+
+  input:checked + .slider:before {
+    /* background-color: var(--yellow-jaguar); */
+    -webkit-transform: translateX(19px);
+    -ms-transform: translateX(19px);
+    transform: translateX(19px);
+  }
+
+  .slider.round {
+    border-radius: 34px;
+  }
+
+  .slider.round:before {
+    border-radius: 50%;
+  }
+
+  .submission-button {
+    margin-top: 8%;
+    text-align: center;
+
+  }
+
+
+  .btn {
+    font-size: 1.2rem;
+    color: var(--yellow-jaguar);
+    border-width: 2px;
+    border-color: var(--yellow-jaguar);
+  }
+
+  .btn:hover{
+    color: var(--yellow-jaguar);
+    background-color: var(--dark-knight-blue);
+    border-color: var(--dark-knight-blue);
+  }
+
+  /* TAGS STYLE */
+
+.tag-container {
+    margin-top: 2%;
+    margin-bottom: 3%;
+}
+
+.radio-tags-container {
+    width: 55%;
+    overflow-x: scroll;
+}
+
+.radio-tags-container::-webkit-scrollbar {
+    display: none;
+}
+
 
 .radio-tag {
     display: inline-flex;
@@ -15,13 +146,87 @@
   }
   .radio-button label {
     display: inline-block;
-    background-color: #d1d1d1;
-    padding: 4px 11px;
-    font-family: Arial;
-    font-size: 18px;
-    border-radius: 5px;
+    background-color: white;
+    color: var(--dark-knight-blue);
+    padding: 1px 6px;
+    font-size: 14px;
+    border-radius: 11px;
     cursor: pointer;
+    font-variant: small-caps;
   }
   .radio-button input[type="radio"]:checked+label {
-    background-color: #76cf9f;
+    background-color: var(--dark-knight-blue);
+    color: var(--yellow-jaguar);
   }
+
+
+/* MUSICS STYLE */
+  .musics-container {
+    display: flex;
+    /* height: 210px; */
+    overflow-x: scroll;
+    margin-inline: 5%;
+  }
+
+  .musics-container::-webkit-scrollbar {
+    display: none;
+  }
+
+  .musics-container-selected {
+    display: flex;
+    height: 150px;
+    overflow-x: scroll;
+    margin-inline: 5%;
+    margin-top: 5%;
+  }
+
+  .musics-container-selected::-webkit-scrollbar {
+    display: none;
+  }
+
+
+  /* MEDIA RULES */
+@media (max-width: 576px) {
+
+    .form-container {
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .top-form-container {
+        display: inline-block;
+        float: none
+    }
+
+    .name-container {
+        float: none;
+    }
+
+    .public-container {
+        float: none;
+        justify-content: center;
+        display: inherit;
+        padding-right: 0;
+        padding-top: 0;
+        margin-top: 5%;
+    }
+
+    .public-label {
+        display: block;
+    }
+
+    .tag-container {
+        margin-top: 5%;
+    }
+
+    .radio-tags-container {
+        margin-top: 1%;
+        display: inline-block;
+    }
+
+    .musics-container {
+        margin-top: 5%;
+    }
+
+}

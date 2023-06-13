@@ -6,7 +6,7 @@
     </div>
     <div class="playlist-details">
         <p class="name">{{playlist.nom}}</p>
-        <p class="label">{{playlist.etiquette}}</p>
+        <p class="label">{{playlist.etiquette.charAt(0) + playlist.etiquette.substring(1).toLowerCase() }}</p>
         <p class="creator">{{playlist.utilisateurPseudo}}</p>
     </div>
 </div>

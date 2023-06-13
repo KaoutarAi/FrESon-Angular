@@ -48,12 +48,13 @@
 
   .playlist-details .label {
       display: flex;
-      font-size: 12px;
+      font-size: 14px;
       background-color: white;
       color: var(--dark-knight-blue);
       width: 40%;
-      height: 19%;
+      /* height: 19%;*/
       margin: auto auto;
+      padding: 1px 6px;
       font-variant: small-caps;
       border-radius: 8px;
       justify-content: center;

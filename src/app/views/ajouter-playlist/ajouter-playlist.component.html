@@ -1,19 +1,42 @@
-<form *ngIf="playlistForm" [formGroup]="playlistForm" (ngSubmit)="doOk()">
-    <div>
-        <label>Nom</label>
-        <input type="text" formControlName="nom" [formControl]="nomCtrl">
-    </div>
-    <div>
-        <label>Publique</label>
-            <input type="checkbox" formControlName="public" [formControl]="publicCtrl" checked>
-            <span class="slider round"></span>
-    </div>
-    <div class="tag-container">
-        <div class="radio-tag" (change)="onChange(tagCtrl)">
-            <div *ngFor="let tag of etiquettes" class="radio-button">
-                <input id="{{tag}}" formControlName="tag" [formControl]="tagCtrl" type="radio" value="{{tag}}">
-                <label for="{{tag}}">{{tag}}</label>
+<div class="form-container">
+    <form *ngIf="playlistForm" [formGroup]="playlistForm" (ngSubmit)="doOk()">
+        <div class="top-form-container">
+            <div class="name-container">
+                <div><label>Nom</label></div>
+                <input type="text" formControlName="nom" [formControl]="nomCtrl">
+            </div>
+            <div class="public-container">
+                <div class="public-label"><label>Playlist publique</label></div>
+                <label class="switch">
+                    <input type="checkbox" formControlName="public" [formControl]="publicCtrl" checked>
+                    <span class="slider round"></span>
+                </label>
             </div>
         </div>
+        <div class="tag-container">
+                <div class="tag-label"><label>Étiquette</label></div>
+                <div class="radio-tags-container">
+                    <div class="radio-tag" (change)="onChange(tagCtrl)">
+                        <div *ngFor="let tag of etiquettes" class="radio-button">
+                            <input id="{{tag}}" formControlName="tag" [formControl]="tagCtrl" type="radio" value="{{tag}}">
+                            <label for="{{tag}}">{{tag.charAt(0) + tag.substring(1).toLowerCase()}}</label>
+                        </div>
+                    </div>
+                </div>
+        </div>
+
+
+
+        <div class="musics-container">
+            <music-card *ngFor="let musique of musiques$ | async" [id]="musique.id" [musique]="musique" (selection)="selectMusique($event)"></music-card>
+        </div>
+
+        <div class="musics-container-selected">
+            <music-card class="music-selected" *ngFor="let musique of musiquesSelected" [musique]="musique" (selection)="onClickRemove($event)"></music-card>
+        </div>
+    </form>
+
+    <div class="submission-button">
+        <button class="btn" (click)="submit()">{{this.editing ? "Modifier" : "Ajouter"}}</button>
     </div>
-</form>
+</div>
