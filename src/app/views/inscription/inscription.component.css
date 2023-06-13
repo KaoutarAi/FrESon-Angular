@@ -1,0 +1,167 @@
+
+:root {
+    --dark-blue: #101A27;
+    --light-brown: #D8A64F;
+    --light-blue: #8DA9DB;
+    --white: #fff;
+}
+
+form {
+    margin: 4% auto;
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+    width: 45%;
+    padding: 0;
+    background-color: hsl(0, 0%, 100%, 80%);
+    border-radius: 5px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+.insc-form{
+    width: 80%;
+}
+
+select{
+    margin-top: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.insc-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(3, auto);
+    gap: 0.6rem;
+    padding-left: 10px;
+    padding-right: 10px;
+    padding-top: 10px;
+    
+}
+
+input[type=text],
+input[type=password],
+input[type=email]{
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.insc-input {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 1px 0;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=text]:focus-visible,
+input[type=password]:focus-visible,
+input[type=email]:focus-visible {
+    outline-color: hsl(0 0% 75%);
+}
+
+button {
+    width: 50%;
+    margin: 8px auto;
+    display: block;
+    background-color: #101A27;
+    color: var(--white);
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    text-align: center;
+
+}
+
+button:hover {
+    background-color: hsl(216, 36%, 30%);
+}
+
+.btn-container {
+    width: 80%;
+    text-align: center;
+    padding-top: 15px;
+}
+
+.inscbtn {
+    background-color: #D8A64F;
+}
+
+.imgcontainer {
+    margin: 5px 0 10px 0;
+}
+
+img.user_img {
+    border-radius: 50%;
+    width: 100px;
+    height: 100px;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.3);
+}
+
+.container {
+    width: 80%;
+    padding: 10px;
+    text-align: center;
+}
+
+span.psw {
+    float: left;
+    padding-top: 10px;
+}
+/* a{
+    text-decoration: none;
+    color :#D8A64F;
+} */
+span.insc {
+    text-align: center;
+    padding-top: 10px;
+}
+
+@media screen and (max-width: 440px) {
+
+    img.user_img {
+        width: 85px;
+        height: 85px;
+    }
+
+    button {
+        font-size: 8px;
+        width: 60%;
+    }
+}
+
+@media screen and (max-height: 555px) {
+
+    img.user_img {
+        width: 65px;
+        height: 65px;
+    }
+
+    form {
+        padding: 5px;
+    }
+
+    input[type=text],
+    input[type=password] {
+        margin: 3px 0;
+    }
+
+    span.psw {
+        padding-top: 2px;
+    }
+
+    span.insc {
+        padding-top: 2px;
+    }
+    .container {
+        padding: 5px;
+    }
+}
