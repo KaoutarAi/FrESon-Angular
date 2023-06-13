@@ -24,7 +24,7 @@ import { PlaylistComponent } from './views/playlist/playlist.component';
 import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playlist.component';
 import { InscriptionComponent } from './views/inscription/inscription.component';
 import { FavorisComponent } from './views/favoris/favoris.component';
-import { MusicCardComponent } from './components/musique/music-card/music-card.component';
+import { MusicCardComponent } from './components/musique/music-card-add/music-card.component';
 
 
 @NgModule({
