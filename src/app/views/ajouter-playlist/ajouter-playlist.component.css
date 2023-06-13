@@ -162,10 +162,9 @@
 
 /* MUSICS STYLE */
   .musics-container {
+    margin-top: 1%;
     display: flex;
-    /* height: 210px; */
     overflow-x: scroll;
-    margin-inline: 5%;
   }
 
   .musics-container::-webkit-scrollbar {
@@ -176,12 +175,41 @@
     display: flex;
     height: 150px;
     overflow-x: scroll;
-    margin-inline: 5%;
-    margin-top: 5%;
+    margin-top: 1%;
   }
 
   .musics-container-selected::-webkit-scrollbar {
     display: none;
+  }
+
+  .music-label-container {
+    margin-top: 6%;
+  }
+
+  .music-label {
+    display: inline;
+    padding-right: 15px;
+  }
+
+  .music-selected-label {
+    padding-right: 15px;
+    margin-top: 5%;
+  }
+
+  .search-bar {
+    display: inline;
+    padding-left: 1%;
+  }
+
+  .search-bar input {
+    height: 25px;
+    width: 130px;
+  }
+  .icon {
+    padding-left: 25px;
+    background: url("https://static.thenounproject.com/png/101791-200.png") no-repeat left;
+    background-size: 20px;
+    background-color: white;
   }
 
 
@@ -227,6 +255,10 @@
 
     .musics-container {
         margin-top: 5%;
+    }
+
+    .search-bar {
+        display: block;
     }
 
 }

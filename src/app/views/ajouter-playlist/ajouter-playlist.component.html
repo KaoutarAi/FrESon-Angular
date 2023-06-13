@@ -26,11 +26,15 @@
         </div>
 
 
-
+        <div class="music-label-container">
+            <div class="music-label"><label>Ajouter des musiques</label></div>
+            <div class="search-bar"><input type="text" class="icon" placeholder="Rechercher" (input)="reloadMusiques($event)"></div>
+        </div>
         <div class="musics-container">
             <music-card *ngFor="let musique of musiques$ | async" [id]="musique.id" [musique]="musique" (selection)="selectMusique($event)"></music-card>
         </div>
 
+        <div class="music-selected-label"><label>Musiques séléctionnées</label></div>
         <div class="musics-container-selected">
             <music-card class="music-selected" *ngFor="let musique of musiquesSelected" [musique]="musique" (selection)="onClickRemove($event)"></music-card>
         </div>

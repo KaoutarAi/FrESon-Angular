@@ -1,0 +1,40 @@
+/* NAVBAR STYLE */
+.navbar{
+    /* margin-left: var(--sidebar-width); */
+    font-family: 'Avenir';
+    font-weight: 700;
+    background-color: hsl(216, 36%, 15%);
+}
+.navbar-brand {
+    display: none;
+}
+
+.navbar-nav {
+    display: flex;
+    text-align: right;
+    /* margin-top: 14%; */
+
+}
+
+.navbar-img {
+    width: 90px;
+}
+
+.navbar-button {
+    color: #121a26;
+}
+
+.navbar-display-title {
+    font-size: 25px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+
+/* MEDIA RULES */
+@media (max-width: 576px) {
+    /* Display logo in navbar on small screens */
+    .navbar-brand {
+        display: inline;
+    }
+}

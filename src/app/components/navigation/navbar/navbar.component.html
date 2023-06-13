@@ -19,7 +19,9 @@
             id="navbarNavAltMarkup">
             <div class="navbar-nav">
                 <a class="nav-item nav-link" [routerLink]="[ '/inscription' ]" routerLinkActive="active" >S'inscrire</a>
-                <a class="nav-item nav-link" style="margin-top: -7px;"><a [ngClass]="{'btn btn-light rounded-pill navbar-button' : onResize(), 'nav-item nav-link' : !onResize()}" [routerLink]="[ '/connexion' ]" routerLinkActive="active">Se connecter</a></a>
+                <a class="nav-item nav-link" style="margin-top: -7px;">
+                    <a [ngClass]="{'btn btn-light rounded-pill navbar-button' : onResize(), 'nav-item nav-link' : !onResize()}" [routerLink]="[ '/connexion' ]" routerLinkActive="active">Se connecter</a>
+                </a>
             </div>
         </div>
     </nav>

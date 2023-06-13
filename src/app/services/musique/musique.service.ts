@@ -24,6 +24,10 @@ export class MusiqueService {
     return this.httpClient.get<MusiqueDetailed>(`${environment.apiUrl}/musique/${id}`);
   }
 
+  public findByFieldContaining(substring: string): Observable<Musique[]> {
+    return this.httpClient.get<Musique[]>(`${environment.apiUrl}/musique/par?containing=${substring}`);
+  }
+
   public findByContaining(search: string, substring: string, page?: number, limit?: number): Observable<Musique[]> {
     const baseUrl: string = `${environment.apiUrl}/musique/par-${search}?substring=${substring}`;
     const paginationParameters: string = this.paginationParametersString(page, limit);
