@@ -15,6 +15,9 @@ import { InscriptionComponent } from './views/inscription/inscription.component'
 import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 import { FavorisComponent } from './views/favoris/favoris.component';
 import { RechercherComponent } from './views/rechercher/rechercher.component';
+import { FavorisPlaylistsComponent } from './views/favoris-playlists/favoris-playlists.component';
+import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiques.component';
+
 
 const routes: Routes = [
     {
@@ -72,6 +75,17 @@ const routes: Routes = [
         component: FavorisComponent,
         title: "Favoris"
     },
+
+    {
+        path: 'favoris/playlists',
+        component: FavorisPlaylistsComponent
+    },
+
+    {
+        path: 'favoris/musiques',
+        component: FavorisMusiquesComponent
+    },
+
 
     {
         path: 'logging',

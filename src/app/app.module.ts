@@ -30,6 +30,11 @@ import { PlaylistHeaderComponent } from './components/musique/playlist-header/pl
 import { PlaylistMusicListComponent } from './components/musique/playlist-music-list/playlist-music-list.component';
 import { LoggedNavbarComponent } from './components/navigation/logged-navbar/logged-navbar.component';
 import { RechercherComponent } from './views/rechercher/rechercher.component';
+import { FavorisPlaylistsComponent } from './views/favoris-playlists/favoris-playlists.component';
+import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiques.component';
+import { MusiqueGridComponent } from './components/musique/musique-grid/musique-grid.component';
+import { MusiqueCardComponent } from './components/musique/musique-card/musique-card.component';
+import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
 
 
 
@@ -59,7 +64,12 @@ import { RechercherComponent } from './views/rechercher/rechercher.component';
     PlaylistHeaderComponent,
     PlaylistMusicListComponent,
     LoggedNavbarComponent,
-    RechercherComponent
+    RechercherComponent,
+    FavorisPlaylistsComponent,
+    FavorisMusiquesComponent,
+    MusiqueCardComponent,
+    MusiqueCardsComponent,
+    MusiqueGridComponent   
   ],
   imports: [
     BrowserModule,
