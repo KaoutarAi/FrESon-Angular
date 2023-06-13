@@ -39,12 +39,12 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
         private formBuilder: FormBuilder,
         ) { }
     ngOnDestroy(): void {
-        this.subscriptionPlaylist.unsubscribe();
+        // this.subscriptionPlaylist.unsubscribe();
     }
 
     ngAfterViewChecked(): void { // Used to fetch the paramters subscribed in onInit
-        console.log("ONCHANGES: ")
-        console.log(this.musiquesSelected);
+        // console.log("ONCHANGES: ")
+        // console.log(this.musiquesSelected);
     }
 
 
@@ -94,7 +94,7 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
         this.playlistForm = this.formBuilder.group({
           nom: this.nomCtrl.value,
           public: this.publicCtrl,
-          tag: this.tagCtrl.value
+          tag: this.tagCtrl.value.toUpperCase()
         });
       }
 
@@ -107,41 +107,43 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
 
       }
 
-    // selectMusique(selected: number, musique: Musique) {
-    //     if (!selected) {
-    //         this.musiquesSelected.push(musique);
-    //     }
-    //     else {
-    //         const idx = this.musiquesSelected.indexOf(musique);
-    //         this.musiquesSelected.splice(idx, 1);
-    //     }
-    //     console.log(this.musiquesSelected);
 
-    // }
-
-    fetchMusique(obsMusiques: Observable<Musique[]>): Musique[] {
-        let musiques: Musique[] = new Array<Musique>();
-        obsMusiques.subscribe((ms) => {
-            ms.forEach(m => {
-                musiques.push(m);
-            })
-        })
-        return musiques;
-    }
-
-    selectMusique(emitted: any[]) {
-        console.log("EMITTED");
-        console.log(emitted);
-
-
-        if (emitted[0]) {
+    selectMusique(emitted: any[]) {//fetch music (index 1) and its selection state (index 0)
+        if (emitted[0]) {// if selected (emitted[0] = 1) via click -> add to musiqueSelected
             this.musiquesSelected.push(emitted[1]);
         }
-        else {
+        else { //if deselected -> remove from musiqueSelected
             const idx = this.musiquesSelected.indexOf(emitted[1]);
             this.musiquesSelected.splice(idx, 1);
         }
         console.log(this.musiquesSelected);
+
+    }
+
+    onClickRemove(emitted: any[]) { // When musics are reloaded, no way to remember the selected ones with the current code.
+                                    // this function allowed to remove directly from the list of selected musics displayed to the user.
+        const idx = this.musiquesSelected.indexOf(emitted[1]);
+        this.musiquesSelected.splice(idx, 1);
+    }
+
+    submit() {
+        let addOrEditObs: Observable<Playlist>;
+        const playlist = {
+            id: this.editing,
+            nom: this.nomCtrl.value,
+            etiquette: this.tagCtrl.value,
+            utilisateurId: this.playlist.utilisateurId,
+            musiques: this.musiquesSelected,
+            public: this.publicCtrl.value
+        }
+        console.log(playlist);
+        if (this.editing) {
+            addOrEditObs = this.srvPlaylist.edit(playlist);
+        }
+        else {
+            addOrEditObs = this.srvPlaylist.add(playlist);
+        }
+        addOrEditObs.subscribe(() => console.log("IT SHOULD BE SAVED"));
 
     }
 }

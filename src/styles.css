@@ -1,6 +1,7 @@
 :root {
     --yellow-jaguar: hsl(39, 55%, 59%);
     --dark-knight-blue: hsl(216, 36%, 11%);
+    --medium-blue: hsl(216, 36%, 17%);
     --brighter-blue: hsl(216, 36%, 30%);
     --sidebar-width: 210px;
     --card-corner-radius: 6px;
@@ -14,7 +15,7 @@ app-root {
     width: 100vw;
     font-family: 'Barlow', sans-serif;
     color: #ffffff;
-    background: linear-gradient(to bottom, var(--dark-knight-blue), var(--brighter-blue)) fixed;
+    background: linear-gradient(to bottom, var(--medium-blue), var(--brighter-blue)) fixed;
     display: grid;
     grid-template-columns: var(--sidebar-width) calc(100vw - var(--sidebar-width))  ;
     grid-template-rows: 50px auto;

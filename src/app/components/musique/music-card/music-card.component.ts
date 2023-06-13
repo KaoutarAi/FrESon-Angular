@@ -9,7 +9,7 @@ import { Musique } from 'src/app/models/musique/musique';
 export class MusicCardComponent implements OnInit{
     @Input() musique!: Musique;
     imageUrl!: string;
-    selected: number = 0
+    @Input() selected: number = 0;
     @Output() selection: EventEmitter<any[]> = new EventEmitter<any[]>();
     // @Output() selectMusique: EventEmitter<Musique> = new EventEmitter<Musique>();
 
