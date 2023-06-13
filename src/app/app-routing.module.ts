@@ -12,6 +12,7 @@ import { PlusRecentesComponent } from './views/plus-recentes/plus-recentes.compo
 import { PlaylistComponent } from './views/playlist/playlist.component';
 import { AjouterPlaylistComponent } from './views/ajouter-playlist/ajouter-playlist.component';
 import { InscriptionComponent } from './views/inscription/inscription.component';
+import { ResetPasswordComponent } from './views/reset-password/reset-password.component';
 
 const routes: Routes = [
     {
@@ -46,6 +47,11 @@ const routes: Routes = [
     {
         path: 'connexion',
         component: LoginComponent
+    },
+
+    {
+        path: 'reset-password',
+        component: ResetPasswordComponent
     },
 
     {
