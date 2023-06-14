@@ -18,3 +18,15 @@ table {
 #contenu {
     width: 50%;
 }
+
+td button {
+    margin-left: 10px;
+}
+
+td#toRight{
+    text-align: right;
+}
+
+div#commenter {
+    display: flex;
+}

@@ -4,15 +4,31 @@
         <tr *ngFor="let c of commentaires$ | async">
             <td >{{c.utilisateur.pseudo}} :</td>
             <td id="contenu">{{c.contenu}}</td>
-            <td>{{c.date}}</td>
-            <td *ngIf="role == 'ADMINISTRATEUR' || role == 'MODERATEUR'">
+            <td id="toRight">{{c.date}}</td>
+            <td id="toRight" *ngIf="role == 'ADMINISTRATEUR' || role == 'MODERATEUR'">
                 <button class="btn btn-danger" (click)="onDelete(c)">Supprimer</button>
             </td>
         </tr>
     </table>  
+</div>
+<div id="commenter" class="form-floating mb-3">
+    <input type="text" class="form-control" [(ngModel)] = "contenu">
+    <button class="btn btn-primary btn-floating" (click)="onEnvoyer()"><i class="bi bi-send-fill"></i></button>
+</div>
+<hr>
+<div *ngIf="role == 'ADMINISTRATEUR' || role == 'MODERATEUR'">
+    <h4>Trier les commentaires</h4>
+    <div class="form-floating mb-3">
+        <label for="pseudoInput">Pseudo</label>
+        <input type="text" class="form-control" id="pseudoInput" (change)="onLoadPseudo()" [(ngModel)] = findPseudo >
     </div>
-    <div id="commenter">
-        <input type="text" [(ngModel)] = "contenu">
-        <input type="submit" (click)="onEnvoyer()">
+    <div class="form-floating mb-3">
+        <label for="contentInput">Contenu</label>
+        <input type="text" id="contentInput" class="form-control" (change)="onLoadContent()" [(ngModel)] = findContent>
     </div>
+    <div class="form-floating mb-3">
+        <label for="dateInput">Date</label>
+        <input type="date" id="dateInput" class="form-control" (change)="onLoadDate()" [(ngModel)] = findDate>
+    </div>
+</div>
 </div>

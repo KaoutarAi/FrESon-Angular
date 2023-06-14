@@ -15,6 +15,18 @@ export class CommentaireService {
     return this.httpClient.get<Commentaire[]>(`${environment.apiUrl}/commentaire/playlist/${id}`);
   }
 
+  public findAllByPlaylistAndContenu(id:number, contenu: string): Observable<Commentaire[]> {
+    return this.httpClient.get<Commentaire[]>(`${environment.apiUrl}/commentaire/playlist/${id}/contenu/${contenu}`);
+  }
+
+  public findAllByPlaylistAndPseudo(id:number, pseudo: string): Observable<Commentaire[]> {
+    return this.httpClient.get<Commentaire[]>(`${environment.apiUrl}/commentaire/playlist/${id}/pseudo/${pseudo}`);
+  }
+
+  public findAllByPlaylistAndDateOnly(id: number, year: string, month: string, day: string): Observable<Commentaire[]> {
+    return this.httpClient.get<Commentaire[]>(`${environment.apiUrl}/commentaire/playlist/${id}/date/${year}-${month}-${day}`);
+  }
+
   public add(commentaire: any, id:number): Observable<Commentaire> {
     return this.httpClient.post<Commentaire>(`${environment.apiUrl}/commentaire/playlist/${id}/commenter`, commentaire);
   }

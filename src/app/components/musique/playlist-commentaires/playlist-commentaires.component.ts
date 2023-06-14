@@ -35,8 +35,12 @@ export class PlaylistCommentairesComponent implements OnInit{
   pseudo: string ="Attends 2s"
   commentaire!: Commentaire;
   role: string = this.srvAuth.role;
-
-  
+  findContent!: string;
+  findDate!: string;
+  year!: string;
+  month!: string;
+  day!: string;
+  findPseudo!: string;
 
   public loadCom(){
     this.commentaires$ = this.srcCom.findAllByPlaylist(this.playlistId);
@@ -55,5 +59,35 @@ export class PlaylistCommentairesComponent implements OnInit{
     return this.srcCom.delete(commentaire).subscribe(() => {
       this.loadCom();
     })
+  }
+
+  public onLoadPseudo(){
+    if(this.findPseudo == "" || this.findPseudo == null){
+      this.loadCom();
+    }
+    else{
+      this.commentaires$ = this.srcCom.findAllByPlaylistAndPseudo(this.playlistId, this.findPseudo);
+    }
+  }
+
+  public onLoadContent(){
+    if(this.findPseudo == "" || this.findPseudo == null){
+      this.loadCom();
+    }
+    else{
+    this.commentaires$ = this.srcCom.findAllByPlaylistAndContenu(this.playlistId, this.findContent);
+    }
+  }
+
+  public onLoadDate(){
+    this.year = this.findDate.slice(0, 4);
+    this.month = this.findDate.slice(5, 7);
+    this.day = this.findDate.slice(8, 10);
+    try {
+      this.commentaires$ = this.srcCom.findAllByPlaylistAndDateOnly(this.playlistId, this.year, this.month, this.day);      
+    } catch (error) {
+      this.loadCom();
+    }
+    
   }
 }
