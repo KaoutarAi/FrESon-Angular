@@ -3,5 +3,5 @@
      (click)="onClick()"
      [ngClass]="{'music-selected': selected}"
      [style]="{'width': imageMusicWidth + 'px', 'height': imageMusicWidth + 'px'}">
-
+     <i *ngIf="selected" class="bi bi-check-square-fill selected-icon"></i>
 </div>

@@ -160,48 +160,15 @@
   }
 
 
-/* MUSICS STYLE */
-  .musics-container {
-    margin-top: 1%;
-    display: flex;
-    overflow-x: scroll;
-  }
-
-  .musics-container::-webkit-scrollbar {
-    display: none;
-  }
-
-  .musics-container-selected {
-    display: flex;
-    height: 150px;
-    overflow-x: scroll;
-    margin-top: 1%;
-  }
-
-  .musics-container-selected::-webkit-scrollbar {
-    display: none;
-  }
-
-  .music-label-container {
-    margin-top: 6%;
-  }
-
-  .music-label {
-    display: inline;
-    padding-right: 15px;
-  }
-
-  .music-selected-label {
-    padding-right: 15px;
-    margin-top: 5%;
-  }
+    .music-label {
+      display: inline;
+      padding-right: 15px;
+    }
 
   .search-bar {
-    /* display: inline; */
     position: sticky;
     left: 53%;
-    /* position: fixed;
-    left: 50%; */
+
   }
 
   .search-bar input {
@@ -217,35 +184,63 @@
 
 
   .btn-music {
-    font-size: 1.2rem;
+    display: inline;
+    font-size: 1.3rem;
     color: var(--yellow-jaguar);
     outline: none;
+    padding-top: 2px;
     padding: 0;
     border: none;
     background: none;
+    vertical-align: middle;
   }
 
-  /* .btn-music:hover{
-    color: var(--yellow-jaguar);
-    background-color: var(--dark-knight-blue);
-    border-color: var(--dark-knight-blue);
-  } */
-
+  /* Change icon to fill one when on over with the 3 following styles*/
   .btn-music i:nth-child(2) {
     display: none;
   }
-
   .btn-music:hover i:nth-child(1) {
     display: none;
   }
-
   .btn-music:hover i:nth-child(2) {
     display: block;
   }
 
+  /* MUSIC SELECTED STYLE */
 
+  .selected-musics-list {
+    height: 45vh;
+    overflow-y: scroll;
+    margin-top: 2%;
+  }
+
+  .selected-music {
+    /* background-color: var(--brighter-blue); */
+    color: white;
+  }
+
+  .cdk-drag-preview	{ /* from the Angular material DragDrop */
+    background-color: var(--dark-knight-blue);
+    box-shadow: 2px 2px 5px rgba(202, 169, 104, .3);
+  }
+
+
+  .music-cover {
+    display: inline-block;
+  }
+
+  .music-info {
+    display: inline-block;
+  }
+
+
+
+
+
+
+/* MODAL STYLE */
 .modal {
-    width: 200px;
+    /* width: 200px; */
 }
 
 .modal-title {
@@ -291,7 +286,7 @@
  .tldr {
     /* overflow-x: scroll; */
     white-space: nowrap;
-    width: 80px;
+    /* width: 100px; */ /* turn on if want to limit the div size */
 
  }
 
@@ -327,6 +322,12 @@
 
 .table-music-info {
     width: 200px !important;
+    text-align: left;
+}
+
+.td-music-cover {
+    width: 70px;
+    height: 70px;
 }
 
 
@@ -375,7 +376,29 @@
     }
 
     .search-bar {
-        display: block;
+        /* display: block; */
     }
+
+    .modal-dialog,
+    .modal-content {
+        height: 70vh;
+        width: 90vw;
+    }
+
+    .modal-dialog {
+        position: fixed;
+        top:13%;
+        right:auto;
+        left:4%;
+        bottom:auto;
+     }
+
+     .search-bar {
+        float: center;
+        /* right: 14%; */
+     }
+
+
+
 
 }

@@ -36,6 +36,7 @@ import { MusiqueGridComponent } from './components/musique/musique-grid/musique-
 import { MusiqueCardComponent } from './components/musique/musique-card/musique-card.component';
 import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
 import { MusicsTableComponent } from './components/musique/musics-table/musics-table.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 
 
 
@@ -78,7 +79,8 @@ import { MusicsTableComponent } from './components/musique/musics-table/musics-t
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    DragDropModule
   ],
   providers: [
         {
