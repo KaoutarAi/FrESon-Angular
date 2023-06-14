@@ -4,6 +4,10 @@ import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
 import { PlaylistService } from 'src/app/services/musique/playlist.service';
 
+import { Observable } from 'rxjs';
+import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
+import { Router } from '@angular/router';
+
 @Component({
   selector: 'playlist-buttons',
   templateUrl: './playlist-buttons.component.html',
@@ -17,8 +21,12 @@ export class PlaylistButtonsComponent implements OnInit{
   liked: boolean = false;
   source: string = "#";
 
+  obsPlaylist!: Observable<Playlist[]>;
+
   constructor(
-    private srvPlaylist: PlaylistService
+    private srvPlaylist: PlaylistService,
+    private srvUtilisateur: UtilisateurService, 
+    private router: Router
     ) {};
 
   ngOnInit(): void {
@@ -160,7 +168,16 @@ export class PlaylistButtonsComponent implements OnInit{
     }
     else{
       this.liked = true;
-    }        
+    }  
+    this.srvUtilisateur.likePlaylist(this.playlist).subscribe(
+      (response: Playlist[]) => {
+        this.router.navigate([ '/favoris' ]);
+      },
+      (error: any) => {
+        console.log(error);
+      }
+    );
+         
   }
 
 
