@@ -25,10 +25,22 @@
     color: #121a26;
 }
 
+.navbar-display-title {
+    font-size: 25px;
+    padding-left: 10px;
+    padding-top: 5px;
+}
+
+
 /* MEDIA RULES */
 @media (max-width: 576px) {
     /* Display logo in navbar on small screens */
     .navbar-brand {
         display: inline;
+    }
+
+    .navbar-display-title {
+        font-size: 17px;
+        padding-top: 10px;
     }
 }

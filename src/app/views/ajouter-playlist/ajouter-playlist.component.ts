@@ -1,7 +1,7 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
@@ -21,9 +21,9 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
     playlistForm!: FormGroup;
     nomCtrl!: FormControl;
     publicCtrl!: FormControl;
+    tagCtrl!: FormControl;
     musiquesSelected: Musique[] = new Array<Musique>;
     editing: number = 0;
-    tagCtrl!: FormControl;
     etiquettes: string[] = Object.values(Tag) ;
     subscriptionPlaylist!: Subscription;
 
@@ -34,12 +34,16 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
 
     constructor(
         private activatedRoute: ActivatedRoute,
+        private router: Router,
         private srvAuth: AuthenticationService,
         private srvPlaylist: PlaylistService,
         private srvMusic: MusiqueService,
         private formBuilder: FormBuilder,
         ) { }
+
     ngOnDestroy(): void {
+        // console.log("I AM HERE");
+
         // this.subscriptionPlaylist.unsubscribe();
     }
 
@@ -142,14 +146,13 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
             musiques: this.musiquesSelected,
             public: this.publicCtrl.value
         }
-        console.log(playlist);
         if (this.editing) {
             addOrEditObs = this.srvPlaylist.edit(playlist);
         }
         else {
             addOrEditObs = this.srvPlaylist.add(playlist);
         }
-        addOrEditObs.subscribe(() => console.log("IT SHOULD BE SAVED"));
+        addOrEditObs.subscribe(() => this.router.navigate(['/mes-playlists']));
 
     }
 

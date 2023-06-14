@@ -1,12 +1,26 @@
-<div class="card" (click)="router.navigate(['playlist', playlist.id]);">
-    <div class="card-image">
-        <div class="image-box">
-        <img src={{playlist.musiques[0].image}} />
+<div class="card" >
+    <div (click)="router.navigate(['playlist', playlist.id]);">
+        <div class="card-image">
+            <div class="image-box">
+            <img src={{playlist.musiques[0].image}} />
+            </div>
+        </div>
+        <div class="playlist-details">
+            <p class="name">{{playlist.nom}}</p>
+            <p class="label">{{playlist.etiquette.charAt(0) + playlist.etiquette.substring(1).toLowerCase() }}</p>
+            <p class="creator">{{playlist.utilisateurPseudo}}</p>
         </div>
     </div>
-    <div class="playlist-details">
-        <p class="name">{{playlist.nom}}</p>
-        <p class="label">{{playlist.etiquette.charAt(0) + playlist.etiquette.substring(1).toLowerCase() }}</p>
-        <p class="creator">{{playlist.utilisateurPseudo}}</p>
+    <div *ngIf="editable" class="trash-button" (click)="onClickDelete(playlist)" >
+        <button>
+            <i class="bi bi-trash3"></i>
+        </button>
     </div>
+
+    <div *ngIf="editable" class="edit-button" (click)="onClickEdit(playlist.id)">
+        <button>
+            <i class="bi bi-pencil"></i>
+        </button>
+    </div>
+
 </div>

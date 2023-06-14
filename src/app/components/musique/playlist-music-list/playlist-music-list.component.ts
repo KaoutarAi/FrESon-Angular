@@ -18,22 +18,24 @@ export class PlaylistMusicListComponent implements OnInit{
   constructor(
     private srvPlaylist: PlaylistService
     ) {}
-    
+
 
   ngOnInit(): void {
     this.srvPlaylist.findById(this.playlistId).subscribe((playlist: Playlist) => {
       this.playlist = playlist;
       this.musiques = playlist.musiques;
-      
+
     })
-    
+
   }
-  
-  
+
+
   public setTime(duree: number){
     return this.srvPlaylist.convertElapsedTime(duree);
     }
-  
-  
-}
 
+    public imgSource(initialSrc: string, width: number): string {
+        return initialSrc.replace(/width=(\d+)/, `width=${width}`);
+    }
+
+}

@@ -6,6 +6,7 @@ playlist-grid {
     column-gap: 20px;
     row-gap: 22px;
     overflow-y: scroll;
+    padding: 2%;
 }
 
 playlist-grid::-webkit-scrollbar {

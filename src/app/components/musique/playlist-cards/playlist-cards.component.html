@@ -2,7 +2,7 @@
     <div class="section-container">
         <div class="slide-section">
             <h2>{{slideTitle}}</h2>
-            <a routerLink={{displayMore}}>Tout afficher</a>
+            <a *ngIf="displayMore" routerLink={{displayMore}}>Tout afficher</a>
         </div>
     </div>
     <div class="slide-container">

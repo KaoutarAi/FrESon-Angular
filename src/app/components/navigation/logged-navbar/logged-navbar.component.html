@@ -18,7 +18,7 @@
         <div *ngIf="!isSmallScreen" class="collapse navbar-collapse flex-row-reverse"
             id="navbarNavAltMarkup">
             <div class="navbar-nav">
-                <a class="nav-item nav-link" [routerLink]="[ '/deconnexion' ]" routerLinkActive="active" >Déconnexion</a>
+                <a class="nav-item nav-link a-change-cursor" (click)="onClickLogOut()" >Déconnexion</a>
             </div>
         </div>
         <!-- navbar links -->
@@ -29,7 +29,7 @@
                 <a class="nav-item nav-link" [routerLink]="[ '/ajouter-playlist' ]" routerLinkActive="active" >Ajouter une playlist</a>
                 <a class="nav-item nav-link" [routerLink]="[ '/favoris' ]" routerLinkActive="active" >Favoris</a>
                 <a class="nav-item nav-link" [routerLink]="[ '/rechercher' ]" routerLinkActive="active" >Rechercher</a>
-                <a class="nav-item nav-link" [routerLink]="[ '/deconnexion' ]" routerLinkActive="active" >Déconnexion</a>
+                <a class="nav-item nav-link" (click)="onClickLogOut()" [routerLink]="[ '/accueil' ]" routerLinkActive="active" >Déconnexion</a>
                 <!-- <a class="nav-item nav-link" style="margin-top: -7px;"><a [ngClass]="{'btn btn-light rounded-pill navbar-button' : onResize(), 'nav-item nav-link' : !onResize()}" [routerLink]="[ '/connexion' ]" routerLinkActive="active">Se connecter</a></a> -->
             </div>
         </div>

@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Playlist } from 'src/app/models/musique/playlist';
 
@@ -9,4 +9,12 @@ import { Playlist } from 'src/app/models/musique/playlist';
 })
 export class PlaylistGridComponent {
     @Input() playlists!: Observable<Playlist[]>;
+    @Output() ondelete: EventEmitter<void> = new EventEmitter<void>();
+    @Input() editable: boolean = false;
+
+    onDelete() {
+        console.log("IN PARENT");
+
+        this.ondelete.emit();
+    }
 }

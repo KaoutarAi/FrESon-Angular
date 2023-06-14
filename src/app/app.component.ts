@@ -27,15 +27,12 @@ export class AppComponent {
         var rt = this.getChild(this.activatedRoute)
 
         rt.data.subscribe((data: { title: string; }) => {
-          console.log(data);
           this.srvTitle.setTitle(data.title)})
       })
 
   }
 
   getChild(activatedRoute: ActivatedRoute): any {
-    console.log(this.srvTitle.getTitle());
-
     if (activatedRoute.firstChild) {
       return this.getChild(activatedRoute.firstChild);
     } else {

@@ -1,5 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
 import { Title } from '@angular/platform-browser';
+import { Router } from '@angular/router';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -22,6 +23,7 @@ export class LoggedNavbarComponent implements OnInit{
     isSmallScreen: boolean = false;
 
     constructor(private srvAuth: AuthenticationService,
+                private router: Router,
                 public srvTitle: Title) {}
 
     ngOnInit(): void {
@@ -52,5 +54,11 @@ export class LoggedNavbarComponent implements OnInit{
         else {
             this.isSmallScreen = true;
         }
+    }
+
+    onClickLogOut() {
+        this.srvAuth.token = "";
+        this.router.navigate([ '/accueil' ]);
+
     }
 }

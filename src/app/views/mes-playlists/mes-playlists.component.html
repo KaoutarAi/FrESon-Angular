@@ -1,1 +1,3 @@
-<playlist-grid [playlists]="mesPlaylists"></playlist-grid>
+<div>
+    <playlist-grid [playlists]="mesPlaylists" (ondelete)="onDeleteReload()" [editable]="true"></playlist-grid>
+</div>

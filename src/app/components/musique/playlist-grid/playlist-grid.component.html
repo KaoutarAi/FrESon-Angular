@@ -1,3 +1,3 @@
-<div *ngFor="let playlist of playlists | async">
-    <playlist-card  [playlist]="playlist"></playlist-card>
+<div class="playlist-grid" *ngFor="let playlist of playlists | async">
+    <playlist-card  [playlist]="playlist" [editable]="editable" (suppression)="onDelete()"></playlist-card>
 </div>

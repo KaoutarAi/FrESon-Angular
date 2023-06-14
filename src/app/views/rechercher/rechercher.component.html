@@ -1,38 +1,43 @@
-<form [formGroup]="playlistForm">
-    <select formControlName="typeP" [formControl]="typePCtrl">
-        <option value="">-- Rechercher par --</option>
-        <option value="nom">Nom de playlist</option>
-        <option value="utilisateur">Créateur</option>
-        <option value="etiquette">Tag</option>
-    </select>
-    <select formControlName="tagP" [formControl]="tagPCtrl" *ngIf="typePCtrl.value === 'etiquette'">
-        <option value="">-- Choisir un tag --</option>
-        <option value="JOIE">JOIE</option>
-        <option value="DEPRIME">DEPRIME</option>
-        <option value="ENTHOUSIASME">ENTHOUSIASME</option>
-        <option value="TRISTESSE">TRISTESSE</option>
-    </select>
-    <!-- <input type="number" formControlName="limitP" [formControl]="limitPCtrl"> -->
-    <input type="text" placeholder="Chercher une playlist..." *ngIf="typePCtrl.value !== 'etiquette'" formControlName="searchP" [formControl]="searchPCtrl">
-    <button type="submit" (click)="rechercherPlaylist()">
-        <span class="bi bi-search"></span>
-    </button>
-</form>
+<div class="container">
+    <div class="search-bar">
+        <form [formGroup]="playlistForm">
+            <select formControlName="typeP" [formControl]="typePCtrl">
+                <option value="">-- Rechercher par --</option>
+                <option value="nom">Nom de playlist</option>
+                <option value="utilisateur">Créateur</option>
+                <option value="etiquette">Tag</option>
+            </select>
+            <select class="bar" formControlName="tagP" [formControl]="tagPCtrl" *ngIf="typePCtrl.value === 'etiquette'">
+                <option value="">-- Choisir un tag --</option>
+                <option value="JOIE">JOIE</option>
+                <option value="DEPRIME">DEPRIME</option>
+                <option value="ENTHOUSIASME">ENTHOUSIASME</option>
+                <option value="TRISTESSE">TRISTESSE</option>
+            </select>
+            <!-- <input type="number" formControlName="limitP" [formControl]="limitPCtrl"> -->
+            <input class="bar" type="text" placeholder="Chercher une playlist..." *ngIf="typePCtrl.value !== 'etiquette'" formControlName="searchP" [formControl]="searchPCtrl">
+            <button type="submit" (click)="rechercherPlaylist()">
+                <span class="bi bi-search"></span>
+            </button>
+        </form>
+    </div>
 
-<playlist-cards [displayMore]="[ '' ]" slideTitle="Playlists" [playlists]="playlists"></playlist-cards>
+    <playlist-cards slideTitle="Playlists" [playlists]="playlists"></playlist-cards>
 
-<form [formGroup]="musicForm">
-    <select formControlName="typeM" [formControl]="typeMCtrl">
-        <option value="">-- Rechercher par --</option>
-        <option value="titre">Titre</option>
-        <option value="artiste">Artiste</option>
-        <option value="album">Album</option>
-    </select>
-    <!-- <input type="number" formControlName="limitM" [formControl]="limitMCtrl"> -->
-    <input type="text" placeholder="Chercher une musique..." formControlName="searchM" [formControl]="searchMCtrl">
-    <button type="submit" (click)="rechercherMusic()">
-        <span class="bi bi-search"></span>
-    </button>
-</form>
-<app-musique-cards [displayMore]="[ '' ]" slideTitle="Musiques" [musiques]="musiques"></app-musique-cards>
-
+    <div class="search-bar">
+        <form [formGroup]="musicForm">
+            <select formControlName="typeM" [formControl]="typeMCtrl">
+                <option value="">-- Rechercher par --</option>
+                <option value="titre">Titre</option>
+                <option value="artiste">Artiste</option>
+                <option value="album">Album</option>
+            </select>
+            <!-- <input type="number" formControlName="limitM" [formControl]="limitMCtrl"> -->
+            <input type="text" placeholder="Chercher une musique..." formControlName="searchM" [formControl]="searchMCtrl">
+            <button type="submit" (click)="rechercherMusic()">
+                <span class="bi bi-search"></span>
+            </button>
+        </form>
+    </div>
+    <app-musique-cards slideTitle="Musiques" [musiques]="musiques"></app-musique-cards>
+</div>

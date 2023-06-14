@@ -6,6 +6,7 @@ app-musique-grid {
     column-gap: 20px;
     row-gap: 22px;
     overflow-y: scroll;
+    padding: 3%;
 }
 
 app-musique-grid::-webkit-scrollbar {

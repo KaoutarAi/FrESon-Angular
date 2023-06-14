@@ -1,3 +1,14 @@
+.container {
+    margin-top: 2%;
+}
+
+.search-bar {
+    align-items: center;
+    justify-content: center;
+    display: flex;
+}
+
+
 select{
     display: inline-block;
     margin-right: 10px;
@@ -7,33 +18,33 @@ select{
 
 
 select:hover {
-    border-color: hsl(39, 55%, 65%); 
+    border-color: hsl(39, 55%, 65%);
   }
 
 select:focus {
-    outline: none; 
-    border-color: hsl(39, 55%, 75%); 
+    outline: none;
+    border-color: hsl(39, 55%, 75%);
     box-shadow: 0 0 5px hsl(39, 55%, 75%);
   }
-  
+
 
 input[type="text"] {
     padding: 5px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    width: 40%;
+    width: 200px;
   }
 
   input[type="text"]:hover {
-    border-color: hsl(39, 55%, 65%); 
+    border-color: hsl(39, 55%, 65%);
   }
 
   input[type="text"]:focus {
-    outline: none; 
+    outline: none;
     border-color: hsl(39, 55%, 75%);
-    box-shadow: 0 0 5px hsl(39, 55%, 75%); 
+    box-shadow: 0 0 5px hsl(39, 55%, 75%);
   }
-  
+
   button[type="submit"] {
     background-color: hsl(39, 55%, 55%);
     color: #fff;
@@ -43,7 +54,38 @@ input[type="text"] {
     margin-left: 4px;
     cursor: pointer;
   }
-  
+
   button[type="submit"]:hover {
     background-color: hsl(39, 55%, 45%);
+  }
+
+
+  @media (max-width: 576px) {
+    .container {
+        margin: 4%;
+    }
+
+    input[type="text"] {
+        width: 40%;
+    }
+
+    .search-bar {
+        position: relative;
+        width: max-content;
+        left: -8%;
+    }
+
+    select{
+        display: inline-block;
+        font-size: .8rem;
+        /* margin-right: 10px;
+        padding: 5px; */
+        border-radius: 4px;
+        width: 150px;
+        /* float: left; */
+    }
+
+    .bar {
+        font-size: .8rem;
+    }
   }

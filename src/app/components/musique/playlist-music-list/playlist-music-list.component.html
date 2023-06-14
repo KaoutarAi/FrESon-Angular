@@ -9,15 +9,15 @@
             </tr>
         </thead>
         <tbody>
-            <tr *ngFor="let musique of musiques" >
-                <td>{{musique.id}}</td>
+            <tr *ngFor="let musique of musiques; index as indexOfElement" >
+                <td>{{indexOfElement + 1}}</td>
                 <td>
-                    <img src="{{musique.image}}" alt="">                    
+                    <img src="{{imgSource(musique.image, 50)}}" alt="">
                     {{musique.titre}}
                 </td>
                 <td id="tab-album">{{musique.albumNom}}</td>
                 <td>{{setTime(musique.duree)}}</td>
-            </tr>                        
+            </tr>
         </tbody>
     </table>
 </div>

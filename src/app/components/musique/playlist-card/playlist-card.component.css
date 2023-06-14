@@ -65,3 +65,42 @@
       font-size: 13px;
       margin-top: 13px;
   }
+
+  .trash-button {
+    display: flex;
+    position: absolute;
+    left: 9%;
+    top: 86%;
+    border-radius: 5px;
+  }
+
+  .trash-button button, .edit-button button {
+    background: none;
+	color: inherit;
+	border: none;
+	padding: 0;
+	font: inherit;
+	cursor: pointer;
+	outline: inherit;
+  }
+
+  .trash-button i {
+    color: red;
+    font-size: 20px;
+
+  }
+
+  .trash-button i:hover, .edit-button i:hover {
+    color: var(--yellow-jaguar);
+  }
+
+  .edit-button i {
+    color: white;
+  }
+
+  .edit-button {
+    display: flex;
+    position: absolute;
+    left: 83%;
+    top: 87%;
+  }

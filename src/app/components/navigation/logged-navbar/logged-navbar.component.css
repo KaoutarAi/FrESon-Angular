@@ -30,6 +30,10 @@
     padding-top: 5px;
 }
 
+.a-change-cursor {
+    cursor: pointer;
+}
+
 
 /* MEDIA RULES */
 @media (max-width: 576px) {
