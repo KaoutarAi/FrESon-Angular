@@ -1,13 +1,28 @@
 .music-card {
     display: inline-flex;
-    width: 130px;
-    height: 130px;
     margin-inline: 8px;
     margin-top: 5%;
     border-radius: 5px;
 }
 
 .music-selected {
-    box-shadow: 0 0 0 3px  var(--yellow-jaguar);
+    box-shadow: 0 0 0 3px  var(--dark-knight-blue);
     border-radius: 5px;
 }
+
+.selected-icon {
+    display: flex;
+    /* width: 100%;
+    height: 100%; */
+    width: 15px;
+    height: 15px;
+    justify-content: center;
+    align-items: center;
+    color: var(--yellow-jaguar);
+    font-size: 25px;
+}
+
+/* .selected-icon i {
+    color: var(--dark-knight-blue);
+    font-size: 25px;
+} */

@@ -1,4 +1,5 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -82,7 +83,8 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
         this.musiques$ = this.srvMusic.findAll();
         // console.log( "FINAL INIT: " + this.musiquesSelected);
 
-        // console.log("USER ID: " + this.userId);
+
+
     }
 
 
@@ -150,4 +152,11 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
         addOrEditObs.subscribe(() => console.log("IT SHOULD BE SAVED"));
 
     }
+
+    drop(event: CdkDragDrop<any[]>) {
+        moveItemInArray(this.musiquesSelected, event.previousIndex, event.currentIndex);
+      }
+
+
+
 }

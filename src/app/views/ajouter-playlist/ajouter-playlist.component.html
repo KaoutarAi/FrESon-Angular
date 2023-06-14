@@ -1,4 +1,7 @@
 <div class="form-container">
+    <div class="submission-button">
+        <button class="btn" (click)="submit()">{{this.editing ? "Modifier" : "Ajouter"}}</button>
+    </div>
     <form *ngIf="playlistForm" [formGroup]="playlistForm" (ngSubmit)="doOk()">
         <div class="top-form-container">
             <div class="name-container">
@@ -25,22 +28,89 @@
                 </div>
         </div>
 
-
-        <div class="music-label-container">
-            <div class="music-label"><label>Ajouter des musiques</label></div>
-            <div class="search-bar"><input type="text" class="icon" placeholder="Rechercher" (input)="reloadMusiques($event)"></div>
+        <!-- Button trigger modal -->
+        <div>
+            <div class="music-label"><label>Ajouter de la musique</label></div>
+            <button class="btn-music" data-toggle="modal" data-target="#exampleModalLong">
+                <i class="bi bi-plus-circle"></i>
+                <i class="bi bi-plus-circle-fill"></i>
+            </button>
         </div>
-        <div class="musics-container">
-            <music-card *ngFor="let musique of musiques$ | async" [id]="musique.id" [musique]="musique" (selection)="selectMusique($event)"></music-card>
-        </div>
 
-        <div class="music-selected-label"><label>Musiques séléctionnées</label></div>
-        <div class="musics-container-selected">
-            <music-card class="music-selected" *ngFor="let musique of musiquesSelected" [musique]="musique" (selection)="onClickRemove($event)"></music-card>
-        </div>
-    </form>
 
-    <div class="submission-button">
-        <button class="btn" (click)="submit()">{{this.editing ? "Modifier" : "Ajouter"}}</button>
+        <div cdkDropList class="selected-musics-list" (cdkDropListDropped)="drop($event)">
+            <div class="selected-music" *ngFor="let musique of musiquesSelected" cdkDragLockAxis="y" cdkDrag>
+                <div class="music-cover"><music-card [id]="musique.id" [musique]="musique" (selection)="onClickRemove($event)" imageMusicWidth="50"></music-card></div>
+                <div class="music-info">
+                    <div class="tldr-container">
+                        <div class="tldr">{{musique.titre.substring(0, 50)}}</div>
+                    </div>
+                    <div class="tldr-container">
+                        <div class="tldr artist-div">{{musique.artiste}}</div>
+                    </div></div>
+            </div>
+          </div>
+
+
+
+
+  <!-- Modal -->
+    <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <div class="search-bar"><input type="text" class="icon" placeholder="Rechercher" (input)="reloadMusiques($event)"></div>
+            <!-- <h5 class="modal-title" id="exampleModalLongTitle">Modal title</h5> -->
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            </div>
+            <div class="modal-body">
+            <table>
+                    <tbody class="table-body">
+                        <tr class="table-tr" *ngFor="let musique of musiques$ | async">
+                            <td class="td-music-cover"> <music-card [id]="musique.id" [musique]="musique" (selection)="selectMusique($event)" imageMusicWidth="50"></music-card> </td>
+                            <td class="table-music-info">
+                                <div class="tldr-container">
+                                    <div class="tldr">{{musique.titre.substring(0, 50)}}</div>
+                                </div>
+                                    <div class="tldr-container">
+                                        <div class="tldr artist-div">{{musique.artiste}}</div>
+                                    </div>
+                            </td>
+                            <!-- <td> {{musique.artiste}}</td> -->
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="modal-footer">
+            <button type="button" class="btn" data-dismiss="modal">OK</button>
+            </div>
+        </div>
+        </div>
     </div>
+
+    <!-- CURRENT TABLE SELECTED MUSIC -->
+    <!-- <div class="selected-musics">
+        <table class="selected-musics-table">
+            <tbody class="table-body" cdkDropList (cdkDropListDropped)="drop($event)">
+                    <div  cdkDrag>
+                        <tr class="table-tr" *ngFor="let musique of musiquesSelected">
+                            <td class="td-music-cover"> <music-card [id]="musique.id" [musique]="musique" (selection)="onClickRemove($event)" imageMusicWidth="50"></music-card> </td>
+                            <td class="table-music-info">
+                                <div class="tldr-container">
+                                    <div class="tldr">{{musique.titre.substring(0, 50)}}</div>
+                                </div>
+                                    <div class="tldr-container">
+                                        <div class="tldr artist-div">{{musique.artiste}}</div>
+                                    </div>
+                            </td>
+                            <td ><i class="bi bi-app" style="font-size: 15px;" cdkDrag></i></td>
+                        </tr>
+                    </div>
+            </tbody>
+        </table>
+    </div> -->
+
+    </form>
 </div>

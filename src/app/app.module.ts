@@ -35,6 +35,8 @@ import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiq
 import { MusiqueGridComponent } from './components/musique/musique-grid/musique-grid.component';
 import { MusiqueCardComponent } from './components/musique/musique-card/musique-card.component';
 import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
+import { MusicsTableComponent } from './components/musique/musics-table/musics-table.component';
+import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
 import { PlaylistCommentairesComponent } from './components/musique/playlist-commentaires/playlist-commentaires.component';
 
@@ -71,6 +73,7 @@ import { PlaylistCommentairesComponent } from './components/musique/playlist-com
     MusiqueCardComponent,
     MusiqueCardsComponent,
     MusiqueGridComponent,
+    MusicsTableComponent,
     MusiqueGridComponent,
     MesPlaylistsComponent,
     PlaylistCommentairesComponent
@@ -80,7 +83,8 @@ import { PlaylistCommentairesComponent } from './components/musique/playlist-com
     AppRoutingModule,
     FormsModule, ReactiveFormsModule,
     HttpClientModule,
-    NgbModule
+    NgbModule,
+    DragDropModule
   ],
   providers: [
         {
