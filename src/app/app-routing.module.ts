@@ -16,6 +16,7 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
 import { FavorisComponent } from './views/favoris/favoris.component';
 import { FavorisPlaylistsComponent } from './views/favoris-playlists/favoris-playlists.component';
 import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiques.component';
+import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
 
 const routes: Routes = [
     {
@@ -24,7 +25,6 @@ const routes: Routes = [
     },
 
     {
-
         path: 'playlist/plus-vues',
         component: PlusVuesComponent
     },
@@ -70,6 +70,11 @@ const routes: Routes = [
     {
         path: 'favoris/musiques',
         component: FavorisMusiquesComponent
+    },
+
+    {
+        path: 'mes-playlists',
+        component: MesPlaylistsComponent
     },
 
 

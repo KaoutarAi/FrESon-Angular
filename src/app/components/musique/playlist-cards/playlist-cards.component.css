@@ -22,7 +22,8 @@ padding: 40px 10px;
 .slide-container {
 margin: 0 30px;
 overflow: scroll;
-height: 48vh;
+/* height: 48vh; */
+height: 70vh;
 padding: 30px;
 }
 
