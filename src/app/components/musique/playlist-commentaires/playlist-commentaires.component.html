@@ -1,0 +1,18 @@
+<div id="com-compo">
+    <div class="fond-comm">
+      <table>
+        <tr *ngFor="let c of commentaires$ | async">
+            <td >{{c.utilisateur.pseudo}} :</td>
+            <td id="contenu">{{c.contenu}}</td>
+            <td>{{c.date}}</td>
+            <td *ngIf="role == 'ADMINISTRATEUR' || role == 'MODERATEUR'">
+                <button class="btn btn-danger" (click)="onDelete(c)">Supprimer</button>
+            </td>
+        </tr>
+    </table>  
+    </div>
+    <div id="commenter">
+        <input type="text" [(ngModel)] = "contenu">
+        <input type="submit" (click)="onEnvoyer()">
+    </div>
+</div>

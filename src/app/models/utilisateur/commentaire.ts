@@ -1,25 +1,34 @@
-export class Commentaire {
+import { Utilisateur } from "./utilisateur";
 
-    public get id(): number {
-        return this._id;
+
+export class Commentaire {
+    public get utilisateur(): Utilisateur  {
+        return this._utilisateur;
     }
-    public set id(value: number) {
-        this._id = value;
+    public set utilisateur(value: Utilisateur) {
+        this._utilisateur = value;
     }
-    
+    public get date(): Date | null {
+        return this._date;
+    }
+    public set date(value: Date | null) {
+        this._date = value;
+    }
     public get contenu(): string {
         return this._contenu;
     }
     public set contenu(value: string) {
         this._contenu = value;
     }
-
-    public get date(): Date {
-        return this._date;
+    public get id(): number | null {
+        return this._id;
     }
-    public set date(value: Date) {
-        this._date = value;
+    public set id(value: number | null) {
+        this._id = value;
     }
+   
 
-    constructor(private _id: number, private _contenu: string, private _date: Date){}
+    constructor(private _contenu: string, private _id: number | null = null,  private _date: Date | null = null, private _utilisateur: Utilisateur) { 
+        this.contenu = _contenu;
+    }
 }

@@ -28,6 +28,7 @@ import { ResetPasswordComponent } from './views/reset-password/reset-password.co
 import { PlaylistButtonsComponent } from './components/musique/playlist-buttons/playlist-buttons.component';
 import { PlaylistHeaderComponent } from './components/musique/playlist-header/playlist-header.component';
 import { PlaylistMusicListComponent } from './components/musique/playlist-music-list/playlist-music-list.component';
+import { PlaylistCommentairesComponent } from './components/musique/playlist-commentaires/playlist-commentaires.component';
 
 
 @NgModule({
@@ -53,7 +54,8 @@ import { PlaylistMusicListComponent } from './components/musique/playlist-music-
     ResetPasswordComponent,
     PlaylistButtonsComponent,
     PlaylistHeaderComponent,
-    PlaylistMusicListComponent
+    PlaylistMusicListComponent,
+    PlaylistCommentairesComponent
   ],
   imports: [
     BrowserModule,

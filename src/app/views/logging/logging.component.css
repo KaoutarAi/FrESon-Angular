@@ -1,0 +1,15 @@
+#logging {
+    color: hsl(39, 55%, 59%);
+}
+
+table {
+    width: 100%;
+}
+
+label {
+    padding-right: 20px;
+}
+
+button {
+    margin-left: 10px;
+}
