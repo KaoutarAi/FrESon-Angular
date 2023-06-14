@@ -35,6 +35,7 @@ import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiq
 import { MusiqueGridComponent } from './components/musique/musique-grid/musique-grid.component';
 import { MusiqueCardComponent } from './components/musique/musique-card/musique-card.component';
 import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
+import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
 
 
 
@@ -69,7 +70,9 @@ import { MusiqueCardsComponent } from './components/musique/musique-cards/musiqu
     FavorisMusiquesComponent,
     MusiqueCardComponent,
     MusiqueCardsComponent,
-    MusiqueGridComponent
+    MusiqueGridComponent,
+    MusiqueGridComponent,
+    MesPlaylistsComponent   
   ],
   imports: [
     BrowserModule,
