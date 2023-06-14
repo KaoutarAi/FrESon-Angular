@@ -1,20 +1,20 @@
 <div class="playlist-buttons" style="display: flex;">
     <audio src="{{source}}" id="player" (ended)="onEnd()"></audio>
-    <button *ngIf="paused" (click)=" onPlay()"><i class="bi bi-play-circle btn"></i></button>
-    <button *ngIf="!paused" (click)="onPause()"><i class="bi bi-pause-circle"></i></button>
-    <button (click)="onMute()"><i class="bi bi-volume-up-fill"></i></button>
+    <button *ngIf="paused" (click)=" onPlay()" class="btn btn-tertiary btn-floating"><i class="bi bi-play-circle"></i></button>
+    <button *ngIf="!paused" (click)="onPause()" class="btn btn-tertiary btn-floating"><i class="bi bi-pause-circle"></i></button>
+    <button (click)="onMute()" class="btn btn-tertiary btn-floating"><i class="bi bi-volume-up-fill"></i></button>
     <input type="range" #volume (input)="onVolumeChange(volume.value)" [value]="currentVolume" min="0" max="1" step="0.1">
-    <button (click)="onShuffle()">
+    <button (click)="onShuffle()" class="btn btn-tertiary btn-floating">
         <i *ngIf="shuffled" class="bi bi-shuffle"></i>
         <i *ngIf="!shuffled" class="bi bi-arrow-right"></i>
     </button>
-    <button (click)="onLast()"><i class="bi bi-caret-left"></i></button>
-    <button (click)="onNext()"><i class="bi bi-caret-right"></i></button>
+    <button (click)="onLast()" id="last" class="btn btn-tertiary btn-floating"><i class="bi bi-caret-left"></i></button>
+    <button (click)="onNext()" id="next" class="btn btn-tertiary btn-floating"><i class="bi bi-caret-right"></i></button>
     <input type="range" #time id="time-progress" (input)="onTimeChange(time.value)" [value]="currentTime" min="0" [max]="dureeMusique" >
     <p>{{stringCurrentTime}} / {{stringDureeMusique}}</p>
-    <button (click)="onLike()">
+    <button (click)="onLike()" class="btn btn-tertiary btn-floating">
         <i *ngIf="!liked" class="bi bi-heart"></i>
         <i *ngIf="liked" class="bi bi-heart-fill"></i>
     </button>
-    <button><i class="bi bi-three-dots-vertical"></i></button>
+    <button class="btn btn-tertiary btn-floating"><i class="bi bi-three-dots-vertical"></i></button>
 </div>

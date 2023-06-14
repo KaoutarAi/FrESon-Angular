@@ -36,7 +36,7 @@ import { MusiqueGridComponent } from './components/musique/musique-grid/musique-
 import { MusiqueCardComponent } from './components/musique/musique-card/musique-card.component';
 import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
 import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
-
+import { PlaylistCommentairesComponent } from './components/musique/playlist-commentaires/playlist-commentaires.component';
 
 
 @NgModule({
@@ -72,7 +72,8 @@ import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.compo
     MusiqueCardsComponent,
     MusiqueGridComponent,
     MusiqueGridComponent,
-    MesPlaylistsComponent   
+    MesPlaylistsComponent,
+    PlaylistCommentairesComponent
   ],
   imports: [
     BrowserModule,

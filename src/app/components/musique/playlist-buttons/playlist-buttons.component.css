@@ -2,10 +2,36 @@ div.playlist-buttons {
     height: 8%;
 }
 
-button {
-    width: 6%;
-}
+
+
 
 #time-progress {
-    width: 70%;
+    width: 60vh;
+}
+
+i {
+    color: hsl(39, 55%, 59%);
+    font-size: 1.7rem;
+    vertical-align: middle;
+
+}
+
+p {
+    color: hsl(39, 55%, 59%);
+    vertical-align: middle;
+}
+
+@media (max-width: 800px) {
+    input[type="range"] {
+        display: none;
+    }
+}
+
+@media (max-width: 600px) {
+    i {
+        font-size: 1.4rem;
+    }
+    button#last, button#next {
+        display: none;
+    }
 }

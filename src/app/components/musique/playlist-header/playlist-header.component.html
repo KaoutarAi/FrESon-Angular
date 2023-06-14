@@ -1,11 +1,10 @@
-<div style="display: flex; background-color: gray;">
-    <div style="background-color: red;">
+<div class="header">
+    <div>
         <img src="#" alt="" style="height: 20vhpx; width: 20vw;">
     </div>
     <div *ngIf="musiques">
         <h1>{{playlist.nom}}</h1>
-        <h3>Description éventuelle ?</h3>
         <h3>{{playlist.etiquette}}</h3>
-        <h4>{{playlist.utilisateurPseudo}} - Stats comme nombre de like/écoute -  {{nbTitres}} - {{setTime(tpsTotalN)}} </h4>
+        <h4>{{playlist.utilisateurPseudo}} - {{nbTitres}} titres- {{setTime(tpsTotalN)}} </h4>
     </div>
 </div>

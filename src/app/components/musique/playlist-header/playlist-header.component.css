@@ -1,0 +1,14 @@
+div.header {
+    display: flex;
+    background-color: hsl(216, 36%, 12%);
+    color: hsl(39, 55%, 59%);
+}
+
+@media (max-width: 576px) {
+    h3, h4 {
+        display: none;
+    }
+    h1 {
+        font-size: 1.5rem;
+    }
+}
