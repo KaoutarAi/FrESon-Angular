@@ -37,7 +37,8 @@ import { MusiqueCardComponent } from './components/musique/musique-card/musique-
 import { MusiqueCardsComponent } from './components/musique/musique-cards/musique-cards.component';
 import { MusicsTableComponent } from './components/musique/musics-table/musics-table.component';
 import {DragDropModule} from '@angular/cdk/drag-drop';
-
+import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
+import { PlaylistCommentairesComponent } from './components/musique/playlist-commentaires/playlist-commentaires.component';
 
 
 @NgModule({
@@ -73,6 +74,9 @@ import {DragDropModule} from '@angular/cdk/drag-drop';
     MusiqueCardsComponent,
     MusiqueGridComponent,
     MusicsTableComponent,
+    MusiqueGridComponent,
+    MesPlaylistsComponent,
+    PlaylistCommentairesComponent
   ],
   imports: [
     BrowserModule,

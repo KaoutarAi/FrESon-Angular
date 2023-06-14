@@ -25,6 +25,10 @@ export class UtilisateurService {
     return this.httpClient.get<Musique[]>(`${ environment.apiUrl }/utilisateur/favoris/musiques`);
   }
 
+  public mesPlaylists(): Observable<Playlist[]> {
+    return this.httpClient.get<Playlist[]>(`${ environment.apiUrl }/utilisateur/mes-playlists`);
+  }
+
   public add(utilisateur: any): Observable<Utilisateur> {
     return this.httpClient.post<Utilisateur>(`${ environment.apiUrl }/utilisateur/inscription`, utilisateur);
   }

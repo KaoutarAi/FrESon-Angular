@@ -36,7 +36,7 @@
   }
 
   .musique-details {
-      margin-top: 1vh;
+      margin-top: 0.7vh;
   }
 
   .musique-details .titre {
@@ -67,4 +67,8 @@
 
   audio{
     width: 98%;
+  }
+
+  img{
+    padding-bottom: 7%;
   }
