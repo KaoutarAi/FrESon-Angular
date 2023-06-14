@@ -8,13 +8,14 @@ import { Musique } from 'src/app/models/musique/musique';
 })
 export class MusicCardComponent implements OnInit{
     @Input() musique!: Musique;
+    @Input() imageMusicWidth: string = "130";
     imageUrl!: string;
     @Input() selected: number = 0;
     @Output() selection: EventEmitter<any[]> = new EventEmitter<any[]>();
     // @Output() selectMusique: EventEmitter<Musique> = new EventEmitter<Musique>();
 
     ngOnInit(): void {
-        this.imageUrl = this.musique.image.replace(/width=(\d+)/, "width=130");
+        this.imageUrl = this.musique.image.replace(/width=(\d+)/, `width=${this.imageMusicWidth}`);
     }
 
     onClick() {

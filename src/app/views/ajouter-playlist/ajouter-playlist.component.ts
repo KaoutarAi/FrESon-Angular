@@ -1,4 +1,4 @@
-import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, EventEmitter, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
+import { AfterContentInit, AfterViewChecked, AfterViewInit, Component, ElementRef, EventEmitter, HostListener, OnChanges, OnDestroy, OnInit, Output, SimpleChanges, ViewChild } from '@angular/core';
 import { FormBuilder, FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
 import { Observable, Subscription } from 'rxjs';
@@ -45,6 +45,7 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
     ngAfterViewChecked(): void { // Used to fetch the paramters subscribed in onInit
         // console.log("ONCHANGES: ")
         // console.log(this.musiquesSelected);
+        console.log(this.div);
     }
 
 
@@ -82,7 +83,8 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
         this.musiques$ = this.srvMusic.findAll();
         // console.log( "FINAL INIT: " + this.musiquesSelected);
 
-        // console.log("USER ID: " + this.userId);
+
+
     }
 
 
@@ -150,4 +152,45 @@ export class AjouterPlaylistComponent implements OnInit, AfterViewChecked, OnDes
         addOrEditObs.subscribe(() => console.log("IT SHOULD BE SAVED"));
 
     }
+
+
+
+
+
+
+    @ViewChild('myModal') div!:ElementRef;
+    @ViewChild('myBtn') btn!:ElementRef;
+    // @ViewChild('myBtn') btn!:ElementRef;
+
+    // Get the modal
+//  modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+
+// Get the <span> element that closes the modal
+//  span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal
+    openDialog() {
+        if (this.div) {
+            this.div.nativeElement.style.display = "block";
+        }
+}
+
+// When the user clicks on <span> (x), close the modal
+    closeDialog() {
+        if (this.div) {
+            this.div.nativeElement.style.display = "none";
+        }
+}
+
+// When the user clicks anywhere outside of the modal, close it
+// @HostListener('window:click', ['$event'])
+//     windowClick(evt: any) {
+//         console.log("CLICKED");
+
+//         if (evt.target == this.div && this.div) {
+//             this.div.nativeElement.style.display = "none";
+//     }
+// }
 }

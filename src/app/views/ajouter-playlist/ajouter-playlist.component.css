@@ -97,7 +97,7 @@
   }
 
   .submission-button {
-    margin-top: 8%;
+    margin-bottom: 5%;
     text-align: center;
 
   }
@@ -197,8 +197,11 @@
   }
 
   .search-bar {
-    display: inline;
-    padding-left: 1%;
+    /* display: inline; */
+    position: sticky;
+    left: 53%;
+    /* position: fixed;
+    left: 50%; */
   }
 
   .search-bar input {
@@ -211,6 +214,120 @@
     background-size: 20px;
     background-color: white;
   }
+
+
+  .btn-music {
+    font-size: 1.2rem;
+    color: var(--yellow-jaguar);
+    outline: none;
+    padding: 0;
+    border: none;
+    background: none;
+  }
+
+  /* .btn-music:hover{
+    color: var(--yellow-jaguar);
+    background-color: var(--dark-knight-blue);
+    border-color: var(--dark-knight-blue);
+  } */
+
+  .btn-music i:nth-child(2) {
+    display: none;
+  }
+
+  .btn-music:hover i:nth-child(1) {
+    display: none;
+  }
+
+  .btn-music:hover i:nth-child(2) {
+    display: block;
+  }
+
+
+.modal {
+    width: 200px;
+}
+
+.modal-title {
+    color: black;
+}
+
+  .modal-dialog,
+.modal-content {
+    height: 80%;
+    width: 550px;
+}
+
+.modal-header {
+    color: black;
+}
+
+.modal-dialog {
+    position:fixed;
+    top:30%;
+    right:auto;
+    left:calc(55% - var(--sidebar-width));
+    bottom:0;
+ }
+
+ .close {
+    position: absolute;
+    left: 90%;
+    /* top: 23%; */
+ }
+
+
+
+ .tldr-container {
+    overflow: scroll;
+    /* width: 40%; */
+
+ }
+
+ .tldr-container::-webkit-scrollbar {
+    display: none;
+ }
+
+ .tldr {
+    /* overflow-x: scroll; */
+    white-space: nowrap;
+    width: 80px;
+
+ }
+
+ .artist-div {
+    font-size: 13px;
+ }
+
+
+.modal-body {
+    /* 100% = dialog height, 120px = header + footer */
+    max-height: calc(100% - 120px);
+    overflow-y: scroll;
+}
+
+
+  .modal-body {
+    color: black;
+  }
+
+
+  .fixed_header {
+    width: 400px !important;
+    display: grid;
+  }
+
+.table-body {
+    width: 400px !important;
+}
+
+.table-tr {
+    width: 300px;
+}
+
+.table-music-info {
+    width: 200px !important;
+}
 
 
   /* MEDIA RULES */
