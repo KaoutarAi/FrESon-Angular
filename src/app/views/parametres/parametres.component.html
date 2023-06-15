@@ -1,0 +1,38 @@
+
+<div>
+    <label>Changer le nom</label>
+    <input type="checkbox" [(ngModel)]="nomChecked">
+    <p *ngIf="nomChecked">
+        <input type="text" [(ngModel)]="nom" (change)="editNom()">
+        <button (click)="editNom()" class="btn btn-primary">Modifier le nom</button>
+    </p>
+</div>
+
+<div>
+    <label>Changer le prenom</label>
+    <input type="checkbox" [(ngModel)]="prenomChecked">
+    <p *ngIf="prenomChecked">
+        <input type="text" [(ngModel)]="prenom" (change)="editPrenom()">
+        <button (click)="editPrenom()" class="btn btn-primary">Modifier le prénom</button>
+    </p>
+</div>
+
+<div>
+    <label>Changer l'e-mail</label>
+    <input type="checkbox" [(ngModel)]="mailChecked">
+    <p *ngIf="mailChecked">
+        <input type="email" [(ngModel)]="email" (change)="editMail()">
+        <button (click)="editMail()" class="btn btn-primary">Modifier l'e-mail</button>
+    </p>
+</div>
+
+<div>
+    <label>Changer le mot de passe</label>
+    <input type="checkbox" [(ngModel)]="mdpChecked">
+    <p *ngIf="mdpChecked">
+        <input type="password" [(ngModel)]="mdp">
+        <input type="password" [(ngModel)]="mdpVerif" (change)="editMdp()">
+        <button (click)="editMdp()" class="btn btn-primary">Modifier le mot de passe</button>
+    </p>
+</div>
+

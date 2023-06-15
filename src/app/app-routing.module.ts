@@ -19,13 +19,14 @@ import { FavorisPlaylistsComponent } from './views/favoris-playlists/favoris-pla
 import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiques.component';
 import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
 import { UtilisateursComponent } from './views/utilisateurs/utilisateurs.component';
+import { ParametresComponent } from './views/parametres/parametres.component';
 
 
 const routes: Routes = [
     {
         path: 'accueil',
         component: HomeComponent,
-        title: "Bienvenur sur FrEson"
+        title: "Bienvenue sur FrEson"
     },
 
     {
@@ -89,13 +90,20 @@ const routes: Routes = [
 
     {
         path: 'mes-playlists',
-        component: MesPlaylistsComponent
+        component: MesPlaylistsComponent,
+        title: "Mes playlists"
     },
 
     {
         path: 'utilisateurs',
         component: UtilisateursComponent,
         canActivate: [authorizedAdminGuard]
+    },
+
+    {
+        path: 'mes-parametres',
+        component: ParametresComponent,
+        title: 'Mes paramètres'
     },
 
 

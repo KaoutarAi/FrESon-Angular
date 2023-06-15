@@ -29,7 +29,6 @@ export class UtilisateurService {
     return this.httpClient.post<Playlist[]>(`${environment.apiUrl}/utilisateur/abo-playlist/${playlist.id}`, playlist);
   }
   
-
   public findAboMusique(): Observable<Musique[]> {
     return this.httpClient.get<Musique[]>(`${ environment.apiUrl }/utilisateur/favoris/musiques`);
   }
@@ -46,8 +45,9 @@ export class UtilisateurService {
     return this.httpClient.post<Utilisateur>(`${ environment.apiUrl }/utilisateur/inscription`, utilisateur);
   }
 
+
   public edit(utilisateur: any): Observable<Utilisateur> {
-    return this.httpClient.put<Utilisateur>(`${ environment.apiUrl }/utilisateur/${ utilisateur.id }`, utilisateur);
+    return this.httpClient.put<Utilisateur>(`${ environment.apiUrl }/utilisateur/params`, utilisateur);
   }
 
   public resetMdp(utilisateur: any): Observable<Utilisateur> {
