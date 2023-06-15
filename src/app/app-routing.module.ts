@@ -18,6 +18,7 @@ import { RechercherComponent } from './views/rechercher/rechercher.component';
 import { FavorisPlaylistsComponent } from './views/favoris-playlists/favoris-playlists.component';
 import { FavorisMusiquesComponent } from './views/favoris-musiques/favoris-musiques.component';
 import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
+import { UtilisateursComponent } from './views/utilisateurs/utilisateurs.component';
 
 
 const routes: Routes = [
@@ -89,6 +90,12 @@ const routes: Routes = [
     {
         path: 'mes-playlists',
         component: MesPlaylistsComponent
+    },
+
+    {
+        path: 'utilisateurs',
+        component: UtilisateursComponent,
+        canActivate: [authorizedAdminGuard]
     },
 
 
