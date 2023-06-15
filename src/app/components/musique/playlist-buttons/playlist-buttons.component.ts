@@ -1,11 +1,11 @@
 
-import { Component, Input, OnInit, OnDestroy} from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, HostListener} from '@angular/core';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
 import { PlaylistService } from 'src/app/services/musique/playlist.service';
 import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
 
-import { Observable } from 'rxjs';
+import { Observable, lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
 
 @Component({
@@ -18,14 +18,14 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
   playlist!: Playlist;
   musiques!: Musique[];
   paused: boolean = true;
-  liked: boolean = false;
   source: string = "#";
+  isFavorite!: boolean;
 
   obsPlaylist!: Observable<Playlist[]>;
 
   constructor(
     private srvPlaylist: PlaylistService,
-    private srvUtilisateur: UtilisateurService, 
+    private srvUtilisateur: UtilisateurService,
     private router: Router
     ) {};
 
@@ -40,17 +40,16 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
       this.musiques.forEach(m => {
         this.musiques.push(m);
         this.source = this.musiques[0].linkAudio;
-        
+
       });
-    })
-    const likedState = localStorage.getItem('likedState');
-    this.liked = likedState === 'true';
+    });
+     this.checkedFav()
   }
-  
+
 
   private audio = new Audio();
 
-  dureeMusique!: number; 
+  dureeMusique!: number;
   stringDureeMusique!: string;
   currentTime!: number;
   stringCurrentTime!: string;
@@ -59,7 +58,7 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
   currentTrack: number = 0;
   shuffled: boolean = false;
 
-  
+
   public onPlay(){
     this.paused = false;
     this.audio.src = this.source;
@@ -68,7 +67,7 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     }
 
     this.audio.play();
-    
+
     this.audio.addEventListener("timeupdate", () => {
       this.currentTime = Number(this.audio.currentTime.toFixed(0));
       this.dureeMusique = Number(this.audio.duration.toFixed(0));
@@ -96,7 +95,7 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
       this.audio.volume = 0.5;
       this.currentVolume = 0.5;
     }
-        
+
   }
 
   public onVolumeChange(value : string){
@@ -115,7 +114,7 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     }
     this.currentTrack = Math.floor(Math.random()* this.musiques.length+1)
     this.source = this.musiques[this.currentTrack].linkAudio;
-    
+
     this.audio.play;
     this.currentTime = 0;
     this.onPlay();
@@ -168,25 +167,59 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     this.currentTime = this.nValue;
   }
 
-  public onLike(){
-    if(this.liked){
-      this.liked = false;
-    }
-    else{
-      this.liked = true;
-    }  
+//   public onLike(){
+//     if (isLiked()) {
 
-    localStorage.setItem('likedState', this.liked.toString());
+//     }
+//   }
 
-    this.srvUtilisateur.likePlaylist(this.playlist).subscribe(
-      (response: Playlist[]) => {
-      },
-      (error: any) => {
-        console.log(error);
-      }
-    );
-         
+//     // localStorage.setItem('likedState', this.liked.toString());
+
+//     this.srvUtilisateur.likePlaylist(this.playlist).subscribe(
+//       (response: Playlist[]) => {
+//       },
+//       (error: any) => {
+//         console.log(error);
+//       }
+//     );
+
+//   }
+
+  checkedFav() {
+    this.isLiked().then((result) => this.isFavorite = result);
   }
+
+async isLiked() {
+    let res: boolean = false;
+    const favPlaylists = await lastValueFrom(this.srvUtilisateur.findAboPlaylist());
+    for (let p of favPlaylists) {
+        console.log("Cheking id: " + p.id);
+        if (this.playlistId == p.id) {
+            console.log("Hoho it is true");
+                res = true;
+                break;
+            }
+        }
+        return res;
+    }
+
+  onLike() {
+    // this.isFavorite = await this.isLiked();
+    // console.log("FAV? + " + this.isFavorite);
+
+    this.srvUtilisateur.likePlaylist(this.playlist).subscribe(() => {
+        // window.location.reload();
+        this.checkedFav();
+        console.log(this.isFavorite);
+
+    })
+  }
+
+//   @HostListener('click', ['$event'])
+//   onClick() {
+//     this.isLiked;
+//   }
+
 
 
   public stop(){
@@ -194,5 +227,5 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     this.audio.src = "";
     this.currentTime = 0;
   }
-  
-} 
+
+}

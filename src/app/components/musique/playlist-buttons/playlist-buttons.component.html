@@ -13,8 +13,8 @@
     <input type="range" #time id="time-progress" (input)="onTimeChange(time.value)" [value]="currentTime" min="0" [max]="dureeMusique" >
     <p>{{stringCurrentTime}} / {{stringDureeMusique}}</p>
     <button (click)="onLike()" class="btn btn-tertiary btn-floating">
-        <i *ngIf="!liked" class="bi bi-heart"></i>
-        <i *ngIf="liked" class="bi bi-heart-fill"></i>
+        <i *ngIf="!isFavorite" class="bi bi-heart"></i>
+        <i *ngIf="isFavorite" class="bi bi-heart-fill"></i>
     </button>
     <button class="btn btn-tertiary btn-floating"><i class="bi bi-three-dots-vertical"></i></button>
 </div>
