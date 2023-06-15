@@ -25,7 +25,7 @@ const routes: Routes = [
     {
         path: 'accueil',
         component: HomeComponent,
-        title: "Bienvenur sur FrEson"
+        title: "Bienvenue sur FrEson"
     },
 
     {
