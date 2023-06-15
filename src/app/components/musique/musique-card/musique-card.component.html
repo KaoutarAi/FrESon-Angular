@@ -1,9 +1,26 @@
-<div class="card" (click)="router.navigate(['musique', musique.id]);">
+<div class="card">
     <div class="card-image">
         <div class="image-box">
         <img src={{musique.image}} />
-        <audio controls>
-            <source src="{{musique.linkAudio}}" type="audio/mpeg">
+        <div id="controls">
+            <button *ngIf="paused" (click)=" onPlay()" class="btn btn-tertiary btn-floating">
+                <i class="bi bi-play-circle"></i>
+            </button>
+            <button *ngIf="!paused" (click)="onPause()" class="btn btn-tertiary btn-floating">
+                <i class="bi bi-pause-circle"></i>
+            </button>
+            <button (click)="onMute()" class="btn btn-tertiary btn-floating vButton">
+                <i class="bi bi-volume-up-fill"></i>
+            </button>
+            <button (click)="onStop()" class="btn btn-tertiary btn-floating">
+                <i class="bi bi-stop-fill"></i>
+            </button>
+            <!-- <input type="range" #volume (input)="onVolumeChange(volume.value)" [value]="currentVolume" min="0" max="1" step="0.1" class="vRange"> -->
+            <input type="range" class="rDuree" *ngIf="!paused" #time id="time-progress" (input)="onTimeChange(time.value)" [value]="currentTime" min="0" [max]="dureeMusique" >
+            <p *ngIf="!stopped" class="tDuree">{{stringCurrentTime}} / {{stringDureeMusique}}</p>
+        </div>
+        <audio>
+            <!-- <source src="{{musique.linkAudio}}" type="audio/mpeg"> -->
         </audio>
         </div>
     </div>

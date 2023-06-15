@@ -72,3 +72,43 @@
   img{
     padding-bottom: 7%;
   }
+
+  .vRange {
+    display: none;
+  }
+
+  .vButton:hover + .vRange {
+    display: block;
+  }
+
+  button {
+    color:hsl(39, 55%, 59%);
+    font-size: 1.5rem;
+  }
+
+  .tDuree {
+    font-size: 0.8rem;
+  }
+
+  /* input[type=range].rDuree{
+    -webkit-appearance: none;
+} */
+
+input[type=range].rDuree::-webkit-slider-runnable-track {
+    width: 300px;
+    height: 5px;
+    background: hsl(216, 36%, 30%);
+    border: none;
+    border-radius: 3px;
+}
+
+input[type=range].rDuree::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    border: none;
+    height: 5px;
+    width: 5px;
+    color: hsl(39, 55%, 59%);
+    border-radius: 5%;
+    margin-top: -4px;
+}
+
