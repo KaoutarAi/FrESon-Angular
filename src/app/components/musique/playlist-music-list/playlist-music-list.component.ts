@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, HostListener, Input, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
@@ -14,6 +14,7 @@ export class PlaylistMusicListComponent implements OnInit{
   playlist!: Playlist;
   musiques!: Musique[];
   duree: string = "0 : 00"
+  isSmallScreen: boolean = false;
 
   constructor(
     private srvPlaylist: PlaylistService
@@ -26,6 +27,11 @@ export class PlaylistMusicListComponent implements OnInit{
       this.musiques = playlist.musiques;
 
     })
+    if(window.innerWidth < 800) {
+        this.isSmallScreen = true;
+       }
+
+       this.onResize();
 
   }
 
@@ -36,6 +42,16 @@ export class PlaylistMusicListComponent implements OnInit{
 
     public imgSource(initialSrc: string, width: number): string {
         return initialSrc.replace(/width=(\d+)/, `width=${width}`);
+    }
+
+    @HostListener('window:resize', ['$event'])
+    onResize() {
+        if (window.innerWidth > 800) {
+            this.isSmallScreen = false;
+        }
+        else {
+            this.isSmallScreen = true;
+        }
     }
 
 }

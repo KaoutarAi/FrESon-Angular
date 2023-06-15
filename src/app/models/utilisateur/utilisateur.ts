@@ -2,6 +2,8 @@ export class Utilisateur {
 
     private _id!: number;
     private _pseudo!: string;
+    private _nom!: string;
+    private _prenom!: string;
     private _email!: string;
     private _role!: string;
 
@@ -17,6 +19,20 @@ export class Utilisateur {
     }
     public set pseudo(value: string) {
         this._pseudo = value;
+    }
+
+    public get nom(): string {
+        return this._nom;
+    }
+    public set nom(value: string) {
+        this._nom = value;
+    }
+
+    public get prenom(): string {
+        return this._prenom;
+    }
+    public set prenom(value: string) {
+        this._prenom = value;
     }
     
     public get email(): string {

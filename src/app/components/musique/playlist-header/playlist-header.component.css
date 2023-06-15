@@ -2,6 +2,20 @@ div.header {
     display: flex;
     background-color: hsl(216, 36%, 12%);
     color: hsl(39, 55%, 59%);
+    align-items: center;
+    overflow: hidden;
+    height: 30vh;
+}
+
+.image-header {
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    opacity: .15;
+}
+
+.header-infos {
+    /* position: sticky; */
 }
 
 @media (max-width: 576px) {
