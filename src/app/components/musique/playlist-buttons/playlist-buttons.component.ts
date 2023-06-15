@@ -1,15 +1,16 @@
 
-import { Component, Input, OnInit} from '@angular/core';
+import { Component, Input, OnInit, OnDestroy} from '@angular/core';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
 import { PlaylistService } from 'src/app/services/musique/playlist.service';
+import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
 
 @Component({
   selector: 'playlist-buttons',
   templateUrl: './playlist-buttons.component.html',
   styleUrls: ['./playlist-buttons.component.css']
 })
-export class PlaylistButtonsComponent implements OnInit{
+export class PlaylistButtonsComponent implements OnInit, OnDestroy{
   @Input() playlistId!: number;
   playlist!: Playlist;
   musiques!: Musique[];
@@ -18,8 +19,14 @@ export class PlaylistButtonsComponent implements OnInit{
   source: string = "#";
 
   constructor(
-    private srvPlaylist: PlaylistService
-    ) {};
+    private srvPlaylist: PlaylistService,
+    private srvUser: UtilisateurService
+    ) {}
+    
+  ngOnDestroy(): void {
+    this.stop();
+  }
+
 
   ngOnInit(): void {
     this.srvPlaylist.findById(this.playlistId).subscribe((playlist: Playlist) => {
@@ -164,6 +171,10 @@ export class PlaylistButtonsComponent implements OnInit{
   }
 
 
-
+  public stop(){
+    this.onPause()
+    this.audio.src = "";
+    this.currentTime = 0;
+  }
   
 } 

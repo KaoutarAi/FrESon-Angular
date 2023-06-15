@@ -29,4 +29,5 @@ td#toRight{
 
 div#commenter {
     display: flex;
+    margin-top: 5px;
 }
