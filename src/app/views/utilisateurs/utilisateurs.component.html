@@ -1,0 +1,36 @@
+<div class="search-reload">
+    <input type="text" placeholder="Chercher par pseudo..." [(ngModel)]="pseudo" (keyup)="rechercherPseudo()">
+    <button class="search" type="submit" (click)="rechercherPseudo()">
+        <span class="bi bi-search"></span>
+    </button>
+    <button class="reload" type="submit" (click)="reload()">
+        <span class="bi bi-arrow-clockwise"></span>
+    </button>
+</div>
+    
+
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Pseudo</th>
+        <th>Nom</th>
+        <th>Prenom</th>
+        <th>Email</th>
+        <th>Role</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+  
+    <tbody>
+      <tr *ngFor="let user of utilisateurs$ | async">
+        <td>{{ user.pseudo }}</td>
+        <td>{{ user.nom }}</td>
+        <td>{{ user.prenom }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <button (click)="supprimer(user)" class="btn btn-outline-danger ms-2"><span class="bi bi-trash"></span></button>
+        </td>
+      </tr>
+    </tbody>
+  </table>

@@ -43,6 +43,8 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
         
       });
     })
+    const likedState = localStorage.getItem('likedState');
+    this.liked = likedState === 'true';
   }
   
 
@@ -173,9 +175,11 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     else{
       this.liked = true;
     }  
+
+    localStorage.setItem('likedState', this.liked.toString());
+
     this.srvUtilisateur.likePlaylist(this.playlist).subscribe(
       (response: Playlist[]) => {
-        this.router.navigate([ '/favoris' ]);
       },
       (error: any) => {
         console.log(error);

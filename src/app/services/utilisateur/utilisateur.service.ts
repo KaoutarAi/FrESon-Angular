@@ -17,6 +17,10 @@ export class UtilisateurService {
     return this.httpClient.get<Utilisateur[]>(`${ environment.apiUrl }/utilisateur`);
   }
 
+  public findAllByRoles(): Observable<Utilisateur[]> {
+    return this.httpClient.get<Utilisateur[]>(`${ environment.apiUrl }/utilisateur/roles`);
+  }
+
   public findAboPlaylist(): Observable<Playlist[]> {
     return this.httpClient.get<Playlist[]>(`${ environment.apiUrl }/utilisateur/favoris/playlists`);
   }
@@ -34,6 +38,10 @@ export class UtilisateurService {
     return this.httpClient.get<Playlist[]>(`${ environment.apiUrl }/utilisateur/mes-playlists`);
   }
 
+  public findByPseudo(pseudo: string): Observable<Utilisateur[]>{
+    return this.httpClient.get<Utilisateur[]>(`${ environment.apiUrl }/utilisateur/pseudo/${ pseudo}`);
+  }
+
   public add(utilisateur: any): Observable<Utilisateur> {
     return this.httpClient.post<Utilisateur>(`${ environment.apiUrl }/utilisateur/inscription`, utilisateur);
   }
@@ -47,6 +55,6 @@ export class UtilisateurService {
   }
 
   public delete(utilisateur: Utilisateur): Observable<void> {
-    return this.httpClient.delete<void>(`${ environment.apiUrl }/utilisateur/pseudo/${ utilisateur.pseudo }`);
+    return this.httpClient.delete<void>(`${ environment.apiUrl }/utilisateur/${ utilisateur.id }`);
   }
 }

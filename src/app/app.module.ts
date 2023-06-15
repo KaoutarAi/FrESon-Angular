@@ -39,6 +39,7 @@ import { MusicsTableComponent } from './components/musique/musics-table/musics-t
 import {DragDropModule} from '@angular/cdk/drag-drop';
 import { MesPlaylistsComponent } from './views/mes-playlists/mes-playlists.component';
 import { PlaylistCommentairesComponent } from './components/musique/playlist-commentaires/playlist-commentaires.component';
+import { UtilisateursComponent } from './views/utilisateurs/utilisateurs.component';
 
 
 @NgModule({
@@ -76,7 +77,8 @@ import { PlaylistCommentairesComponent } from './components/musique/playlist-com
     MusicsTableComponent,
     MusiqueGridComponent,
     MesPlaylistsComponent,
-    PlaylistCommentairesComponent
+    PlaylistCommentairesComponent,
+    UtilisateursComponent
   ],
   imports: [
     BrowserModule,
