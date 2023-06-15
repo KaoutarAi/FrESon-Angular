@@ -44,4 +44,8 @@ export class LoginComponent {
 
   }
 
+  inscrire(){
+    this.router.navigate(['/inscription']);
+  }
+
 }
