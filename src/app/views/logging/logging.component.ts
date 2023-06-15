@@ -19,9 +19,9 @@ export class LoggingComponent implements OnInit {
   deleteAllDate: boolean=false;
   deleteAllText: boolean=false;
 
-  year!: string;
-  month!: string;
-  day!: string;
+  year!: number;
+  month!: number;
+  day!: number;
   text! : string;
   pseudo!: string;
 
@@ -40,19 +40,19 @@ export class LoggingComponent implements OnInit {
   }
 
   public dateReset(){
-    this.year = "";
-    this.month= "",
-    this.day = "";
+    this.year = 0;
+    this.month= 0,
+    this.day = 0;
     this.reload();
   }
 
 
   public findByDate(year = this.year, month = this.month, day = this.day){
-    if(year && year !=""){
+    if(year && year != 0){
       this.loggings$ = this.srvLogging.findByYear(year);
-      if(month && month !=""){
+      if(month && month != 0){
         this.loggings$ = this.srvLogging.findByMonth(year, month);
-        if(day && day != ""){
+        if(day && day != 0){
           this.loggings$ = this.srvLogging.findByDay(year, month, day);
         }
       }
@@ -106,9 +106,9 @@ export class LoggingComponent implements OnInit {
   }
 
   public deleteAllByDate(year = this.year, month = this.month, day = this.day){
-    if(year && year !=""){
-      if(month && month !=""){
-        if(day && day != ""){
+    if(year && year != 0){
+      if(month && month != 0){
+        if(day && day != 0){
           this.srvLogging.deleteByDay(year, month, day).subscribe(() => this.reload());
         }
         else{
@@ -127,4 +127,19 @@ export class LoggingComponent implements OnInit {
     this.reload();
   }
 
+
+  // public checkChecked(){
+  //   if(this.pseudoChecked){
+  //     this.dateChecked = false;
+  //     this.textChecked = false;
+  //   }
+  //   else if(this.dateChecked){
+  //     this.pseudoChecked = false;
+  //     this.textChecked = false;
+  //   }
+  //   else if(this.textChecked){
+  //     this.pseudoChecked = false;
+  //     this.dateChecked = false;
+  //   }
+  // }
 }

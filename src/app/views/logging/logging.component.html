@@ -5,9 +5,9 @@
 
 <div>
     <h3>Recherche</h3>
-    <div>
+    <div class="form-floating mb-3">
         <label>Par nom d'utilisateur</label>
-        <input type="checkbox" [(ngModel)]="pseudoChecked">
+        <input type="checkbox" [(ngModel)]="pseudoChecked" >
         <p *ngIf="pseudoChecked">
             <input type="text" [(ngModel)]="pseudo" (keyup)="findByPseudo(pseudo)">
             <button (click)="pseudoReset()" class="btn btn-primary">Réinitialiser</button>
@@ -21,11 +21,11 @@
     </div>
     <div>
         <label>Par date</label>
-        <input type="checkbox" [(ngModel)]="dateChecked">
+        <input type="checkbox" [(ngModel)]="dateChecked" >
         <p *ngIf="dateChecked">
-            <input type="text" placeholder="année" [(ngModel)]="year" (keyup)="findByDate(year)">
-            <input type="text" placeholder="mois" [(ngModel)]="month" (keyup)="findByDate(year, month)">
-            <input type="text" placeholder="jour" [(ngModel)]="day" (keyup)="findByDate(year, month, day)"> 
+            <input type="number" placeholder="année" [(ngModel)]="year" (keyup)="findByDate(year)">
+            <input type="number" placeholder="mois" [(ngModel)]="month" (keyup)="findByDate(year, month)">
+            <input type="number" placeholder="jour" [(ngModel)]="day" (keyup)="findByDate(year, month, day)"> 
             <button (click)="dateReset()" class="btn btn-primary">Réinitialiser</button>
             <button (click)="confirmDeleteDate()" class="btn btn-danger">Supprimer tout</button>
             <strong *ngIf="deleteAllDate">
@@ -39,7 +39,7 @@
     </div>
     <div>
         <label>Par contenu</label>
-        <input type="checkbox" [(ngModel)]="textChecked">
+        <input type="checkbox" [(ngModel)]="textChecked" >
         <p *ngIf="textChecked">
             <input type="text" [(ngModel)]="text" (keyup)="findByText(text)">
             <button (click)="textReset()" class="btn btn-primary">Réinitialiser</button>

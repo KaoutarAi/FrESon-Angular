@@ -15,8 +15,8 @@
                 <option value="TRISTESSE">TRISTESSE</option>
             </select>
             <!-- <input type="number" formControlName="limitP" [formControl]="limitPCtrl"> -->
-            <input class="bar" type="text" placeholder="Chercher une playlist..." *ngIf="typePCtrl.value !== 'etiquette'" formControlName="searchP" [formControl]="searchPCtrl">
-            <button type="submit" (click)="rechercherPlaylist()">
+            <input class="bar" type="text" placeholder="Chercher une playlist..." *ngIf="typePCtrl.value !== 'etiquette'" formControlName="searchP" [formControl]="searchPCtrl" (change)="rechercherPlaylist()">
+            <button type="submit" (click)="rechercherPlaylist()" *ngIf="typePCtrl.value == 'etiquette'">
                 <span class="bi bi-search"></span>
             </button>
         </form>
@@ -33,10 +33,10 @@
                 <option value="album">Album</option>
             </select>
             <!-- <input type="number" formControlName="limitM" [formControl]="limitMCtrl"> -->
-            <input type="text" placeholder="Chercher une musique..." formControlName="searchM" [formControl]="searchMCtrl">
-            <button type="submit" (click)="rechercherMusic()">
+            <input type="text" placeholder="Chercher une musique..." formControlName="searchM" [formControl]="searchMCtrl" (change)="rechercherMusic()">
+            <!-- <button type="submit" (click)="rechercherMusic()">
                 <span class="bi bi-search"></span>
-            </button>
+            </button> -->
         </form>
     </div>
     <app-musique-cards slideTitle="Musiques" [musiques]="musiques"></app-musique-cards>

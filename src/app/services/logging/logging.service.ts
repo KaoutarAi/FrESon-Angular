@@ -27,15 +27,15 @@ export class LoggingService {
     return this.httpClient.delete<void>(`${environment.apiUrl}/logging/${ logging.id }`);
   }
 
-  public findByYear(year: string): Observable<Logging[]> {
+  public findByYear(year: number): Observable<Logging[]> {
     return this.httpClient.get<Logging[]>(`${environment.apiUrl}/logging/date/${year}`);
   }
 
-  public findByMonth(year: string, month:string): Observable<Logging[]> {
+  public findByMonth(year: number, month:number): Observable<Logging[]> {
     return this.httpClient.get<Logging[]>(`${environment.apiUrl}/logging/date/${year}/${month}`);
   }
 
-  public findByDay(year: string, month:string, day: string): Observable<Logging[]> {
+  public findByDay(year: number, month:number, day: number): Observable<Logging[]> {
     return this.httpClient.get<Logging[]>(`${environment.apiUrl}/logging/date/${year}/${month}/${day}`);
   }
 
@@ -51,15 +51,15 @@ export class LoggingService {
     return this.httpClient.delete<void>(`${environment.apiUrl}/logging/utilisateur/${pseudo}`);
   }
 
-  public deleteByYear(year: string): Observable<void>{
+  public deleteByYear(year: number): Observable<void>{
     return this.httpClient.delete<void>(`${environment.apiUrl}/logging/date/${year}`);
   }
 
-  public deleteByMonth(year: string, month: string): Observable<void>{
+  public deleteByMonth(year: number, month: number): Observable<void>{
     return this.httpClient.delete<void>(`${environment.apiUrl}/logging/date/${year}/${month}`);
   }
 
-  public deleteByDay(year: string, month: string, day: string): Observable<void>{
+  public deleteByDay(year: number, month: number, day: number): Observable<void>{
     console.log(year);
     console.log(month);
     console.log(day);

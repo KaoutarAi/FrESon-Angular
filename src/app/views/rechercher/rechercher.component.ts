@@ -70,7 +70,7 @@ export class RechercherComponent implements OnInit{
 
 
   rechercherPlaylist() {
-    if (this.isPlaylistFormActive) {
+    if (this.isPlaylistFormActive) {      
       this.playlists = this.srvPlaylist.findByContaining(
         this.typePCtrl.value,
         this.searchPCtrl.value,
