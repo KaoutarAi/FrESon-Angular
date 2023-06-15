@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, HostListener, Input, OnChanges, OnDestroy, OnInit, Output, SimpleChanges } from '@angular/core';
 import { Router } from '@angular/router';
 import { Musique } from 'src/app/models/musique/musique';
 import { PlaylistService } from 'src/app/services/musique/playlist.service';
@@ -8,7 +8,7 @@ import { PlaylistService } from 'src/app/services/musique/playlist.service';
   templateUrl: './musique-card.component.html',
   styleUrls: ['./musique-card.component.css']
 })
-export class MusiqueCardComponent {
+export class MusiqueCardComponent implements OnInit, OnDestroy {
   @Input() musique!: Musique;
 
   constructor(
@@ -16,6 +16,8 @@ export class MusiqueCardComponent {
     public srvPlaylist: PlaylistService
   ){}
 
+
+  
   paused: boolean = true;
   dureeMusique!: number; 
   stringDureeMusique!: string;
@@ -24,14 +26,20 @@ export class MusiqueCardComponent {
   currentVolume: number = 0.5;
   nValue!: number;
   stopped: boolean = true;
-  private audio  = new Audio();
-
+  audio:HTMLAudioElement = new Audio();
+  
   ngOnDestroy(): void {
     this.onStop();
   }
+  
+  ngOnInit(): void {
+    this.audio.currentTime = 0;
+    this.audio.pause;
+    this.onStop();
+  }
+
 
   public onPlay(){
-    
     this.paused = false;
     this.audio.src = this.musique.linkAudio;
     this.stopped = false;
@@ -85,4 +93,5 @@ export class MusiqueCardComponent {
     this.currentTime = 0;
     this.stopped = true;
   }
+
 }

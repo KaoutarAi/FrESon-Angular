@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { AfterViewInit, Component} from '@angular/core';
 import { Observable } from 'rxjs';
 import { Musique } from 'src/app/models/musique/musique';
 import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
@@ -12,9 +12,11 @@ export class FavorisMusiquesComponent {
 
   aboMusiques!: Observable<Musique[]>;
   constructor(private srvUtilisateur: UtilisateurService) { }
+  
 
   ngOnInit(): void {
     this.aboMusiques = this.srvUtilisateur.findAboMusique();
   }
+
 
 }

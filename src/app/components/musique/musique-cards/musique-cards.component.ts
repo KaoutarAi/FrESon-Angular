@@ -1,6 +1,7 @@
-import { Component, Input } from '@angular/core';
+import { Component, Input, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Musique } from 'src/app/models/musique/musique';
+import { MusiqueCardComponent } from '../musique-card/musique-card.component';
 
 @Component({
   selector: 'app-musique-cards',
@@ -12,14 +13,5 @@ export class MusiqueCardsComponent {
   @Input() slideTitle!: string;
   @Input() displayMore!: any;
 
-  // fonction(){    
-  //   document.addEventListener('onPlay', function(e){
-  //     var audios = document.getElementsByTagName('audio');
-  //     for(var i = 0, len = audios.length; i < len;i++){
-  //         if(audios[i] != e.target){
-  //             audios[i].pause();
-  //         }
-  //     }
-  //   }, true);
-  // }
+  
 }

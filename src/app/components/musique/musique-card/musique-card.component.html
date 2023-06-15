@@ -16,12 +16,12 @@
                 <i class="bi bi-stop-fill"></i>
             </button>
             <!-- <input type="range" #volume (input)="onVolumeChange(volume.value)" [value]="currentVolume" min="0" max="1" step="0.1" class="vRange"> -->
-            <input type="range" class="rDuree" *ngIf="!paused" #time id="time-progress" (input)="onTimeChange(time.value)" [value]="currentTime" min="0" [max]="dureeMusique" >
+            <input type="range" class="rDuree" *ngIf="!stopped" #time id="time-progress" (input)="onTimeChange(time.value)" [value]="currentTime" min="0" [max]="dureeMusique" >
             <p *ngIf="!stopped" class="tDuree">{{stringCurrentTime}} / {{stringDureeMusique}}</p>
         </div>
-        <audio>
-            <!-- <source src="{{musique.linkAudio}}" type="audio/mpeg"> -->
-        </audio>
+        <!-- <audio #audioP>
+            <source src="{{musique.linkAudio}}" type="audio/mpeg">
+        </audio> -->
         </div>
     </div>
     <div class="musique-details">
