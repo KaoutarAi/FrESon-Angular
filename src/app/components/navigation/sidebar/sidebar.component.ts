@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'app-sidebar',
@@ -7,6 +8,11 @@ import { Component } from '@angular/core';
 })
 export class SidebarComponent {
     private _srcImg: string = "assets/pictures/Title_complete_color.png";
+    role: string = this.srvAuth.role;
+
+    constructor(
+        private srvAuth: AuthenticationService
+    ){}
 
     public get srcImg(): string {
         return this._srcImg;

@@ -42,6 +42,26 @@
                 </div>
             </a>
 
+            <a class="sidebar-item" [routerLink]="[ '/parametres' ]" routerLinkActive="active">
+                <div class="sidebar-item-content">
+                    <i class="bi bi-gear-fill sidebar-icon"></i>
+                    <span>Paramètres</span>
+                </div>
+            </a>
+            
+            <a  class="sidebar-item" [routerLink]="[ '/utilisateurs' ]" routerLinkActive="active" *ngIf="role == 'ADMINISTRATEUR'" >
+                <div class="sidebar-item-content">
+                    <i class="bi bi-person-fill-gear sidebar-icon"></i>
+                    <span>Utilisateurs</span>
+                </div>
+            </a>
+
+            <a *ngIf="role == 'ADMINISTRATEUR'" class="sidebar-item" [routerLink]="[ '/logging' ]" routerLinkActive="active" >
+                <div class="sidebar-item-content">
+                    <i class="bi bi-card-list sidebar-icon"></i>
+                    <span>Loggings</span>
+                </div>
+            </a>
         </div>
     </div>
 </div>
