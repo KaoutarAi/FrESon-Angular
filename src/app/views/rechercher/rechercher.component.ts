@@ -70,7 +70,7 @@ export class RechercherComponent implements OnInit{
 
 
   rechercherPlaylist() {
-    if (this.isPlaylistFormActive) {      
+    if (this.isPlaylistFormActive && this.typePCtrl.value != "") {      
       this.playlists = this.srvPlaylist.findByContaining(
         this.typePCtrl.value,
         this.searchPCtrl.value,
@@ -82,7 +82,7 @@ export class RechercherComponent implements OnInit{
   
 
   rechercherMusic() {
-    if (this.isMusicFormActive) {
+    if (this.isMusicFormActive && this.typeMCtrl.value != "") {
       this.musiques = this.srvMusique.findByContaining(
         this.typeMCtrl.value,
         this.searchMCtrl.value,
