@@ -1,8 +1,6 @@
 <div class="header">
-    <div>
-        <img src="#" alt="" style="height: 20vhpx; width: 20vw;">
-    </div>
-    <div *ngIf="musiques">
+        <img src="{{musiques[0].image}}" class="image-header">
+    <div class="header-infos" *ngIf="musiques">
         <h1>{{playlist.nom}}</h1>
         <h3>{{playlist.etiquette}}</h3>
         <h4>{{playlist.utilisateurPseudo}} - {{nbTitres}} titres- {{setTime(tpsTotalN)}} </h4>

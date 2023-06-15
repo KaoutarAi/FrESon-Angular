@@ -1,10 +1,12 @@
-<div >
-    <table class="table table-stripped">
+<div class="table-musics">
+    <table class="table">
         <thead>
-            <tr>
+            <tr class="table-header">
                 <th>#</th>
+                <th></th>
                 <th>Titre</th>
-                <th id="tab-album">Album</th>
+                <th>Artiste</th>
+                <th *ngIf="!isSmallScreen">Album</th>
                 <th>Durée</th>
             </tr>
         </thead>
@@ -13,11 +15,43 @@
                 <td>{{indexOfElement + 1}}</td>
                 <td>
                     <img src="{{imgSource(musique.image, 50)}}" alt="">
-                    {{musique.titre}}
                 </td>
-                <td id="tab-album">{{musique.albumNom}}</td>
+                <td>
+                    <div class="tldr-container">
+                        <div class="tldr">{{musique.titre}}</div>
+                    </div>
+                </td>
+                <td>
+                    <div class="tldr-container">
+                        <div class="tldr">{{musique.artiste}}</div>
+                    </div>
+                </td>
+                <td *ngIf="!isSmallScreen">
+                    <div class="tldr-container">
+                        <div class="tldr">{{musique.albumNom}}</div>
+                    </div>
+                </td>
                 <td>{{setTime(musique.duree)}}</td>
             </tr>
         </tbody>
     </table>
+
+    <!-- <div class="list-header">
+        <div class="header-index">#</div>
+        <div class="header-img"></div>
+        <div class="header-title">Titre</div>
+        <div class="header-artist">Artiste</div>
+        <div class="header-album">Album</div>
+        <div class="header-duration"></div>
+    </div>
+    <div class="table-musics">
+        <div class="music-row" *ngFor="let musique of musiques; index as indexOfElement">
+            <div class="music-index">{{indexOfElement + 1}}</div>
+            <div class="music-img"><img src="{{imgSource(musique.image, 50)}}" alt=""></div>
+            <div class="music-title">{{musique.titre}}</div>
+            <div class="music-artist"> {{musique.artiste}} </div>
+            <div class="music-album">{{musique.albumNom}}</div>
+            <div class="music-duration">{{setTime(musique.duree)}}</div>
+        </div>
+    </div> -->
 </div>
