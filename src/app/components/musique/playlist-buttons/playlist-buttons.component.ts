@@ -1,5 +1,5 @@
 
-import { Component, Input, OnInit, OnDestroy, HostListener} from '@angular/core';
+import { Component, Input, OnInit, OnDestroy, HostListener, EventEmitter, Output, OnChanges, SimpleChanges} from '@angular/core';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
 import { PlaylistService } from 'src/app/services/musique/playlist.service';
@@ -7,27 +7,52 @@ import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.ser
 
 import { Observable, lastValueFrom } from 'rxjs';
 import { Router } from '@angular/router';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
   selector: 'playlist-buttons',
   templateUrl: './playlist-buttons.component.html',
   styleUrls: ['./playlist-buttons.component.css']
 })
-export class PlaylistButtonsComponent implements OnInit, OnDestroy{
+export class PlaylistButtonsComponent implements OnInit, OnDestroy, OnChanges{
   @Input() playlistId!: number;
   playlist!: Playlist;
   musiques!: Musique[];
   paused: boolean = true;
   source: string = "#";
   isFavorite!: boolean;
+  isMine: boolean = false;
+  private audio = new Audio();
+
+  dureeMusique!: number;
+  stringDureeMusique!: string;
+  currentTime!: number;
+  stringCurrentTime!: string;
+  currentVolume: number = 0.5;
+  nValue!: number;
+  @Input() currentTrack: number = 0;
+  shuffled: boolean = false;
+  @Output() musicindex: EventEmitter<number> = new EventEmitter<number>();
 
   obsPlaylist!: Observable<Playlist[]>;
 
   constructor(
     private srvPlaylist: PlaylistService,
     private srvUtilisateur: UtilisateurService,
+    private srvAuth: AuthenticationService,
     private router: Router
-    ) {};
+    ) {}
+
+    ngOnChanges(changes: SimpleChanges): void {
+
+        if (this.musiques) {
+        this.source = this.musiques[this.currentTrack].linkAudio;
+        this.audio.play;
+        this.currentTime = 0;
+        this.onPlay();
+        }
+    }
+;
 
     ngOnDestroy(): void {
       this.stop();
@@ -39,24 +64,19 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
       this.musiques = playlist.musiques;
       this.musiques.forEach(m => {
         this.musiques.push(m);
-        this.source = this.musiques[0].linkAudio;
-
       });
+      this.source = this.musiques[0].linkAudio;
+      if (this.playlist.utilisateurId == this.srvAuth.id) {
+        this.isMine = true;
+     }
     });
-     this.checkedFav()
+     this.checkedFav();
+
+
   }
 
 
-  private audio = new Audio();
 
-  dureeMusique!: number;
-  stringDureeMusique!: string;
-  currentTime!: number;
-  stringCurrentTime!: string;
-  currentVolume: number = 0.5;
-  nValue!: number;
-  currentTrack: number = 0;
-  shuffled: boolean = false;
 
 
   public onPlay(){
@@ -65,7 +85,7 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     if(this.currentTime > 0){
       this.audio.currentTime = this.currentTime;
     }
-
+    this.musicindex.emit(this.currentTrack)
     this.audio.play();
 
     this.audio.addEventListener("timeupdate", () => {
@@ -114,7 +134,6 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     }
     this.currentTrack = Math.floor(Math.random()* this.musiques.length+1)
     this.source = this.musiques[this.currentTrack].linkAudio;
-
     this.audio.play;
     this.currentTime = 0;
     this.onPlay();
@@ -167,23 +186,6 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy{
     this.currentTime = this.nValue;
   }
 
-//   public onLike(){
-//     if (isLiked()) {
-
-//     }
-//   }
-
-//     // localStorage.setItem('likedState', this.liked.toString());
-
-//     this.srvUtilisateur.likePlaylist(this.playlist).subscribe(
-//       (response: Playlist[]) => {
-//       },
-//       (error: any) => {
-//         console.log(error);
-//       }
-//     );
-
-//   }
 
   checkedFav() {
     this.isLiked().then((result) => this.isFavorite = result);
@@ -193,39 +195,38 @@ async isLiked() {
     let res: boolean = false;
     const favPlaylists = await lastValueFrom(this.srvUtilisateur.findAboPlaylist());
     for (let p of favPlaylists) {
-        console.log("Cheking id: " + p.id);
         if (this.playlistId == p.id) {
-            console.log("Hoho it is true");
                 res = true;
                 break;
             }
         }
-        return res;
+    return res;
     }
 
   onLike() {
-    // this.isFavorite = await this.isLiked();
-    // console.log("FAV? + " + this.isFavorite);
-
     this.srvUtilisateur.likePlaylist(this.playlist).subscribe(() => {
-        // window.location.reload();
         this.checkedFav();
-        console.log(this.isFavorite);
-
     })
   }
-
-//   @HostListener('click', ['$event'])
-//   onClick() {
-//     this.isLiked;
-//   }
-
 
 
   public stop(){
     this.onPause()
     this.audio.src = "";
     this.currentTime = 0;
+  }
+
+  onClickEdit() {
+    this.router.navigate(['/ajouter-playlist'], { queryParams: {id: this.playlist.id}})
+  }
+
+  onClickDuplicate() {
+    let duplicatePlaylist = this.playlist;
+    duplicatePlaylist.utilisateurId = this.srvAuth.id;
+    this.srvPlaylist.add(duplicatePlaylist).subscribe(playlist => {
+        this.router.navigate(['/ajouter-playlist'], { queryParams: {id: playlist.id}})
+    });
+
   }
 
 }

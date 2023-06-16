@@ -1,33 +1,76 @@
-#com-compo {
-    width: 100%;
+.commentaire-contenainer {
+    height: 40vh;
+    overflow-y: scroll;
+    margin-bottom: 2%;
+}
+
+.com-div {
+    padding: 10px 0;
+}
+
+.com-user, .com-date, .com-suppr {
+    display: inline-block;
+}
+
+.com-user {
+    color: var(--yellow-jaguar);
+    padding-right: 15px;
+}
+
+.com-date {
+    font-size: .7rem;
+}
+
+.comment-div {
+    display: flex;
+    justify-content: center;
 }
 
 input[type="text"]{
-    width: 70vw;
+    width: 60%;
+    border-radius: 20px;
+    background-color: var(--brighter-blue);
+    color: white;
+    border: none;
 }
 
-table {
-    width: 100%;
-    color: black;
+.btn-sent {
+    display: inline;
+    font-size: 1.3rem;
+    color: var(--yellow-jaguar);
+    outline: none;
+    padding-top: 2px;
+    padding: 0;
+    border: none;
+    background: none;
+    vertical-align: middle;
+    padding-left: 15px;
 }
 
-.fond-comm{
-    background-color: white;
+
+.btn-suppr {
+    display: inline;
+    font-size: 1rem;
+    color: red;
+    outline: none;
+    padding-top: 2px;
+    padding: 0;
+    border: none;
+    background: none;
+    vertical-align: middle;
+    padding-left: 15px;
 }
 
-#contenu {
-    width: 50%;
+h4 {
+    font-size: 22px;
+    padding-top: 10px;
 }
 
-td button {
-    margin-left: 10px;
+.input-date {
+    width: 20%;
+    border-radius: 20px;
 }
 
-td#toRight{
-    text-align: right;
-}
-
-div#commenter {
-    display: flex;
-    margin-top: 5px;
+.input-text {
+    width: 55%;
 }

@@ -1,7 +1,6 @@
-<playlist-header [playlistId] = "id"></playlist-header>
+<playlist-header [playlistId] = "id" [currentMusic]="musicIndex"></playlist-header>
 <hr>
-<playlist-buttons [playlistId] = "id"></playlist-buttons>
+<playlist-buttons [playlistId] = "id" (musicindex)="getMusicInfo($event)" [currentTrack]="musicIndex"></playlist-buttons>
 <hr>
-<playlist-music-list [playlistId] = "id"></playlist-music-list>
+<playlist-music-list [playlistId] = "id" (play)="playThisMusic($event)"></playlist-music-list>
 <hr>
-<playlist-commentaires [playlistId] = "id"></playlist-commentaires>

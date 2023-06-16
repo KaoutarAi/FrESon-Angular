@@ -11,6 +11,7 @@ import { PlaylistService } from 'src/app/services/musique/playlist.service';
 })
 export class PlaylistComponent implements OnInit{
     id: number = 0;
+    musicIndex: number = 0;
     playlist!: Playlist;
 
     constructor(
@@ -25,9 +26,17 @@ export class PlaylistComponent implements OnInit{
         this.srvPlaylist.findById(this.id).subscribe(p => {
             this.playlist = p;
         });
-
-
     }
+
+    getMusicInfo(evt: number) {
+        this.musicIndex = evt;
+    }
+
+    playThisMusic(evt: number) {
+        this.musicIndex = evt;
+    }
+
+
 
 
 }
