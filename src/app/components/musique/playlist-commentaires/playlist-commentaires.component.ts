@@ -71,19 +71,25 @@ export class PlaylistCommentairesComponent implements OnInit, AfterContentChecke
 
   public onLoadPseudo(){
     if(this.findPseudo == "" || this.findPseudo == null){
+        console.log("HERE OR..");
       this.loadCom();
     }
     else{
+        console.log("IN ELSE WE TRUST");
       this.commentaires$ = this.srcCom.findAllByPlaylistAndPseudo(this.playlistId, this.findPseudo);
     }
   }
 
   public onLoadContent(){
-    if(this.findPseudo == "" || this.findPseudo == null){
+    if(this.findContent== "" || this.findContent == null){
+        // console.log("HERE OR..");
+
       this.loadCom();
     }
     else{
-    this.commentaires$ = this.srcCom.findAllByPlaylistAndContenu(this.playlistId, this.findContent);
+        this.commentaires$ = this.srcCom.findAllByPlaylistAndContenu(this.playlistId, this.findContent);
+        // console.log("IN ELSE WE TRUST");
+
     }
   }
 
