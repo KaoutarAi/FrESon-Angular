@@ -3,7 +3,7 @@
         <div class="com-div" *ngFor="let com of commentaires$ | async">
             <div class="com-header">
                 <div class="com-user">{{com.utilisateur.pseudo}}</div>
-                <div class="com-date"> {{com.date}} </div>
+                <div class="com-date"> {{prettyDate(com.date)}} </div>
                 <div  class="com-suppr" *ngIf="role == 'ADMINISTRATEUR' || role == 'MODERATEUR'">
                     <button class="btn-suppr" (click)="onDelete(com)"><i class="bi bi-dash-circle"></i></button>
                 </div>

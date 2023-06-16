@@ -105,4 +105,16 @@ export class PlaylistCommentairesComponent implements OnInit, AfterContentChecke
 
   }
 
+
+  prettyDate(impDate: Date | null) {
+    if (impDate != null) {
+        const date = new Date(impDate);
+        let day: string = (date.getDay() < 10) ? `0${date.getDay()}` : `${date.getDay()}`;
+        let month: string = (date.getMonth() < 10) ? `0${date.getMonth()}` : `${date.getMonth()}`;
+        return `${day}/${month}/${date.getFullYear()} à ${date.toTimeString().substring(0, 5)}`;
+    }
+    return '';
+
+  }
+
 }
