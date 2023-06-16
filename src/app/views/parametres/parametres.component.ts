@@ -1,13 +1,17 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { Utilisateur } from 'src/app/models/utilisateur/utilisateur';
+import { AuthenticationService } from 'src/app/services/authentication.service';
 import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.service';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-parametres',
   templateUrl: './parametres.component.html',
   styleUrls: ['./parametres.component.css']
 })
-export class ParametresComponent {
+export class ParametresComponent implements OnInit{
+  utilisateur$!: Observable<Utilisateur>;
   nomChecked: boolean = false;
   nom!: string;
   prenomChecked: boolean = false;
@@ -17,8 +21,33 @@ export class ParametresComponent {
   mdpChecked: boolean = false;
   mdp!: string;
   mdpVerif!: string;
+  deletingAccount = false;
 
-  constructor(private router: Router, private srvUtilisateur: UtilisateurService) {
+  
+
+  constructor(private router: Router, private srvUtilisateur: UtilisateurService, private srvAuth: AuthenticationService) {
+  }
+
+  ngOnInit(): void {
+      this.reload();
+  }
+
+  confirmDelete() {
+    this.deletingAccount = true;
+  }
+
+  cancelDelete() {
+    this.deletingAccount = false;
+  }
+
+  deleteAccount() {
+    this.srvUtilisateur.supp(this.srvAuth.id).subscribe(() => {
+      this.srvAuth.token = "";
+      this.router.navigate(['/inscription']);
+    }, (error) => {
+      console.error(error);
+    });
+    
   }
 
 
@@ -28,7 +57,7 @@ export class ParametresComponent {
       nom: this.nom
     }
     this.srvUtilisateur.edit(utilisateur).subscribe(() => {
-      
+      this.reload();
     }, (error) => {
       console.error(error);
     });
@@ -39,7 +68,7 @@ export class ParametresComponent {
       prenom: this.prenom
     }
     this.srvUtilisateur.edit(utilisateur).subscribe(() => {
-      
+      this.reload();
     }, (error) => {
       console.error(error);
     });
@@ -50,7 +79,7 @@ export class ParametresComponent {
       email: this.email
     }
     this.srvUtilisateur.edit(utilisateur).subscribe(() => {
-      
+      this.reload();
     }, (error) => {
       console.error(error);
     });
@@ -66,6 +95,10 @@ export class ParametresComponent {
     }, (error) => {
       console.error(error);
     });
+  }
+
+  reload(){
+    this.utilisateur$ = this.srvUtilisateur.findById(this.srvAuth.id);
   }
 
 }

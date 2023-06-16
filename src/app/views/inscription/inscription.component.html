@@ -1,3 +1,22 @@
+<div *ngIf="emailCtrl.hasError('email') || mdpCtrl.hasError('pattern') || (mdpCtrl.value != mdpVerifCtrl.value && mdpVerifCtrl.value!='')" class="alert alert-danger">
+	<span *ngIf="emailCtrl.hasError('email')">
+		L'email n'est pas valide<br/>
+	</span>
+	<span *ngIf="mdpCtrl.hasError('pattern')">
+		Le mot de passe doit contenir au moins:
+		<ul>
+			<li>8 caractères.</li>
+			<li>Une lettre minuscule.</li>
+			<li>Une lettre majuscule.</li>
+			<li>Un chiffre.</li>
+			<li>Un caractère spécial.</li>
+		</ul>
+	</span>
+	<span *ngIf="mdpCtrl.value != mdpVerifCtrl.value && mdpVerifCtrl.value!=''">
+		Le mot de passe n'est pas le meme!
+	</span>
+</div>
+
 <form [formGroup]="userForm">
     <div>
 		<!-- <label for="role">Vous êtes ?</label> -->
