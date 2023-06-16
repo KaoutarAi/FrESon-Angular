@@ -31,8 +31,11 @@ export class InscriptionComponent implements OnInit{
     this.nomCtrl = this.formBuilder.control('', Validators.required);
     this.prenomCtrl = this.formBuilder.control('', Validators.required);
     this.pseudoCtrl = this.formBuilder.control('', Validators.required);
-    this.emailCtrl = this.formBuilder.control('', Validators.required);
-    this.mdpCtrl = this.formBuilder.control('', Validators.required);
+    this.emailCtrl = this.formBuilder.control('', [Validators.required, Validators.email]);
+    this.mdpCtrl = this.formBuilder.control('', [
+      Validators.required,
+      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/)
+    ]);
     this.mdpVerifCtrl = this.formBuilder.control('', Validators.required);
 
     this.userForm = this.formBuilder.group({

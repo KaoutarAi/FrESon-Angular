@@ -59,12 +59,14 @@ const routes: Routes = [
 
     {
         path: 'inscription',
-        component: InscriptionComponent
+        component: InscriptionComponent,
+        title: "Inscription"
     },
 
     {
         path: 'connexion',
-        component: LoginComponent
+        component: LoginComponent,
+        title: "Connexion"
     },
 
     {

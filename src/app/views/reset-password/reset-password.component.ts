@@ -21,7 +21,10 @@ export class ResetPasswordComponent implements OnInit{
   }
 
   ngOnInit(){
-    this.mdpCtrl = this.formBuilder.control('', Validators.required);
+    this.mdpCtrl = this.formBuilder.control('', [
+      Validators.required,
+      Validators.pattern(/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[^\da-zA-Z]).{8,}$/)
+    ]);
     this.mdpVerifCtrl = this.formBuilder.control('', Validators.required);
 
     this.resetMdpForm = this.formBuilder.group({

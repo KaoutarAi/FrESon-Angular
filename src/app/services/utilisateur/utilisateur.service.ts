@@ -17,6 +17,10 @@ export class UtilisateurService {
     return this.httpClient.get<Utilisateur[]>(`${ environment.apiUrl }/utilisateur`);
   }
 
+  public findById(id: number): Observable<Utilisateur> {
+    return this.httpClient.get<Utilisateur>(`${ environment.apiUrl }/utilisateur/${ id}`);
+  }
+
   public findAllByRoles(): Observable<Utilisateur[]> {
     return this.httpClient.get<Utilisateur[]>(`${ environment.apiUrl }/utilisateur/roles`);
   }
@@ -56,5 +60,9 @@ export class UtilisateurService {
 
   public delete(utilisateur: Utilisateur): Observable<void> {
     return this.httpClient.delete<void>(`${ environment.apiUrl }/utilisateur/${ utilisateur.id }`);
+  }
+
+  public supp(id: number): Observable<void> {
+    return this.httpClient.delete<void>(`${ environment.apiUrl }/utilisateur/${ id }`);
   }
 }
