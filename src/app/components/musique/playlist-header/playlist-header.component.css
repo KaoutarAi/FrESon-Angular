@@ -1,22 +1,108 @@
-div.header {
+.header {
     display: flex;
+    position: relative;
     background-color: hsl(216, 36%, 12%);
     color: hsl(39, 55%, 59%);
     align-items: center;
     overflow: hidden;
-    height: 30vh;
+    height: 20vh;
+    width: 100%
 }
 
 .image-header {
     flex-shrink: 0;
     min-width: 100%;
     min-height: 100%;
-    opacity: .15;
+    opacity: .2;
+    margin-top: -50%;
+  transform: translateY(50%);
 }
 
-.header-infos {
-    /* position: sticky; */
+.playlist-name, .playlist-tag, .playlist-infos, .playlist-comment-btn {
+    position: absolute;
 }
+
+.playlist-name {
+    top: 12px;
+    left: 11px;
+    font-size: 2rem;
+}
+
+.playlist-tag {
+    left: 11px;
+    bottom:40px;
+    display: inline-block;
+    background-color: white;
+    color: var(--dark-knight-blue);
+    padding: 1px 6px;
+    font-size: 16px;
+    border-radius: 11px;
+    cursor: pointer;
+    font-variant: small-caps;
+}
+
+
+.playlist-infos {
+    bottom: 5px;
+    left: 9px;
+}
+
+.playlist-comment-btn {
+    bottom: 20px;
+    right: 20px;
+}
+
+.info {
+    padding: 0 2px
+}
+
+
+.modal-container {
+    justify-content: center;
+    display: flex;
+}
+
+
+.modal-dialog {
+    display: inline-table;
+    position:fixed;
+    top:auto;
+    right:auto;
+    left:auto;
+    bottom:0;
+  }
+
+  .modal-content {
+    width: 80vw;
+    background-color: var(--dark-knight-blue);
+  }
+
+  .btn-comment {
+    /* display: inline; */
+    font-size: 1.3rem;
+    color: var(--yellow-jaguar);
+    outline: none;
+    padding-top: 2px;
+    padding: 0;
+    border: none;
+    background: none;
+    /* vertical-align: middle; */
+  }
+
+  /* .modal-body {
+    overflow-y: scroll;
+    height: 50vh;
+  } */
+
+  .close {
+    color: wheat;
+  }
+
+  .bi {
+    color: var(--yellow-jaguar);
+  }
+
+
 
 @media (max-width: 576px) {
     h3, h4 {

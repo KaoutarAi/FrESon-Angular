@@ -1,4 +1,4 @@
-import { AfterViewChecked, Component, HostListener, Input, OnInit } from '@angular/core';
+import { AfterViewChecked, Component, EventEmitter, HostListener, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Musique } from 'src/app/models/musique/musique';
 import { Playlist } from 'src/app/models/musique/playlist';
@@ -15,6 +15,7 @@ export class PlaylistMusicListComponent implements OnInit{
   musiques!: Musique[];
   duree: string = "0 : 00"
   isSmallScreen: boolean = false;
+  @Output() play: EventEmitter<number> = new EventEmitter<number>();
 
   constructor(
     private srvPlaylist: PlaylistService
@@ -52,6 +53,10 @@ export class PlaylistMusicListComponent implements OnInit{
         else {
             this.isSmallScreen = true;
         }
+    }
+
+    onClickPlay(id: number) {
+        this.play.emit(id);
     }
 
 }

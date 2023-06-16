@@ -1,4 +1,4 @@
-<div class="playlist-buttons" style="display: flex;">
+<div *ngIf="playlist" class="playlist-buttons" style="display: flex;">
     <audio src="{{source}}" id="player" (ended)="onEnd()"></audio>
     <button *ngIf="paused" (click)=" onPlay()" class="btn btn-tertiary btn-floating"><i class="bi bi-play-circle"></i></button>
     <button *ngIf="!paused" (click)="onPause()" class="btn btn-tertiary btn-floating"><i class="bi bi-pause-circle"></i></button>
@@ -10,11 +10,19 @@
     </button>
     <button (click)="onLast()" id="last" class="btn btn-tertiary btn-floating"><i class="bi bi-caret-left"></i></button>
     <button (click)="onNext()" id="next" class="btn btn-tertiary btn-floating"><i class="bi bi-caret-right"></i></button>
-    <input type="range" #time id="time-progress" (input)="onTimeChange(time.value)" [value]="currentTime" min="0" [max]="dureeMusique" >
-    <p>{{stringCurrentTime}} / {{stringDureeMusique}}</p>
-    <button (click)="onLike()" class="btn btn-tertiary btn-floating">
+    <div class="progress-container">
+        <input type="range" #time class="time-progress" (input)="onTimeChange(time.value)" [value]="currentTime" min="0" [max]="dureeMusique" >
+        <div class="literal-time-progress">{{stringCurrentTime}} / {{stringDureeMusique}}</div>
+    </div>
+    <button *ngIf="!isMine" (click)="onLike()" class="btn btn-tertiary btn-floating">
         <i *ngIf="!isFavorite" class="bi bi-heart"></i>
         <i *ngIf="isFavorite" class="bi bi-heart-fill"></i>
     </button>
-    <button class="btn btn-tertiary btn-floating"><i class="bi bi-three-dots-vertical"></i></button>
+
+    <button *ngIf="isMine" (click)="onClickEdit()" class="btn btn-tertiary btn-floating">
+        <i class="bi bi-pencil"></i>
+    </button>
+
+    <button *ngIf="!isMine" (click)="onClickDuplicate()" class="btn btn-tertiary btn-floating"><i class="bi bi-files"></i>
+    </button>
 </div>

@@ -46,8 +46,6 @@ export class LoggedNavbarComponent implements OnInit{
 
     @HostListener('window:resize', ['$event'])
     onResize() {
-        console.log("Is resizing...");
-
         if (window.innerWidth > 576) {
             this.isSmallScreen = false;
         }

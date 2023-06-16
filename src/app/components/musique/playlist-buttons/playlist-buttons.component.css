@@ -1,12 +1,21 @@
-div.playlist-buttons {
+.playlist-buttons {
     height: 8%;
+    justify-content: center;
+}
+
+.progress-container {
+    display: inline-flex;
+    position: relative;
+    width: 20vh;
 }
 
 
-
-
-#time-progress {
-    width: 60vh;
+.literal-time-progress {
+    position: absolute;
+    display: grid;
+    justify-content: center;
+    left: 20px;
+    bottom: 37px;
 }
 
 i {
@@ -22,8 +31,16 @@ p {
 }
 
 @media (max-width: 800px) {
+    i {
+        font-size: 1.4rem;
+    }
     input[type="range"] {
         display: none;
+    }
+
+    .literal-time-progress {
+        top: 16px;
+        font-size: 0.86rem;
     }
 }
 
@@ -33,5 +50,9 @@ p {
     }
     button#last, button#next {
         display: none;
+    }
+
+    .literal-time-progress {
+        top: 19px;
     }
 }

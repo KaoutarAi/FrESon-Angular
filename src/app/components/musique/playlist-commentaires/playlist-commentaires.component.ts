@@ -1,5 +1,5 @@
 import { getLocaleDateTimeFormat, formatDate } from '@angular/common';
-import { Component, Input, OnInit } from '@angular/core';
+import { AfterContentChecked, AfterViewChecked, ChangeDetectorRef, Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Commentaire } from 'src/app/models/utilisateur/commentaire';
 import { Utilisateur } from 'src/app/models/utilisateur/utilisateur';
@@ -13,21 +13,29 @@ import { UtilisateurService } from 'src/app/services/utilisateur/utilisateur.ser
   templateUrl: './playlist-commentaires.component.html',
   styleUrls: ['./playlist-commentaires.component.css']
 })
-export class PlaylistCommentairesComponent implements OnInit{
+export class PlaylistCommentairesComponent implements OnInit, AfterContentChecked{
   @Input() playlistId!: number;
   contenu: string = "";
+  @ViewChild('scroller') private myScrollContainer!: ElementRef;
 
   constructor(
     private srvPlaylist: PlaylistService,
     private srcCom: CommentaireService,
     private srvUser: UtilisateurService,
-    private srvAuth: AuthenticationService
+    private srvAuth: AuthenticationService,
+    private cdref: ChangeDetectorRef
     ) {}
-    
+
+    ngAfterContentChecked(): void {
+       this.cdref.detectChanges();
+    }
+
+
+
   ngOnInit(): void {
     this.loadCom();
-    
   }
+
 
 
   commentaires$ !: Observable<Commentaire[]>;
@@ -44,7 +52,7 @@ export class PlaylistCommentairesComponent implements OnInit{
 
   public loadCom(){
     this.commentaires$ = this.srcCom.findAllByPlaylist(this.playlistId);
-    
+
   }
 
   public onEnvoyer(){
@@ -84,10 +92,11 @@ export class PlaylistCommentairesComponent implements OnInit{
     this.month = this.findDate.slice(5, 7);
     this.day = this.findDate.slice(8, 10);
     try {
-      this.commentaires$ = this.srcCom.findAllByPlaylistAndDateOnly(this.playlistId, this.year, this.month, this.day);      
+      this.commentaires$ = this.srcCom.findAllByPlaylistAndDateOnly(this.playlistId, this.year, this.month, this.day);
     } catch (error) {
       this.loadCom();
     }
-    
+
   }
+
 }

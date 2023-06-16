@@ -1,8 +1,38 @@
-<div class="header">
-        <img src="{{musiques[0].image}}" class="image-header">
-    <div class="header-infos" *ngIf="musiques">
-        <h1>{{playlist.nom}}</h1>
-        <h3>{{playlist.etiquette}}</h3>
-        <h4>{{playlist.utilisateurPseudo}} - {{nbTitres}} titres- {{setTime(tpsTotalN)}} </h4>
-    </div>
+<div class="header" *ngIf="playlist">
+        <img src="{{musiques[currentMusic].image}}" class="image-header">
+        <div class="playlist-name">{{playlist.nom}}</div>
+        <div class="playlist-tag">{{playlist.etiquette.charAt(0) + playlist.etiquette.substring(1).toLowerCase()}}</div>
+        <div class="playlist-infos"><span class="info">{{playlist.utilisateurPseudo}} </span>   &bull;   <span class="info">{{nbTitres}} titres</span>   &bull;   <span class="info">{{setTime(tpsTotalN)}}</span> </div>
+        <div class="playlist-comment-btn"><!-- Button trigger modal -->
+            <button type="button" class="btn-comment" (click)="onClickScrollToBottom()" data-toggle="modal" data-target="#exampleModalLong">
+                <i class="bi bi-chat-left-text"></i>
+              </button>
+        </div>
 </div>
+
+
+
+
+  <!-- Modal -->
+  <!-- <div class="modal-container"> -->
+      <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+        <div class="modal-container">
+            <div class="modal-dialog modal-lg" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="exampleModalLongTitle">Commentaires</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                    <playlist-commentaires [playlistId] = "playlistId"></playlist-commentaires>
+                </div>
+                <!-- <div class="modal-footer">
+                  <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                </div> -->
+              </div>
+            </div>
+        </div>
+      </div>
+  <!-- </div> -->
