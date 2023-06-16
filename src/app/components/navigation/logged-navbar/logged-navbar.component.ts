@@ -55,8 +55,9 @@ export class LoggedNavbarComponent implements OnInit{
     }
 
     onClickLogOut() {
+        this.srvAuth.role = "";
         this.srvAuth.token = "";
-        this.router.navigate([ '/accueil' ]);
+        this.router.navigate([ '/accueil' ]).then(() => {window.location.reload()});
 
     }
 }

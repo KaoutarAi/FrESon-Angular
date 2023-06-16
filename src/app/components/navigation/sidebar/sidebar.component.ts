@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnChanges, SimpleChanges } from '@angular/core';
 import { AuthenticationService } from 'src/app/services/authentication.service';
 
 @Component({
@@ -6,13 +6,27 @@ import { AuthenticationService } from 'src/app/services/authentication.service';
   templateUrl: './sidebar.component.html',
   styleUrls: ['./sidebar.component.css']
 })
-export class SidebarComponent {
+export class SidebarComponent implements OnChanges {
     private _srcImg: string = "assets/pictures/Title_complete_color.png";
-    role: string = this.srvAuth.role;
-
+    role!: string;
     constructor(
         private srvAuth: AuthenticationService
-    ){}
+    ){
+        this.role = srvAuth.role;
+        console.log("myRole: " + this.role);
+
+    }
+    ngOnChanges(changes: SimpleChanges): void {
+        console.log("CHANGES ?");
+
+        if (this.srvAuth.isLogged()) {
+            this.role = this.srvAuth.role
+        }
+        else {
+            this.role = "";
+        }
+        console.log("myRole: " + this.role);
+    }
 
     public get srcImg(): string {
         return this._srcImg;

@@ -18,7 +18,7 @@ export class LoginComponent {
   constructor(title: Title, private router: Router, private srvAuth: AuthenticationService, private formBuilder: FormBuilder) {
     title.setTitle("Connexion");
   }
-  
+
   ngOnInit(): void {
     this.pseudoCtrl = this.formBuilder.control('', Validators.required);
     this.mdpCtrl = this.formBuilder.control('', Validators.required);
@@ -34,7 +34,7 @@ export class LoginComponent {
 
     this.srvAuth.login(this.pseudoCtrl.value, this.mdpCtrl.value, {
       next: () => {
-        this.router.navigate([ '/accueil' ]);
+        this.router.navigate([ '/accueil' ]).then(() => {window.location.reload()});
       },
 
       error: () => {
