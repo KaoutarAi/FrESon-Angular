@@ -48,8 +48,8 @@
                     <span>Paramètres</span>
                 </div>
             </a>
-            
-            <a  class="sidebar-item" [routerLink]="[ '/utilisateurs' ]" routerLinkActive="active" *ngIf="role == 'ADMINISTRATEUR'" >
+
+            <a  class="sidebar-item" [routerLink]="[ '/utilisateurs' ]" routerLinkActive="active" *ngIf="role && role == 'ADMINISTRATEUR'" >
                 <div class="sidebar-item-content">
                     <i class="bi bi-person-fill-gear sidebar-icon"></i>
                     <span>Utilisateurs</span>
