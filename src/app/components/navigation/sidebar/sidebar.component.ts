@@ -13,8 +13,6 @@ export class SidebarComponent implements OnChanges {
         private srvAuth: AuthenticationService
     ){
         this.role = srvAuth.role;
-        console.log("myRole: " + this.role);
-
     }
     ngOnChanges(changes: SimpleChanges): void {
         console.log("CHANGES ?");
@@ -25,7 +23,6 @@ export class SidebarComponent implements OnChanges {
         else {
             this.role = "";
         }
-        console.log("myRole: " + this.role);
     }
 
     public get srcImg(): string {
