@@ -61,8 +61,11 @@ export class PlaylistButtonsComponent implements OnInit, OnDestroy, OnChanges{
   ngOnInit(): void {
     this.srvPlaylist.findById(this.playlistId).subscribe((playlist: Playlist) => {
       this.playlist = playlist;
-      this.musiques = playlist.musiques;
-      this.musiques.forEach(m => {
+    //   this.musiques = playlist.musiques;
+      if (!this.musiques) {
+        this.musiques = new Array<Musique>()
+      }
+      playlist.musiques.forEach(m => {
         this.musiques.push(m);
       });
       this.source = this.musiques[0].linkAudio;
@@ -222,8 +225,12 @@ async isLiked() {
 
   onClickDuplicate() {
     let duplicatePlaylist = this.playlist;
+    console.log("MUSIC HERE: " + duplicatePlaylist.musiques);
+
     duplicatePlaylist.utilisateurId = this.srvAuth.id;
     this.srvPlaylist.add(duplicatePlaylist).subscribe(playlist => {
+        console.log("MUSIC SENT: " + playlist.musiques);
+
         this.router.navigate(['/ajouter-playlist'], { queryParams: {id: playlist.id}})
     });
 
